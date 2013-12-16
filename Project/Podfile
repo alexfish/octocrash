@@ -5,7 +5,7 @@ xcodeproj "OctoCrash/OctoCrash.xcodeproj"
 link_with "OctoCrash", "OctoCrashTests"
 
 target "OctoCrashTests", :exclusive => true do
-  pod 'Kiwi', '~> 2.2.3'
+  pod 'Kiwi/XCTest'
 end
 
 target "OctoCrash", :exclusive => true do

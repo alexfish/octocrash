@@ -4,6 +4,7 @@
 <dict>
 	<key>--ignore</key>
 	<array>
+		<string>OctoCrashSample</string>
 		<string>OctoCrashTests</string>
 		<string>External</string>
 		<string>Pods</string>

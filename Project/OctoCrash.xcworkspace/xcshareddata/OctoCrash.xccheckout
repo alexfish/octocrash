@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A8B21414-381B-4AE5-AD55-712A49E65A9C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OctoCrash</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2CBE08E5-E77C-47EB-A08E-68FA26AEB962</key>
+		<string>ssh://github.com/alexfish/octocrash.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Project/OctoCrash.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2CBE08E5-E77C-47EB-A08E-68FA26AEB962</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/alexfish/octocrash.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2CBE08E5-E77C-47EB-A08E-68FA26AEB962</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2CBE08E5-E77C-47EB-A08E-68FA26AEB962</string>
+			<key>IDESourceControlWCCName</key>
+			<string>octocrash</string>
+		</dict>
+	</array>
+</dict>
+</plist>

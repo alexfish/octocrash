@@ -1,6 +1,6 @@
 # OctoCrash
 
-[![Build Status](https://api.travis-ci.org/alefish/octocrash.png?branch=master,develop)](https://api.travis-ci.org/alefish/octocrash)
+[![Build Status](https://api.travis-ci.org/alexfish/octocrash.png?branch=master,develop)](https://travis-ci.org/alexfish/octocrash)
 [![Version](http://cocoapod-badges.herokuapp.com/v/OctoCrash/badge.png)](http://cocoadocs.org/docsets/OctoCrash)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/OctoCrash/badge.png)](http://cocoadocs.org/docsets/OctoCrash)
 

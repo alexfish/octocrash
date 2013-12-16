@@ -22,14 +22,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
+		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351B185F5CA600B9A5F3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351A185F5CA600B9A5F3 /* XCTest.framework */; };
 		0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351D185F5CA600B9A5F3 /* UIKit.framework */; };
 		06993521185F5CA600B9A5F3 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
-		06993529185F5CA600B9A5F3 /* OctoCrashTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06993528185F5CA600B9A5F3 /* OctoCrashTests.m */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
 		EBEE64C7C4FF4BF6B78BA045 /* libPods-OctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */; };
 /* End PBXBuildFile section */
@@ -64,7 +65,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashReporterSpec.m; sourceTree = "<group>"; };
 		063DA70F185F769000A52644 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = ../../../octocrash/Vendor/CrashReporter.framework; sourceTree = "<group>"; };
+		063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEFCrashReporter.h; path = ../../octocrash/Classes/AEFCrashReporter.h; sourceTree = "<group>"; };
+		063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AEFCrashReporter.m; path = ../../octocrash/Classes/AEFCrashReporter.m; sourceTree = "<group>"; };
 		06993509185F5CA600B9A5F3 /* libOctoCrash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOctoCrash.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0699350C185F5CA600B9A5F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06993510185F5CA600B9A5F3 /* OctoCrash-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OctoCrash-Prefix.pch"; sourceTree = "<group>"; };
@@ -73,7 +77,6 @@
 		0699351D185F5CA600B9A5F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		06993524185F5CA600B9A5F3 /* OctoCrashTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OctoCrashTests-Info.plist"; sourceTree = "<group>"; };
 		06993526185F5CA600B9A5F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		06993528185F5CA600B9A5F3 /* OctoCrashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OctoCrashTests.m; sourceTree = "<group>"; };
 		06993533185F5CC200B9A5F3 /* OctoCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctoCrash.h; sourceTree = "<group>"; };
 		0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrash.xcconfig"; path = "../Pods/Pods-OctoCrash.xcconfig"; sourceTree = "<group>"; };
 		21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrashTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061CEDE8185FB80600AA9CC4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		06993500185F5CA600B9A5F3 = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +174,7 @@
 		06993522185F5CA600B9A5F3 /* OctoCrashTests */ = {
 			isa = PBXGroup;
 			children = (
-				06993528185F5CA600B9A5F3 /* OctoCrashTests.m */,
+				061CEDE8185FB80600AA9CC4 /* Classes */,
 				06993523185F5CA600B9A5F3 /* Supporting Files */,
 			);
 			path = OctoCrashTests;
@@ -182,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
+				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
+				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
 			);
 			name = Classes;
 			path = ../../../Classes;
@@ -349,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06993529185F5CA600B9A5F3 /* OctoCrashTests.m in Sources */,
+				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +569,7 @@
 				063DA714185F76A800A52644 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06993504185F5CA600B9A5F3 /* Build configuration list for PBXProject "OctoCrash" */ = {
 			isa = XCConfigurationList;
