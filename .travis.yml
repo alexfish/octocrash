@@ -1,0 +1,3 @@
+language: objective-c
+before_script: bundle install && cd Project && pod install && cd ..
+script: make test
