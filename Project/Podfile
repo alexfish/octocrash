@@ -1,7 +1,13 @@
-pod "OctoCrash", :path => "../"
+platform :ios, "6.0"
+workspace "OctoCrash.xcworkspace"
 
-target "Demo" do
+xcodeproj "OctoCrash/OctoCrash.xcodeproj"
+link_with "OctoCrash", "OctoCrashTests"
+
+target "OctoCrashTests", :exclusive => true do
+  pod 'Kiwi', '~> 2.2.3'
 end
 
-target "DemoTests" do
+target "OctoCrash", :exclusive => true do
+  pod "AFNetworking", "~> 2.0"
 end

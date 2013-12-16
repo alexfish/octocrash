@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--ignore</key>
+	<array>
+		<string>OctoCrashTests</string>
+		<string>External</string>
+		<string>Pods</string>
+		<string>.m</string>
+		<string>_private.h</string>
+		<string>CrashReporter.framework</string>
+	</array>
+	<key>--project-name</key>
+	<string>OctoCrash</string>
+	<key>--project-company</key>
+	<string>alexefish</string>
+	<key>--company-id</key>
+	<string>com.alexefish</string>
+	<key>--create-docset</key>
+	<true/>
+	<key>--install-docset</key>
+	<true/>
+	<key>--no-repeat-first-par</key>
+	<true/>
+	<key>--warn-undocumented-object</key>
+	<true/>
+	<key>--warn-undocumented-member</key>
+	<true/>
+	<key>--warn-empty-description</key>
+	<true/>
+	<key>--warn-unknown-directive</key>
+	<true/>
+	<key>--keep-undocumented-objects</key>
+	<true/>
+	<key>--keep-undocumented-members</key>
+	<true/>
+	<key>--search-undocumented-doc</key>
+	<true/>
+</dict>
+</plist>
