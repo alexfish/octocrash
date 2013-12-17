@@ -33,6 +33,9 @@
 		063248CA1860E10200CB60BE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248C91860E10200CB60BE /* MobileCoreServices.framework */; };
 		063248D11860E4D900CB60BE /* AEFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248D01860E4D900CB60BE /* AEFClient.m */; };
 		063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248D31860E73100CB60BE /* AEFCrashCollector.m */; };
+		063248D51860F45900CB60BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248B31860E0F200CB60BE /* SystemConfiguration.framework */; };
+		063248D61860F45F00CB60BE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248C91860E10200CB60BE /* MobileCoreServices.framework */; };
+		063248D71860F47100CB60BE /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
@@ -269,6 +272,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063248D71860F47100CB60BE /* libISO8601DateFormatter.a in Frameworks */,
+				063248D61860F45F00CB60BE /* MobileCoreServices.framework in Frameworks */,
+				063248D51860F45900CB60BE /* SystemConfiguration.framework in Frameworks */,
 				0699351B185F5CA600B9A5F3 /* XCTest.framework in Frameworks */,
 				0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */,
 				06993521185F5CA600B9A5F3 /* libOctoCrash.a in Frameworks */,
