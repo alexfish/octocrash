@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class AEFCrashCollector;
+
+
 /**
  The front of house of OctoCrash, all IO should go through this class via the 
  available interface.

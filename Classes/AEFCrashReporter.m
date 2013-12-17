@@ -9,7 +9,16 @@
 #import "AEFCrashReporter.h"
 
 // Models
-#import <CrashReporter/CrashReporter.h>
+#import "AEFCrashCollector.h"
+
+
+// Class Extension
+@interface AEFCrashReporter ()
+/**
+ The collector collects crashes..
+ */
+@property (nonatomic, strong) AEFCrashCollector *collector;
+@end
 
 
 @implementation AEFCrashReporter
@@ -28,9 +37,22 @@
     return sharedInstance;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        self.collector = [[AEFCrashCollector alloc] init];
+    }
+    
+    return self;
+}
+
+#pragma mark - Reporting
+
 - (void)startReporting
 {
-    NSLog(@"Started");
+    [self.collector startCollecting];
 }
 
 

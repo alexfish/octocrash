@@ -13,7 +13,7 @@
 SPEC_BEGIN(AEFCrashReporterSpec)
 
 describe(@"AEFCrashReporter", ^{
-    
+
     it(@"should start", ^{
         [[[AEFCrashReporter sharedReporter] should] respondToSelector:@selector(startReporting)];
     });

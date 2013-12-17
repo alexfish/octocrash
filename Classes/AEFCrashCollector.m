@@ -8,6 +8,18 @@
 
 #import "AEFCrashCollector.h"
 
+// Models
+#import <CrashReporter/CrashReporter.h>
+
+
 @implementation AEFCrashCollector
+
+
+#pragma mark - Collecting
+
+- (void)startCollecting
+{
+    [[PLCrashReporter sharedReporter] enableCrashReporter];
+}
 
 @end

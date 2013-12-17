@@ -35,14 +35,17 @@
 		063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248D31860E73100CB60BE /* AEFCrashCollector.m */; };
 		063248D51860F45900CB60BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248B31860E0F200CB60BE /* SystemConfiguration.framework */; };
 		063248D61860F45F00CB60BE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248C91860E10200CB60BE /* MobileCoreServices.framework */; };
-		063248D71860F47100CB60BE /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */; };
+		063248D81860F6F900CB60BE /* AEFClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063248CF1860E4D900CB60BE /* AEFClient.h */; };
+		063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */; };
+		063248DD1860FC4F00CB60BE /* AEFCrashCollector.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063248D21860E73100CB60BE /* AEFCrashCollector.h */; };
+		063248DF1860FDB400CB60BE /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
+		063248E01860FDBB00CB60BE /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351B185F5CA600B9A5F3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351A185F5CA600B9A5F3 /* XCTest.framework */; };
 		0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351D185F5CA600B9A5F3 /* UIKit.framework */; };
-		06993521185F5CA600B9A5F3 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
 /* End PBXBuildFile section */
@@ -211,6 +214,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				063248D81860F6F900CB60BE /* AEFClient.h in CopyFiles */,
+				063248DD1860FC4F00CB60BE /* AEFCrashCollector.h in CopyFiles */,
 				061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */,
 				061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */,
 			);
@@ -233,6 +238,7 @@
 		063248D01860E4D900CB60BE /* AEFClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFClient.m; sourceTree = "<group>"; };
 		063248D21860E73100CB60BE /* AEFCrashCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFCrashCollector.h; sourceTree = "<group>"; };
 		063248D31860E73100CB60BE /* AEFCrashCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashCollector.m; sourceTree = "<group>"; };
+		063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashCollectorSpec.m; sourceTree = "<group>"; };
 		063DA70F185F769000A52644 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = ../../../octocrash/Vendor/CrashReporter.framework; sourceTree = "<group>"; };
 		063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEFCrashReporter.h; path = ../../octocrash/Classes/AEFCrashReporter.h; sourceTree = "<group>"; };
 		063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AEFCrashReporter.m; path = ../../octocrash/Classes/AEFCrashReporter.m; sourceTree = "<group>"; };
@@ -257,14 +263,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063248CA1860E10200CB60BE /* MobileCoreServices.framework in Frameworks */,
-				063248B41860E0F200CB60BE /* SystemConfiguration.framework in Frameworks */,
+				063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */,
+				0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */,
 				061CF5B91860DF0300AA9CC4 /* libAFNetworking.a in Frameworks */,
 				061CF5B81860DEF100AA9CC4 /* libMantle-iOS.a in Frameworks */,
-				061CF5B71860DEE100AA9CC4 /* libReactiveCocoa-iOS.a in Frameworks */,
 				061CF5B61860DECC00AA9CC4 /* libOctoKit.a in Frameworks */,
-				0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */,
-				063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */,
+				061CF5B71860DEE100AA9CC4 /* libReactiveCocoa-iOS.a in Frameworks */,
+				063248CA1860E10200CB60BE /* MobileCoreServices.framework in Frameworks */,
+				063248B41860E0F200CB60BE /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,14 +278,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063248D71860F47100CB60BE /* libISO8601DateFormatter.a in Frameworks */,
+				0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */,
+				063248E01860FDBB00CB60BE /* libISO8601DateFormatter.a in Frameworks */,
+				063248DF1860FDB400CB60BE /* libOctoCrash.a in Frameworks */,
+				9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */,
 				063248D61860F45F00CB60BE /* MobileCoreServices.framework in Frameworks */,
 				063248D51860F45900CB60BE /* SystemConfiguration.framework in Frameworks */,
-				0699351B185F5CA600B9A5F3 /* XCTest.framework in Frameworks */,
 				0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */,
-				06993521185F5CA600B9A5F3 /* libOctoCrash.a in Frameworks */,
-				0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */,
-				9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */,
+				0699351B185F5CA600B9A5F3 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +295,7 @@
 		061CEDE8185FB80600AA9CC4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */,
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
 			);
 			path = Classes;
@@ -305,10 +312,10 @@
 		061CEE051860DCC600AA9CC4 /* OctoKit */ = {
 			isa = PBXGroup;
 			children = (
-				061CF59E1860DDF600AA9CC4 /* ReactiveCocoa.xcodeproj */,
 				061CF58C1860DDEF00AA9CC4 /* Mantle.xcodeproj */,
-				061CF57D1860DDE500AA9CC4 /* OctoKitDependencies.xcodeproj */,
 				061CF5641860DDC100AA9CC4 /* OctoKit.xcodeproj */,
+				061CF57D1860DDE500AA9CC4 /* OctoKitDependencies.xcodeproj */,
+				061CF59E1860DDF600AA9CC4 /* ReactiveCocoa.xcodeproj */,
 			);
 			path = OctoKit;
 			sourceTree = "<group>";
@@ -316,10 +323,10 @@
 		061CF5651860DDC100AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
-				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
 				061CF57A1860DDC200AA9CC4 /* libOctoKit.a */,
 				061CF57C1860DDC200AA9CC4 /* OctoKit iOS Tests.octest */,
+				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
+				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -328,8 +335,8 @@
 			isa = PBXGroup;
 			children = (
 				061CF5851860DDE600AA9CC4 /* AFNetworking.framework */,
-				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
+				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */,
 			);
 			name = Products;
@@ -338,11 +345,11 @@
 		061CF58D1860DDEF00AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
-				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
 				061CF5991860DDF000AA9CC4 /* libMantle-iOS.a */,
-				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
 				061CF59D1860DDF000AA9CC4 /* libMantle-Mac.a */,
+				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
+				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
+				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -350,13 +357,13 @@
 		061CF59F1860DDF600AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
 				061CF5AB1860DDF600AA9CC4 /* libReactiveCocoa-iOS.a */,
-				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
-				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
+				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
 				061CF5B11860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
 				061CF5B31860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
-				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
+				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
+				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
+				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,12 +371,12 @@
 		06993500185F5CA600B9A5F3 = {
 			isa = PBXGroup;
 			children = (
+				0699350B185F5CA600B9A5F3 /* Frameworks */,
 				0699350E185F5CA600B9A5F3 /* OctoCrash */,
 				06993522185F5CA600B9A5F3 /* OctoCrashTests */,
-				0699350B185F5CA600B9A5F3 /* Frameworks */,
 				0699350A185F5CA600B9A5F3 /* Products */,
-				604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */,
 				0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */,
+				604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -385,18 +392,18 @@
 		0699350B185F5CA600B9A5F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				063248C91860E10200CB60BE /* MobileCoreServices.framework */,
-				063248B31860E0F200CB60BE /* SystemConfiguration.framework */,
-				061CF5BE1860DF9E00AA9CC4 /* libSpecta-iOS.a */,
-				061CF5BC1860DF8300AA9CC4 /* libOHHTTPStubs-iOS.a */,
-				061CF5BA1860DF3E00AA9CC4 /* libExpecta-iOS.a */,
 				063DA70F185F769000A52644 /* CrashReporter.framework */,
 				0699350C185F5CA600B9A5F3 /* Foundation.framework */,
-				0699351A185F5CA600B9A5F3 /* XCTest.framework */,
-				0699351D185F5CA600B9A5F3 /* UIKit.framework */,
-				282CAA8734FA4431A7C14282 /* libPods.a */,
+				061CF5BA1860DF3E00AA9CC4 /* libExpecta-iOS.a */,
+				061CF5BC1860DF8300AA9CC4 /* libOHHTTPStubs-iOS.a */,
 				91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */,
 				21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */,
+				282CAA8734FA4431A7C14282 /* libPods.a */,
+				061CF5BE1860DF9E00AA9CC4 /* libSpecta-iOS.a */,
+				063248C91860E10200CB60BE /* MobileCoreServices.framework */,
+				063248B31860E0F200CB60BE /* SystemConfiguration.framework */,
+				0699351D185F5CA600B9A5F3 /* UIKit.framework */,
+				0699351A185F5CA600B9A5F3 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -404,8 +411,8 @@
 		0699350E185F5CA600B9A5F3 /* OctoCrash */ = {
 			isa = PBXGroup;
 			children = (
-				061CEE041860DCC600AA9CC4 /* External */,
 				06993532185F5CC200B9A5F3 /* Classes */,
+				061CEE041860DCC600AA9CC4 /* External */,
 				0699350F185F5CA600B9A5F3 /* Supporting Files */,
 			);
 			path = OctoCrash;
@@ -431,8 +438,8 @@
 		06993523185F5CA600B9A5F3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				06993524185F5CA600B9A5F3 /* OctoCrashTests-Info.plist */,
 				06993525185F5CA600B9A5F3 /* InfoPlist.strings */,
+				06993524185F5CA600B9A5F3 /* OctoCrashTests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -440,13 +447,13 @@
 		06993532185F5CC200B9A5F3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
-				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
-				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
 				063248CF1860E4D900CB60BE /* AEFClient.h */,
 				063248D01860E4D900CB60BE /* AEFClient.m */,
 				063248D21860E73100CB60BE /* AEFCrashCollector.h */,
 				063248D31860E73100CB60BE /* AEFCrashCollector.m */,
+				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
+				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
+				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
 			);
 			name = Classes;
 			path = ../../../Classes;
@@ -743,9 +750,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
+				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +760,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */,
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -923,6 +931,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/alexfish/src/octocrash/Vendor,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrash/OctoCrash-Prefix.pch";
@@ -945,6 +954,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/alexfish/src/octocrash/Vendor,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrash/OctoCrash-Prefix.pch";

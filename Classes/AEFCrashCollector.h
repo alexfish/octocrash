@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class PLCrashReport;
+
+
 /**
  The crash collector collects crash reports, the interface 
  provides methods to return any reports that have been 
  collected. Crashes are collected using PLCrashReporter
  */
 @interface AEFCrashCollector : NSObject
+
+/**
+ Start collecting crashes
+ */
+- (void)startCollecting;
 
 @end
