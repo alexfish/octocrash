@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		061CEE011860CB0500AA9CC4 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */; };
+		063248CC1860E11B00CB60BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248CB1860E11B00CB60BE /* SystemConfiguration.framework */; };
+		063248CE1860E12000CB60BE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248CD1860E12000CB60BE /* MobileCoreServices.framework */; };
 		06993543185F5CD900B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993542185F5CD900B9A5F3 /* Foundation.framework */; };
 		06993545185F5CD900B9A5F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993544185F5CD900B9A5F3 /* CoreGraphics.framework */; };
 		06993547185F5CD900B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993546185F5CD900B9A5F3 /* UIKit.framework */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063248CB1860E11B00CB60BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		063248CD1860E12000CB60BE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0699353F185F5CD900B9A5F3 /* OctoCrashSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoCrashSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06993542185F5CD900B9A5F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06993544185F5CD900B9A5F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -44,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063248CE1860E12000CB60BE /* MobileCoreServices.framework in Frameworks */,
+				063248CC1860E11B00CB60BE /* SystemConfiguration.framework in Frameworks */,
 				061CEE011860CB0500AA9CC4 /* libOctoCrash.a in Frameworks */,
 				06993545185F5CD900B9A5F3 /* CoreGraphics.framework in Frameworks */,
 				06993547185F5CD900B9A5F3 /* UIKit.framework in Frameworks */,
@@ -74,6 +80,8 @@
 		06993541185F5CD900B9A5F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				063248CD1860E12000CB60BE /* MobileCoreServices.framework */,
+				063248CB1860E11B00CB60BE /* SystemConfiguration.framework */,
 				06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */,
 				06993542185F5CD900B9A5F3 /* Foundation.framework */,
 				06993544185F5CD900B9A5F3 /* CoreGraphics.framework */,

@@ -6,8 +6,4 @@ link_with "OctoCrash", "OctoCrashTests"
 
 target "OctoCrashTests", :exclusive => true do
   pod 'Kiwi/XCTest'
-end
-
-target "OctoCrash", :exclusive => true do
-  pod "AFNetworking", "~> 2.0"
-end
+end	

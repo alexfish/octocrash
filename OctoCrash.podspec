@@ -28,5 +28,6 @@ Pod::Spec.new do |s|
 
   s.dependency   "AFNetworking", "~> 2.0"
   s.dependency   "Mantle", "~> 1.3.1"
+  s.frameworks = 'SystemConfiguration', 'MobileCoreServices'
   s.vendored_frameworks = 'Vendor/CrashReporter.framework'
 end
