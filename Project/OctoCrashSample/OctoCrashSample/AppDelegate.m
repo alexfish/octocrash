@@ -7,11 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import <OctoCrash/OctoCrash.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[AEFCrashReporter sharedReporter] setRepo:@"alexefish/octocrash"];
+    [[AEFCrashReporter sharedReporter] startReporting];
+    
     // Override point for customization after application launch.
     return YES;
 }

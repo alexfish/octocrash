@@ -20,4 +20,16 @@
  */
 + (id)sharedReporter;
 
+/**
+ Starts the crash reporter sending any pending crash reports
+ to GitHub as well as listening for new crashes
+ */
+- (void)startReporting;
+
+/**
+ Set the repository to send crash reports to
+ @param repo The name of the repo in Github format, eg org/repo
+ */
+- (void)setRepo:(NSString *)repo;
+
 @end

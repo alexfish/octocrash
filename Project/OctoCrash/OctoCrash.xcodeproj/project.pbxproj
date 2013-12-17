@@ -23,6 +23,8 @@
 
 /* Begin PBXBuildFile section */
 		061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */; };
+		061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 06993533185F5CC200B9A5F3 /* OctoCrash.h */; };
+		061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
@@ -59,6 +61,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */,
+				061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

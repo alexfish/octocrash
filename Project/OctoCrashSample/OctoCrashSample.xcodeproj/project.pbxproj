@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		063DA71E185FB6EF00A52644 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */; };
+		061CEE011860CB0500AA9CC4 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */; };
 		06993543185F5CD900B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993542185F5CD900B9A5F3 /* Foundation.framework */; };
 		06993545185F5CD900B9A5F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993544185F5CD900B9A5F3 /* CoreGraphics.framework */; };
 		06993547185F5CD900B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993546185F5CD900B9A5F3 /* UIKit.framework */; };
@@ -44,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				063DA71E185FB6EF00A52644 /* libOctoCrash.a in Frameworks */,
+				061CEE011860CB0500AA9CC4 /* libOctoCrash.a in Frameworks */,
 				06993545185F5CD900B9A5F3 /* CoreGraphics.framework in Frameworks */,
 				06993547185F5CD900B9A5F3 /* UIKit.framework in Frameworks */,
 				06993543185F5CD900B9A5F3 /* Foundation.framework in Frameworks */,
@@ -287,6 +287,7 @@
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/OctoCrash";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -304,6 +305,7 @@
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/OctoCrash";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

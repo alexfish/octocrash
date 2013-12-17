@@ -28,4 +28,17 @@
     return sharedInstance;
 }
 
+- (void)startReporting
+{
+    NSLog(@"Started");
+}
+
+
+#pragma mark - Setup
+
+- (void)setRepo:(NSString *)repo
+{
+    NSLog(@"%@", repo);
+}
+
 @end

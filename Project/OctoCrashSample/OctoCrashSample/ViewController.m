@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <OctoCrash/OctoCrash.h>
 
 @interface ViewController ()
 
@@ -15,16 +14,10 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
+- (IBAction)crash:(id)sender
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSException *exception = [NSException exceptionWithName:@"OctoCrashed" reason:@"This crash was on purpose" userInfo:nil];
+    [exception raise];
 }
 
 @end

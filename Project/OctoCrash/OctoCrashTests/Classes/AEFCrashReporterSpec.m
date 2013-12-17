@@ -14,8 +14,8 @@ SPEC_BEGIN(AEFCrashReporterSpec)
 
 describe(@"AEFCrashReporter", ^{
     
-    it(@"should pass a stupid test", ^{
-        [[theValue(YES) should] equal:theValue(YES)];
+    it(@"should start", ^{
+        [[[AEFCrashReporter sharedReporter] should] respondToSelector:@selector(startReporting)];
     });
     
 });
