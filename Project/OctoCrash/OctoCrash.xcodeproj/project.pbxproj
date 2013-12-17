@@ -31,6 +31,8 @@
 		061CF5B91860DF0300AA9CC4 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF5871860DDE600AA9CC4 /* libAFNetworking.a */; };
 		063248B41860E0F200CB60BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248B31860E0F200CB60BE /* SystemConfiguration.framework */; };
 		063248CA1860E10200CB60BE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248C91860E10200CB60BE /* MobileCoreServices.framework */; };
+		063248D11860E4D900CB60BE /* AEFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248D01860E4D900CB60BE /* AEFClient.m */; };
+		063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248D31860E73100CB60BE /* AEFCrashCollector.m */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
@@ -40,7 +42,6 @@
 		06993521185F5CA600B9A5F3 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
-		EBEE64C7C4FF4BF6B78BA045 /* libPods-OctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,10 @@
 		061CF5BE1860DF9E00AA9CC4 /* libSpecta-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libSpecta-iOS.a"; path = "OctoCrash/External/OctoKit/External/Mantle/MantleTests/specta/build/Debug-iphoneos/libSpecta-iOS.a"; sourceTree = "<group>"; };
 		063248B31860E0F200CB60BE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		063248C91860E10200CB60BE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		063248CF1860E4D900CB60BE /* AEFClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFClient.h; sourceTree = "<group>"; };
+		063248D01860E4D900CB60BE /* AEFClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFClient.m; sourceTree = "<group>"; };
+		063248D21860E73100CB60BE /* AEFCrashCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFCrashCollector.h; sourceTree = "<group>"; };
+		063248D31860E73100CB60BE /* AEFCrashCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashCollector.m; sourceTree = "<group>"; };
 		063DA70F185F769000A52644 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = ../../../octocrash/Vendor/CrashReporter.framework; sourceTree = "<group>"; };
 		063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEFCrashReporter.h; path = ../../octocrash/Classes/AEFCrashReporter.h; sourceTree = "<group>"; };
 		063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AEFCrashReporter.m; path = ../../octocrash/Classes/AEFCrashReporter.m; sourceTree = "<group>"; };
@@ -257,7 +262,6 @@
 				061CF5B61860DECC00AA9CC4 /* libOctoKit.a in Frameworks */,
 				0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */,
 				063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */,
-				EBEE64C7C4FF4BF6B78BA045 /* libPods-OctoCrash.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +437,10 @@
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
 				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
 				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
+				063248CF1860E4D900CB60BE /* AEFClient.h */,
+				063248D01860E4D900CB60BE /* AEFClient.m */,
+				063248D21860E73100CB60BE /* AEFCrashCollector.h */,
+				063248D31860E73100CB60BE /* AEFCrashCollector.m */,
 			);
 			name = Classes;
 			path = ../../../Classes;
@@ -445,11 +453,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0699352C185F5CA600B9A5F3 /* Build configuration list for PBXNativeTarget "OctoCrash" */;
 			buildPhases = (
-				9004F0300C534A9C906B08A2 /* Check Pods Manifest.lock */,
 				06993505185F5CA600B9A5F3 /* Sources */,
 				06993506185F5CA600B9A5F3 /* Frameworks */,
 				06993507185F5CA600B9A5F3 /* CopyFiles */,
-				64855CFFBEC648968EB7A317 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -694,21 +700,6 @@
 			shellPath = /bin/sh;
 			shellScript = "APPLEDOC=/usr/local/bin/appledoc\n\nif [ ! -f \"$APPLEDOC\" ]; then\n# If appledoc is enforced, use these lines\necho \"error: appledoc must be installed! Please follow instructions at http://gentlebytes.com/appledoc-docs\"\nexit 1\nfi\n\nTEMP_OUTPUT=/tmp/appledoc_output_`date +%Y-m-d`.txt\n$APPLEDOC . 2> $TEMP_OUTPUT\nEXIT_CODE=0\ncat $TEMP_OUTPUT | sed 's/WARN |/warning:/g' | sed 's/ERROR:/error:/g'\nrm -f $TEMP_OUTPUT\nexit $EXIT_CODE";
 		};
-		64855CFFBEC648968EB7A317 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-OctoCrash-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		75EA206F2A3A4AD39F839809 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -739,21 +730,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9004F0300C534A9C906B08A2 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -762,6 +738,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
+				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
+				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
