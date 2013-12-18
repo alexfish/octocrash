@@ -22,4 +22,23 @@
     [[PLCrashReporter sharedReporter] enableCrashReporter];
 }
 
+- (PLCrashReport *)pendingReport
+{
+    PLCrashReporter *reporter = [PLCrashReporter sharedReporter];
+    PLCrashReport *pendingReport = nil;
+    
+    if ([reporter hasPendingCrashReport])
+    {
+        NSData *crashData = [reporter loadPendingCrashReportData];
+        pendingReport = [[PLCrashReport alloc] initWithData:crashData error:nil];
+    }
+    
+    return pendingReport;
+}
+
+- (void)purge
+{
+    [[PLCrashReporter sharedReporter] purgePendingCrashReport];
+}
+
 @end

@@ -23,4 +23,16 @@
  */
 - (void)startCollecting;
 
+/**
+ Return a pending crash report if any are present, if there
+ are no pending reports then nil will be returned.
+ @returns A pending crash report
+ */
+- (PLCrashReport *)pendingReport;
+
+/**
+ Purge any pending crash reports never to be seen again.
+ */
+- (void)purge;
+
 @end

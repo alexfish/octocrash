@@ -57,7 +57,7 @@
 }
 
 
-#pragma mark - Reporting
+#pragma mark - Configuration
 
 - (void)configureRepo:(NSString *)repo
              clientID:(NSString *)clientID
@@ -68,7 +68,32 @@
     self.clientSecret = clientSecret;
 }
 
+
+#pragma mark - Reporting
+
 - (void)startReporting
+{
+    [self collectReports];
+    [self sendPendingReports];
+}
+
+
+#pragma mark - Reporting (Private)
+
+- (void)sendPendingReports
+{
+    PLCrashReport *pendingReport = [self.collector pendingReport];
+    
+    if (pendingReport)
+    {
+        NSLog(@"Pending report found: %@", pendingReport);
+        // Send the report to the client here..
+        
+        [self.collector purge];
+    }
+}
+
+- (void)collectReports
 {
     [self.collector startCollecting];
 }
