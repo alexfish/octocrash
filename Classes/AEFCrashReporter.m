@@ -18,6 +18,14 @@
  The collector collects crashes..
  */
 @property (nonatomic, strong) AEFCrashCollector *collector;
+
+/**
+ Overwrite readonly
+ */
+@property (nonatomic, copy) NSString *repo;
+@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientSecret;
+
 @end
 
 
@@ -48,19 +56,21 @@
     return self;
 }
 
+
 #pragma mark - Reporting
+
+- (void)configureRepo:(NSString *)repo
+             clientID:(NSString *)clientID
+         clientSecret:(NSString *)clientSecret
+{
+    self.repo = repo;
+    self.clientID = clientID;
+    self.clientSecret = clientSecret;
+}
 
 - (void)startReporting
 {
     [self.collector startCollecting];
-}
-
-
-#pragma mark - Setup
-
-- (void)setRepo:(NSString *)repo
-{
-    NSLog(@"%@", repo);
 }
 
 @end

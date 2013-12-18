@@ -14,10 +14,45 @@ SPEC_BEGIN(AEFCrashReporterSpec)
 
 describe(@"AEFCrashReporter", ^{
 
-    it(@"should start", ^{
-        [[[AEFCrashReporter sharedReporter] should] respondToSelector:@selector(startReporting)];
+    __block AEFCrashReporter *reporter;
+    
+    beforeEach(^{
+        reporter = [AEFCrashReporter sharedReporter];
     });
     
+    context(@"public interface", ^{
+        
+        it(@"should have a repo", ^{
+            [[reporter should] respondToSelector:@selector(repo)];
+        });
+        
+        it(@"should have a clientID", ^{
+            [[reporter should] respondToSelector:@selector(clientID)];
+        });
+        
+        it(@"should have a client secret", ^{
+            [[reporter should] respondToSelector:@selector(clientSecret)];
+        });
+    });
+    
+    context(@"when configuring", ^{
+        
+        beforeEach(^{
+            [reporter configureRepo:@"repo" clientID:@"id" clientSecret:@"secret"];
+        });
+        
+        it(@"should set a repo", ^{
+            [[reporter.repo should] equal:@"repo"];
+        });
+        
+        it(@"should set a clientID", ^{
+            [[reporter.clientID should] equal:@"id"];
+        });
+        
+        it(@"should set a clientSecret", ^{
+            [[reporter.clientSecret should] equal:@"secret"];
+        });
+    });
 });
 
 SPEC_END

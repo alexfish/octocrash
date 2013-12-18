@@ -6,5 +6,6 @@
 //  Copyright (c) 2013 alexefish. All rights reserved.
 //
 
-#import "AEFCrashReporter.h"
-#import "AEFClient.h"
+#import <OctoCrash/AEFCrashReporter.h>
+#import <OctoCrash/AEFClient.h>
+#import <OctoCrash/AEFCrashCollector.h>
