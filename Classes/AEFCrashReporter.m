@@ -10,6 +10,7 @@
 
 // Models
 #import "AEFCrashCollector.h"
+#import "AEFClient.h"
 
 
 // Class Extension
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) AEFCrashCollector *collector;
 
 /**
- Overwrite readonly
+ Protocol properties
  */
 @property (nonatomic, copy) NSString *repo;
 @property (nonatomic, copy) NSString *clientID;
@@ -86,9 +87,7 @@
     
     if (pendingReport)
     {
-        NSLog(@"Pending report found: %@", pendingReport);
-        // Send the report to the client here..
-        
+        [self sendReport:pendingReport];
         [self.collector purge];
     }
 }
@@ -97,5 +96,11 @@
 {
     [self.collector startCollecting];
 }
+
+
+#pragma mark - Client (Private)
+
+- (void)sendReport:(PLCrashReport *)report
+{}
 
 @end

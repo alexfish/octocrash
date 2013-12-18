@@ -7,8 +7,7 @@
 //
 
 #import <Kiwi/Kiwi.h>
-#import "AEFCrashReporter.h"
-
+#import <OctoCrash/OctoCrash.h>
 
 SPEC_BEGIN(AEFCrashReporterSpec)
 
@@ -21,6 +20,10 @@ describe(@"AEFCrashReporter", ^{
     });
     
     context(@"public interface", ^{
+        
+        it(@"should conform to the the crash reporter protocol", ^{
+            [[reporter should] conformToProtocol:@protocol(AEFCrashReporting)];
+        });
         
         it(@"should have a repo", ^{
             [[reporter should] respondToSelector:@selector(repo)];

@@ -8,30 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class AEFCrashCollector;
+// Protocol
+#import "AEFCrashReporting.h"
 
+
+@class AEFCrashCollector;
 
 /**
  The front of house of OctoCrash, all IO should go through this class via the 
  available interface.
  */
-@interface AEFCrashReporter : NSObject
-
-/**
- The Github repository to report crashes to, in the format org/name or user/name
- E.g alexfish/octocrash
- */
-@property (nonatomic, copy, readonly) NSString *repo;
-
-/**
- Github OAuth application client ID
- */
-@property (nonatomic, copy, readonly) NSString *clientID;
-
-/**
- Githuv OAuth application client secret
- */
-@property (nonatomic, copy, readonly) NSString *clientSecret;
+@interface AEFCrashReporter : NSObject <AEFCrashReporting>
 
 /**
  Returns the default crash reporter

@@ -41,6 +41,8 @@
 		063248FD1861BF9900CB60BE /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063249121861C51F00CB60BE /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		063249141861C64900CB60BE /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */; };
+		063249391861E41600CB60BE /* AEFClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 063249381861E41600CB60BE /* AEFClientSpec.m */; };
+		0632493A1861E80E00CB60BE /* AEFCrashReporting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063249231861E3F800CB60BE /* AEFCrashReporting.h */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
@@ -218,6 +220,7 @@
 				063248D81860F6F900CB60BE /* AEFClient.h in CopyFiles */,
 				063248DD1860FC4F00CB60BE /* AEFCrashCollector.h in CopyFiles */,
 				061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */,
+				0632493A1861E80E00CB60BE /* AEFCrashReporting.h in CopyFiles */,
 				061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +243,8 @@
 		063248D21860E73100CB60BE /* AEFCrashCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFCrashCollector.h; sourceTree = "<group>"; };
 		063248D31860E73100CB60BE /* AEFCrashCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashCollector.m; sourceTree = "<group>"; };
 		063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashCollectorSpec.m; sourceTree = "<group>"; };
+		063249231861E3F800CB60BE /* AEFCrashReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFCrashReporting.h; sourceTree = "<group>"; };
+		063249381861E41600CB60BE /* AEFClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFClientSpec.m; sourceTree = "<group>"; };
 		063DA70F185F769000A52644 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CrashReporter.framework; path = ../../../octocrash/Vendor/CrashReporter.framework; sourceTree = "<group>"; };
 		063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AEFCrashReporter.h; path = ../../octocrash/Classes/AEFCrashReporter.h; sourceTree = "<group>"; };
 		063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AEFCrashReporter.m; path = ../../octocrash/Classes/AEFCrashReporter.m; sourceTree = "<group>"; };
@@ -297,6 +302,7 @@
 		061CEDE8185FB80600AA9CC4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				063249381861E41600CB60BE /* AEFClientSpec.m */,
 				063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */,
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
 			);
@@ -455,6 +461,7 @@
 				063248D31860E73100CB60BE /* AEFCrashCollector.m */,
 				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
 				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
+				063249231861E3F800CB60BE /* AEFCrashReporting.h */,
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
 			);
 			name = Classes;
@@ -762,6 +769,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063249391861E41600CB60BE /* AEFClientSpec.m in Sources */,
 				063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */,
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
 			);

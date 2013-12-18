@@ -9,3 +9,4 @@
 #import <OctoCrash/AEFCrashReporter.h>
 #import <OctoCrash/AEFClient.h>
 #import <OctoCrash/AEFCrashCollector.h>
+#import <OctoCrash/AEFCrashReporting.h>
