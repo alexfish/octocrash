@@ -27,4 +27,11 @@
           clientID:(NSString *)clientID
       clientSecret:(NSString *)clientSecret;
 
+/**
+ Send a crash report to Github, creating an issue on the client's
+ repo
+ @param report The crash report to send to Github
+ */
+- (void)sendReport:(PLCrashReport *)report;
+
 @end

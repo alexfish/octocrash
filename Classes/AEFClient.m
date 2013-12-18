@@ -10,6 +10,7 @@
 
 // Models
 #import <OctoKit/OctoKit.h>
+#import <CrashReporter/PLCrashReport.h>
 
 
 // Class extension
@@ -43,5 +44,11 @@
     
     return self;
 }
+
+
+#pragma mark - Reports
+
+- (void)sendReport:(PLCrashReport *)report
+{}
 
 @end

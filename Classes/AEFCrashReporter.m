@@ -15,10 +15,16 @@
 
 // Class Extension
 @interface AEFCrashReporter ()
+
 /**
  The collector collects crashes..
  */
 @property (nonatomic, strong) AEFCrashCollector *collector;
+
+/**
+ The client sends crash reports to Github
+*/
+@property (nonatomic, strong) AEFClient *client;
 
 /**
  Protocol properties
@@ -101,6 +107,12 @@
 #pragma mark - Client (Private)
 
 - (void)sendReport:(PLCrashReport *)report
-{}
+{
+    self.client = [[AEFClient alloc] initWithRepo:self.repo
+                                         clientID:self.clientID
+                                     clientSecret:self.clientSecret];
+    
+    [self.client sendReport:report];
+}
 
 @end
