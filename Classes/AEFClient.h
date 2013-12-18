@@ -12,6 +12,9 @@
 #import "AEFCrashReporting.h"
 
 
+@class PLCrashReport;
+
+
 /**
  Sends/Recieves requests between octocrash and the Github API via it's
  interface.
