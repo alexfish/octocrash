@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 060CF4E4187F53E400FF2793 /* AEFUser.m */; };
+		060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 060CF4E6187F53F000FF2793 /* AEFUserSpec.m */; };
 		061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */; };
 		061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 06993533185F5CC200B9A5F3 /* OctoCrash.h */; };
 		061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */; };
@@ -232,6 +234,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		060CF4E3187F53E400FF2793 /* AEFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUser.h; sourceTree = "<group>"; };
+		060CF4E4187F53E400FF2793 /* AEFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUser.m; sourceTree = "<group>"; };
+		060CF4E6187F53F000FF2793 /* AEFUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserSpec.m; sourceTree = "<group>"; };
 		061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashReporterSpec.m; sourceTree = "<group>"; };
 		061CF5641860DDC100AA9CC4 /* OctoKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OctoKit.xcodeproj; sourceTree = "<group>"; };
 		061CF57D1860DDE500AA9CC4 /* OctoKitDependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OctoKitDependencies.xcodeproj; path = External/OctoKitDependencies/OctoKitDependencies.xcodeproj; sourceTree = "<group>"; };
@@ -303,12 +308,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		060CF4E2187F539F00FF2793 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				060CF4E3187F53E400FF2793 /* AEFUser.h */,
+				060CF4E4187F53E400FF2793 /* AEFUser.m */,
+			);
+			name = Cache;
+			sourceTree = "<group>";
+		};
 		061CEDE8185FB80600AA9CC4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				063249381861E41600CB60BE /* AEFClientSpec.m */,
 				063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */,
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
+				060CF4E6187F53F000FF2793 /* AEFUserSpec.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -480,6 +495,7 @@
 		06993532185F5CC200B9A5F3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				060CF4E2187F539F00FF2793 /* Cache */,
 				063249491861EFD100CB60BE /* Client */,
 				0632495E1861EFDC00CB60BE /* Crashes */,
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
@@ -782,6 +798,7 @@
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
+				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +809,7 @@
 				063249391861E41600CB60BE /* AEFClientSpec.m in Sources */,
 				063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */,
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
+				060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
