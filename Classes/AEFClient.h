@@ -22,7 +22,8 @@
 @interface AEFClient : NSObject <AEFCrashReporting>
 
 /**
- Initialize a new client instance with a repo, client id and client secret
+ Initialize a new client instance with a repo, client id and client secret,
+ the client will attempt to authenticate on init
  @param repo
  @returns A new AEFClient instance
  */
