@@ -54,6 +54,10 @@
 		0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351D185F5CA600B9A5F3 /* UIKit.framework */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
+		06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734061881D05D00F98B67 /* AEFUserCache.m */; };
+		06B734231881D0C500F98B67 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734201881D0C500F98B67 /* SSKeychain.m */; };
+		06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734221881D0C500F98B67 /* SSKeychainQuery.m */; };
+		06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
 /* End PBXBuildFile section */
 
@@ -266,6 +270,14 @@
 		06993524185F5CA600B9A5F3 /* OctoCrashTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OctoCrashTests-Info.plist"; sourceTree = "<group>"; };
 		06993526185F5CA600B9A5F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06993533185F5CC200B9A5F3 /* OctoCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctoCrash.h; sourceTree = "<group>"; };
+		06B734051881D05D00F98B67 /* AEFUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUserCache.h; sourceTree = "<group>"; };
+		06B734061881D05D00F98B67 /* AEFUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCache.m; sourceTree = "<group>"; };
+		06B7341E1881D0C500F98B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		06B7341F1881D0C500F98B67 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		06B734201881D0C500F98B67 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		06B734211881D0C500F98B67 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		06B734221881D0C500F98B67 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCacheSpec.m; sourceTree = "<group>"; };
 		0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrash.xcconfig"; path = "../Pods/Pods-OctoCrash.xcconfig"; sourceTree = "<group>"; };
 		21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrashTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		282CAA8734FA4431A7C14282 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,6 +325,8 @@
 			children = (
 				060CF4E3187F53E400FF2793 /* AEFUser.h */,
 				060CF4E4187F53E400FF2793 /* AEFUser.m */,
+				06B734051881D05D00F98B67 /* AEFUserCache.h */,
+				06B734061881D05D00F98B67 /* AEFUserCache.m */,
 			);
 			name = Cache;
 			sourceTree = "<group>";
@@ -323,6 +337,7 @@
 				063249381861E41600CB60BE /* AEFClientSpec.m */,
 				063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */,
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
+				06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */,
 				060CF4E6187F53F000FF2793 /* AEFUserSpec.m */,
 			);
 			path = Classes;
@@ -332,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				061CEE051860DCC600AA9CC4 /* OctoKit */,
+				06B7341C1881D0C500F98B67 /* SSKeychain */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -502,6 +518,19 @@
 			);
 			name = Classes;
 			path = ../../../Classes;
+			sourceTree = "<group>";
+		};
+		06B7341C1881D0C500F98B67 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				06B7341F1881D0C500F98B67 /* SSKeychain.h */,
+				06B734201881D0C500F98B67 /* SSKeychain.m */,
+				06B7341D1881D0C500F98B67 /* SSKeychain.strings */,
+				06B734211881D0C500F98B67 /* SSKeychainQuery.h */,
+				06B734221881D0C500F98B67 /* SSKeychainQuery.m */,
+			);
+			name = SSKeychain;
+			path = SSKeychain/SSKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -799,6 +828,9 @@
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
+				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
+				06B734231881D0C500F98B67 /* SSKeychain.m in Sources */,
+				06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,6 +841,7 @@
 				063249391861E41600CB60BE /* AEFClientSpec.m in Sources */,
 				063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */,
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
+				06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */,
 				060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,6 +868,14 @@
 				06993526185F5CA600B9A5F3 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		06B7341D1881D0C500F98B67 /* SSKeychain.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06B7341E1881D0C500F98B67 /* en */,
+			);
+			name = SSKeychain.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

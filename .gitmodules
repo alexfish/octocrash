@@ -1,3 +1,6 @@
 [submodule "Project/OctoCrash/OctoCrash/External/OctoKit"]
 	path = Project/OctoCrash/OctoCrash/External/OctoKit
 	url = https://github.com/octokit/octokit.objc.git
+[submodule "Project/OctoCrash/OctoCrash/External/SSKeychain"]
+	path = Project/OctoCrash/OctoCrash/External/SSKeychain
+	url = https://github.com/soffes/sskeychain.git

@@ -11,6 +11,7 @@
 // Models
 #import <OctoKit/OctoKit.h>
 #import <CrashReporter/PLCrashReport.h>
+#import "AEFUserCache.h"
 
 
 // Class extension
@@ -59,7 +60,11 @@
 
 - (void)authenticate
 {
-    // if there is no user/pass stored then
+    if (![AEFUserCache cachedUser])
+    {
+        [self displayLogin];
+    }
+    
     [self displayLogin];
 }
 

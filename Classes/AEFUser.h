@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 alexefish. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <Mantle/Mantle.h>
 
 /**
