@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
 /**
  Represents a Github user holding any user specific
  details.
  */
-@interface AEFUser : NSObject
+@interface AEFUser : MTLModel
 
 /**
  The users Github username
