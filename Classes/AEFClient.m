@@ -12,6 +12,7 @@
 #import <OctoKit/OctoKit.h>
 #import <CrashReporter/PLCrashReport.h>
 #import "AEFUserCache.h"
+#import "AEFUser.h"
 
 
 // Class extension
@@ -60,13 +61,39 @@
 
 - (void)authenticate
 {
-    if (![AEFUserCache cachedUser])
+    AEFUser *user = [AEFUserCache cachedUser];
+    
+    if (user)
+    {
+        [self authenticateUser:user];
+    }
+    else
     {
         [self displayLogin];
     }
-    
-    [self displayLogin];
 }
+
+- (void)authenticateUser:(AEFUser *)user
+{
+    OCTUser *octoUser = [OCTUser userWithLogin:user.username
+                                        server:OCTServer.dotComServer];
+    
+    [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
+    [[OCTClient signInAsUser:octoUser
+                    password:user.password
+             oneTimePassword:nil
+                      scopes:OCTClientAuthorizationScopesUser]
+     subscribeNext:^(OCTClient *authenticatedClient) {
+         // Authentication was successful. Do something with the created client.
+         NSLog(@"Signed in!");
+     } error:^(NSError *error) {
+         // Authentication failed.
+         NSLog(@"Error: %@", error);
+     }];
+}
+
+
+#pragma mark - Login UI (Private)
 
 - (void)displayLogin
 {
@@ -80,10 +107,11 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    __unused NSString *username = [[alertView textFieldAtIndex:0] text];
-    __unused NSString *password = [[alertView textFieldAtIndex:1] text];
+    NSString *username = [[alertView textFieldAtIndex:0] text];
+    NSString *password = [[alertView textFieldAtIndex:1] text];
     
-    [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
+    AEFUser *user = [[AEFUser alloc] initWithUsername:username password:password];
+    [self authenticateUser:user];
 }
 
 @end
