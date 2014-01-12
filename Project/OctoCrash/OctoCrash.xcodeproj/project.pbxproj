@@ -45,6 +45,8 @@
 		0632493A1861E80E00CB60BE /* AEFCrashReporting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063249231861E3F800CB60BE /* AEFCrashReporting.h */; };
 		063DA710185F769000A52644 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
 		063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */; };
+		064282471882F61A009F14F8 /* AEFUser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 060CF4E4187F53E400FF2793 /* AEFUser.m */; };
+		064282481882F61A009F14F8 /* AEFUserCache.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = 06B734061881D05D00F98B67 /* AEFUserCache.m */; };
 		0699350D185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351B185F5CA600B9A5F3 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351A185F5CA600B9A5F3 /* XCTest.framework */; };
 		0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
@@ -221,6 +223,8 @@
 				063248DD1860FC4F00CB60BE /* AEFCrashCollector.h in CopyFiles */,
 				061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */,
 				0632493A1861E80E00CB60BE /* AEFCrashReporting.h in CopyFiles */,
+				064282471882F61A009F14F8 /* AEFUser.m in CopyFiles */,
+				064282481882F61A009F14F8 /* AEFUserCache.m in CopyFiles */,
 				061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -909,7 +913,7 @@
 				DSTROOT = /tmp/OctoCrash.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/alexfish/src/octocrash/Vendor,
+					"$(SRCROOT)/../../Vendor",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrash/OctoCrash-Prefix.pch";
@@ -932,7 +936,7 @@
 				DSTROOT = /tmp/OctoCrash.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/alexfish/src/octocrash/Vendor,
+					"$(SRCROOT)/../../Vendor",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrash/OctoCrash-Prefix.pch";
@@ -956,8 +960,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(SRCROOT)/../../Vendor",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					/Users/alexfish/src/octocrash/Vendor,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrash/OctoCrash-Prefix.pch";
@@ -979,8 +983,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(SRCROOT)/../../Vendor",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					/Users/alexfish/src/octocrash/Vendor,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrash/OctoCrash-Prefix.pch";
