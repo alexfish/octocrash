@@ -43,8 +43,6 @@
         self.repo = repo;
         self.clientID = clientID;
         self.clientSecret = clientSecret;
-        
-        [self authenticate];
     }
     
     return self;
@@ -54,7 +52,9 @@
 #pragma mark - Reports
 
 - (void)sendReport:(PLCrashReport *)report
-{}
+{
+    [self authenticate];
+}
 
 
 #pragma mark - Authentication (Private)
@@ -84,11 +84,9 @@
              oneTimePassword:nil
                       scopes:OCTClientAuthorizationScopesUser]
      subscribeNext:^(OCTClient *authenticatedClient) {
-         // Authentication was successful. Do something with the created client.
-         NSLog(@"Signed in!");
+         [AEFUserCache cacheUser:user];
      } error:^(NSError *error) {
-         // Authentication failed.
-         NSLog(@"Error: %@", error);
+         [AEFUserCache clearCache];
      }];
 }
 
@@ -111,6 +109,7 @@
     NSString *password = [[alertView textFieldAtIndex:1] text];
     
     AEFUser *user = [[AEFUser alloc] initWithUsername:username password:password];
+    
     [self authenticateUser:user];
 }
 
