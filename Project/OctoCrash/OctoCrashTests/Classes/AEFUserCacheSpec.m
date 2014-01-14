@@ -25,9 +25,9 @@ describe(@"AEFUserCache", ^{
     context(@"when caching", ^{
         
         it(@"should cache a user", ^{
+            [[SSKeychain should] receive:@selector(setPassword:forService:account:)];
+
             [AEFUserCache cacheUser:user];
-            
-            [[[AEFUserCache cachedUser] shouldNot] beNil];
         });
         
         it(@"should clear the cache", ^{

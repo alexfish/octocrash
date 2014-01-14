@@ -11,4 +11,4 @@ clean:
 	xctool -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) clean
 
 test:
-	xctool -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) build test
+	xctool -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) build build-tests run-tests
