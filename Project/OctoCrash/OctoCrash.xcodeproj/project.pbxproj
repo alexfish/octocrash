@@ -59,6 +59,7 @@
 		06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734221881D0C500F98B67 /* SSKeychainQuery.m */; };
 		06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
+		CF86D739188573D9009CB8DD /* PLCrashReport+AEFIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = CF86D738188573D9009CB8DD /* PLCrashReport+AEFIssue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +290,8 @@
 		282CAA8734FA4431A7C14282 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrashTests.xcconfig"; path = "../Pods/Pods-OctoCrashTests.xcconfig"; sourceTree = "<group>"; };
 		91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF86D737188573D9009CB8DD /* PLCrashReport+AEFIssue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLCrashReport+AEFIssue.h"; sourceTree = "<group>"; };
+		CF86D738188573D9009CB8DD /* PLCrashReport+AEFIssue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PLCrashReport+AEFIssue.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,10 +375,10 @@
 		061CF5651860DDC100AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
-				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
 				061CF57A1860DDC200AA9CC4 /* libOctoKit.a */,
 				061CF57C1860DDC200AA9CC4 /* OctoKit iOS Tests.octest */,
+				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
+				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -384,8 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				061CF5851860DDE600AA9CC4 /* AFNetworking.framework */,
-				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
+				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */,
 			);
 			name = Products;
@@ -394,11 +397,11 @@
 		061CF58D1860DDEF00AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
-				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
 				061CF5991860DDF000AA9CC4 /* libMantle-iOS.a */,
-				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
 				061CF59D1860DDF000AA9CC4 /* libMantle-Mac.a */,
+				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
+				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
+				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -406,13 +409,13 @@
 		061CF59F1860DDF600AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
 				061CF5AB1860DDF600AA9CC4 /* libReactiveCocoa-iOS.a */,
-				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
-				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
+				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
 				061CF5B11860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
 				061CF5B31860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
-				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
+				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
+				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
+				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -434,6 +437,8 @@
 				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
 				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
 				063249231861E3F800CB60BE /* AEFCrashReporting.h */,
+				CF86D737188573D9009CB8DD /* PLCrashReport+AEFIssue.h */,
+				CF86D738188573D9009CB8DD /* PLCrashReport+AEFIssue.m */,
 			);
 			name = Crashes;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
 				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
+				CF86D739188573D9009CB8DD /* PLCrashReport+AEFIssue.m in Sources */,
 				06B734231881D0C500F98B67 /* SSKeychain.m in Sources */,
 				06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */,
 			);
