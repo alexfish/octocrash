@@ -14,6 +14,9 @@
 #import "AEFUserCache.h"
 #import "AEFUser.h"
 
+// Extensions
+#import "PLCrashReport+Issue.h"
+
 
 // Class extension
 @interface AEFClient () <UIAlertViewDelegate>
@@ -28,7 +31,7 @@
 /**
  Callback block fired when the client has authenticated
  */
-@property (nonatomic, copy) void (^authenticated)(BOOL authenticated);
+@property (nonatomic, copy) void (^authenticated)(BOOL authenticated, OCTClient *client);
 
 @end
 
@@ -53,33 +56,45 @@
     return self;
 }
 
-- (void)dealloc
-{
-    self.authenticated = nil;
-}
-
 
 #pragma mark - Reports
 
 - (void)sendReport:(PLCrashReport *)report
 {
     __weak typeof(self) weakSelf = self;
-    [self authenticate:^(BOOL authenticated) {
+    [self authenticate:^(BOOL authenticated, OCTClient *client) {
         if (authenticated)
         {
             typeof (self) __strong strongSelf = weakSelf;
             if (!strongSelf) return;
             
-            NSLog(@"Signed in..");
             strongSelf.authenticated = nil;
+            [strongSelf sendRequest:client report:report];
         }
+    }];
+}
+
+- (void)sendRequest:(OCTClient *)client report:(PLCrashReport *)report
+{
+    
+    NSMutableURLRequest *request = [client requestWithMethod:@"POST"
+                                                        path:[NSString stringWithFormat:@"repos/%@/issues", self.repo]
+                                                  parameters:report.parameters notMatchingEtag:nil];
+    
+    RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
+    [signal subscribeNext:^(OCTIssue *issue) {
+        NSLog(@"%@", issue);
+    } error:^(NSError *error) {
+        NSLog(@"%@", error);
+    } completed:^{
+        NSLog(@"COMPLETE");
     }];
 }
 
 
 #pragma mark - Authentication (Private)
 
-- (void)authenticate:(void (^)(BOOL authenticated))completion
+- (void)authenticate:(void (^)(BOOL authenticated, OCTClient *client))completion
 {
     // Ready the completion block
     [self setAuthenticated:completion];
@@ -114,7 +129,7 @@
          
          if (strongSelf.authenticated)
          {
-             strongSelf.authenticated(YES);
+             strongSelf.authenticated(YES, authenticatedClient);
          }
      } error:^(NSError *error) {
          [AEFUserCache clearCache];
@@ -124,7 +139,7 @@
          
          if (self.authenticated)
          {
-             strongSelf.authenticated(NO);
+             strongSelf.authenticated(NO, nil);
          }
      }];
 }
