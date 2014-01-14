@@ -137,10 +137,7 @@
          typeof (self) __strong strongSelf = weakSelf;
          if (!strongSelf) return;
          
-         if (self.authenticated)
-         {
-             strongSelf.authenticated(NO, nil);
-         }
+         [strongSelf displayLogin];
      }];
 }
 
