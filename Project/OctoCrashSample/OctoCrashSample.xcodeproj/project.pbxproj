@@ -42,8 +42,8 @@
 		06993558185F5CDA00B9A5F3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0699355A185F5CDA00B9A5F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06993561185F5CDA00B9A5F3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		06B2983518849229004073CB /* libReactiveCocoa-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libReactiveCocoa-iOS.a"; path = "../OctoCrash/OctoCrash/External/OctoKit/External/ReactiveCocoa/ReactiveCocoaFramework/build/Debug-iphoneos/libReactiveCocoa-iOS.a"; sourceTree = "<group>"; };
-		06B2983718849267004073CB /* libISO8601DateFormatter.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libISO8601DateFormatter.a; path = "../OctoCrash/OctoCrash/External/OctoKit/External/OctoKitDependencies/build/Debug-iphoneos/libISO8601DateFormatter.a"; sourceTree = "<group>"; };
+		06B2983518849229004073CB /* libReactiveCocoa-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libReactiveCocoa-iOS.a"; path = "../OctoCrash/OctoCrash/External/OctoKit/External/ReactiveCocoa/ReactiveCocoaFramework/build/Debug-iphoneos/libReactiveCocoa-iOS.a"; sourceTree = "<group>"; };
+		06B2983718849267004073CB /* libISO8601DateFormatter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libISO8601DateFormatter.a; path = "../OctoCrash/OctoCrash/External/OctoKit/External/OctoKitDependencies/build/Debug-iphoneos/libISO8601DateFormatter.a"; sourceTree = "<group>"; };
 		06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOctoCrash.a; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos/libOctoCrash.a"; sourceTree = "<group>"; };
 		285FB26353F44F568C768850 /* libPods-OctoCrashSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrashSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -299,7 +299,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/alexfish/src/octocrash/Vendor,
+					"$(SRCROOT)/../../Vendor/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrashSample/OctoCrashSample-Prefix.pch";
@@ -322,7 +322,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/alexfish/src/octocrash/Vendor,
+					"$(SRCROOT)/../../Vendor/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OctoCrashSample/OctoCrashSample-Prefix.pch";
