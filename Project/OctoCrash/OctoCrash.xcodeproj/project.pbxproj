@@ -285,7 +285,6 @@
 		06B734211881D0C500F98B67 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
 		06B734221881D0C500F98B67 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCacheSpec.m; sourceTree = "<group>"; };
-		0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrash.xcconfig"; path = "../Pods/Pods-OctoCrash.xcconfig"; sourceTree = "<group>"; };
 		21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrashTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		282CAA8734FA4431A7C14282 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrashTests.xcconfig"; path = "../Pods/Pods-OctoCrashTests.xcconfig"; sourceTree = "<group>"; };
@@ -446,7 +445,6 @@
 				0699350E185F5CA600B9A5F3 /* OctoCrash */,
 				06993522185F5CA600B9A5F3 /* OctoCrashTests */,
 				0699350A185F5CA600B9A5F3 /* Products */,
-				0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */,
 				604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -980,7 +978,6 @@
 		};
 		0699352D185F5CA600B9A5F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/OctoCrash.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1003,7 +1000,6 @@
 		};
 		0699352E185F5CA600B9A5F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/OctoCrash.dst;
 				FRAMEWORK_SEARCH_PATHS = (

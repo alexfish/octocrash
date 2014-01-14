@@ -25,6 +25,11 @@
 @property (nonatomic, copy) NSString *clientID;
 @property (nonatomic, copy) NSString *clientSecret;
 
+/**
+ Callback block fired when the client has authenticated
+ */
+@property (nonatomic, copy) void (^authenticated)(BOOL authenticated);
+
 @end
 
 
@@ -48,21 +53,38 @@
     return self;
 }
 
+- (void)dealloc
+{
+    self.authenticated = nil;
+}
+
 
 #pragma mark - Reports
 
 - (void)sendReport:(PLCrashReport *)report
 {
-    [self authenticate];
+    __weak typeof(self) weakSelf = self;
+    [self authenticate:^(BOOL authenticated) {
+        if (authenticated)
+        {
+            typeof (self) __strong strongSelf = weakSelf;
+            if (!strongSelf) return;
+            
+            NSLog(@"Signed in..");
+            strongSelf.authenticated = nil;
+        }
+    }];
 }
 
 
 #pragma mark - Authentication (Private)
 
-- (void)authenticate
+- (void)authenticate:(void (^)(BOOL authenticated))completion
 {
-    AEFUser *user = [AEFUserCache cachedUser];
+    // Ready the completion block
+    [self setAuthenticated:completion];
     
+    AEFUser *user = [AEFUserCache cachedUser];
     if (user)
     {
         [self authenticateUser:user];
@@ -78,6 +100,7 @@
     OCTUser *octoUser = [OCTUser userWithLogin:user.username
                                         server:OCTServer.dotComServer];
     
+    __weak typeof(self) weakSelf = self;
     [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
     [[OCTClient signInAsUser:octoUser
                     password:user.password
@@ -85,8 +108,24 @@
                       scopes:OCTClientAuthorizationScopesUser]
      subscribeNext:^(OCTClient *authenticatedClient) {
          [AEFUserCache cacheUser:user];
+         
+         typeof (self) __strong strongSelf = weakSelf;
+         if (!strongSelf) return;
+         
+         if (strongSelf.authenticated)
+         {
+             strongSelf.authenticated(YES);
+         }
      } error:^(NSError *error) {
          [AEFUserCache clearCache];
+         
+         typeof (self) __strong strongSelf = weakSelf;
+         if (!strongSelf) return;
+         
+         if (self.authenticated)
+         {
+             strongSelf.authenticated(NO);
+         }
      }];
 }
 
