@@ -30,17 +30,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 // Class extension
 @interface AEFClient () <UIAlertViewDelegate>
 
-/**
- Protocol properties
- */
-@property (nonatomic, copy) NSString *repo;
-@property (nonatomic, copy) NSString *clientID;
-@property (nonatomic, copy) NSString *clientSecret;
 
-/**
- Callback block fired when the client has authenticated
- */
-@property (nonatomic, copy) void (^authenticated)(BOOL authenticated, OCTClient *client);
 
 @end
 
@@ -71,8 +61,8 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 - (void)sendReport:(PLCrashReport *)report
 {
     __weak typeof(self) weakSelf = self;
-    [self authenticate:^(BOOL authenticated, OCTClient *client) {
-        if (authenticated)
+    [self authenticate:^(OCTClient *client) {
+        if (client.authenticated)
         {
             typeof (self) __strong strongSelf = weakSelf;
             if (!strongSelf) return;
@@ -106,7 +96,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 #pragma mark - Authentication (Private)
 
-- (void)authenticate:(void (^)(BOOL authenticated, OCTClient *client))completion
+- (void)authenticate:(void (^)(OCTClient *client))completion
 {
     AEFUser *cachedUser = [AEFUserCache cachedUser];
     if (cachedUser)
@@ -115,7 +105,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
         OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
         OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
         
-        completion(YES, client);
+        completion(client);
     }
     else
     {
@@ -147,7 +137,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
          
          if (strongSelf.authenticated)
          {
-             strongSelf.authenticated(YES, authenticatedClient);
+             strongSelf.authenticated(authenticatedClient);
          }
      } error:^(NSError *error) {
          typeof (self) __strong strongSelf = weakSelf;
@@ -214,8 +204,6 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     static NSString *login = nil;
     static NSString *password = nil;
     
-    // if there is a text field at this index then we know it's a normal
-    // login UI
     if (alertView.tag == AEFAlertViewTypeDefault)
     {
         login     = [[alertView textFieldAtIndex:0] text];

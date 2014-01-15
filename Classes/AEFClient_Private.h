@@ -18,6 +18,18 @@
 @interface AEFClient ()
 
 /**
+ Protocol properties
+ */
+@property (nonatomic, copy) NSString *repo;
+@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientSecret;
+
+/**
+ Callback block fired when the client has authenticated
+ */
+@property (nonatomic, copy) void (^authenticated)(OCTClient *client);
+
+/**
  *  Send a crash report request to Github via an OCTClient instance,
  *  the OCTClient should be authenticated.
  *
@@ -34,10 +46,10 @@
  *  the cached user then clear the cache before calling this method. 
  *
  *  @param completion A completion callback which contains an authenticated instance
- *         of an OCTClient as well as BOOL indicating if the authenticating was a 
-           success
+ *         of an OCTClient, you can query the OCTClient using it's authenticated method
+ *         to check it really is authenticated. 
  */
-- (void)authenticate:(void (^)(BOOL authenticated, OCTClient *client))completion;
+- (void)authenticate:(void (^)(OCTClient *client))completion;
 
 /**
  *  Authenticate with a login, password and one time password, it is possible to pass
