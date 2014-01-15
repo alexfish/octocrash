@@ -27,14 +27,6 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 };
 
 
-// Class extension
-@interface AEFClient () <UIAlertViewDelegate>
-
-
-
-@end
-
-
 @implementation AEFClient
 
 
