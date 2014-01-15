@@ -42,6 +42,8 @@ NS_ENUM(NSInteger, AEFAlertViewType)
         self.repo = repo;
         self.clientID = clientID;
         self.clientSecret = clientSecret;
+        
+        [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
     }
     
     return self;
@@ -73,8 +75,8 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     
     NSMutableURLRequest *request = [client requestWithMethod:@"POST"
                                                         path:[NSString stringWithFormat:@"repos/%@/issues", self.repo]
-                                                  parameters:report.parameters notMatchingEtag:nil];
-    
+                                                  parameters:report.parameters
+                                             notMatchingEtag:nil];
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
     [signal subscribeNext:^(OCTIssue *issue) {
         NSLog(@"%@", issue);
@@ -114,7 +116,6 @@ NS_ENUM(NSInteger, AEFAlertViewType)
                                     server:OCTServer.dotComServer];
     
     __weak typeof(self) weakSelf = self;
-    [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
     [[OCTClient signInAsUser:user
                     password:password
              oneTimePassword:oneTimePassword
@@ -146,7 +147,9 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 {
     if ([error.domain isEqual:OCTClientErrorDomain] && error.code == OCTClientErrorTwoFactorAuthenticationOneTimePasswordRequired)
     {
-        [self displayOneTimePasswordLogin];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self displayOneTimePasswordLogin];
+        });
     }
     else
     {
