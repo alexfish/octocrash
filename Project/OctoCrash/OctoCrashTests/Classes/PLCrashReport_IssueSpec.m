@@ -14,7 +14,7 @@ SPEC_BEGIN(PLCrashReport_IssueSpec)
 
 describe(@"PLCrashReport_Issue", ^{
     
-    __block PLCrashReport *report = [[PLCrashReport alloc] init];
+    __unused __block PLCrashReport *report = [[PLCrashReport alloc] init];
     
     context(@"when returning paramaters", ^{
         

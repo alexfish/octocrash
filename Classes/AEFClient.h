@@ -32,7 +32,7 @@
 
 /**
  Send a crash report to Github, creating an issue on the client's
- repo
+ repo, the client will attempt to authenticate itself before sending
  @param report The crash report to send to Github
  */
 - (void)sendReport:(PLCrashReport *)report;
