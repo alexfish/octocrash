@@ -26,13 +26,13 @@ static NSString * const kAEFAccountKey          = @"acct";
 
 + (void)cacheUser:(AEFUser *)user
 {
-    if (!user.password || !user.username) return;
+    if (!user.token || !user.login) return;
     
     [AEFUserCache clearCache];
     
-    [SSKeychain setPassword:user.password
+    [SSKeychain setPassword:user.token
                  forService:kAEFKeyChainService
-                    account:user.username];
+                    account:user.login];
 }
 
 
@@ -40,16 +40,15 @@ static NSString * const kAEFAccountKey          = @"acct";
 
 + (AEFUser *)cachedUser
 {
-    NSString *username = [AEFUserCache username];
-    NSString *password = [SSKeychain passwordForService:kAEFKeyChainService
-                                                account:username];
+    NSString *login     = [AEFUserCache login];
+    NSString *token     = [SSKeychain passwordForService:kAEFKeyChainService
+                                                 account:login];
     
     AEFUser *user = nil;
     
-    if (username && password)
+    if (login && token)
     {
-        user = [[AEFUser alloc] initWithUsername:username
-                                        password:password];
+        user = [[AEFUser alloc] initWithLogin:login token:token];
     }
     
     return user;
@@ -58,7 +57,7 @@ static NSString * const kAEFAccountKey          = @"acct";
 
 #pragma mark - GET (Private)
 
-+ (NSString *)username
++ (NSString *)login
 {
     NSArray *accounts = [SSKeychain accountsForService:kAEFKeyChainService];
     NSDictionary *account = [accounts lastObject];

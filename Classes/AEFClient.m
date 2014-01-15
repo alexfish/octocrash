@@ -96,33 +96,37 @@
 
 - (void)authenticate:(void (^)(BOOL authenticated, OCTClient *client))completion
 {
-    // Ready the completion block
-    [self setAuthenticated:completion];
-    
-    AEFUser *user = [AEFUserCache cachedUser];
-    if (user)
+    AEFUser *cachedUser = [AEFUserCache cachedUser];
+    if (cachedUser)
     {
-        [self authenticateUser:user];
+        // Use the cached user token to autenticate
+        OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
+        OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
+        
+        completion(YES, client);
     }
     else
     {
+        [self setAuthenticated:completion];
         [self displayLogin];
     }
 }
 
-- (void)authenticateUser:(AEFUser *)user
+- (void)authenticateLogin:(NSString *)login password:(NSString *)password
 {
-    OCTUser *octoUser = [OCTUser userWithLogin:user.username
-                                        server:OCTServer.dotComServer];
+    OCTUser *user = [OCTUser userWithLogin:login
+                                    server:OCTServer.dotComServer];
     
     __weak typeof(self) weakSelf = self;
     [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
-    [[OCTClient signInAsUser:octoUser
-                    password:user.password
+    [[OCTClient signInAsUser:user
+                    password:password
              oneTimePassword:nil
                       scopes:OCTClientAuthorizationScopesUser]
      subscribeNext:^(OCTClient *authenticatedClient) {
-         [AEFUserCache cacheUser:user];
+         
+         AEFUser *authenticatedUser = [[AEFUser alloc] initWithLogin:login token:authenticatedClient.token];
+         [AEFUserCache cacheUser:authenticatedUser];
          
          typeof (self) __strong strongSelf = weakSelf;
          if (!strongSelf) return;
@@ -156,12 +160,10 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSString *username = [[alertView textFieldAtIndex:0] text];
-    NSString *password = [[alertView textFieldAtIndex:1] text];
+    NSString *login     = [[alertView textFieldAtIndex:0] text];
+    NSString *password  = [[alertView textFieldAtIndex:1] text];
     
-    AEFUser *user = [[AEFUser alloc] initWithUsername:username password:password];
-    
-    [self authenticateUser:user];
+    [self authenticateLogin:login password:password];
 }
 
 @end

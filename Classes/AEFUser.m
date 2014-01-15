@@ -14,8 +14,8 @@
 @interface AEFUser ()
 
 // Overwritten readonly properties
-@property (nonatomic, copy) NSString *username;
-@property (nonatomic, copy) NSString *password;
+@property (nonatomic, copy) NSString *login;
+@property (nonatomic, copy) NSString *token;
 
 @end
 
@@ -25,14 +25,14 @@
 
 #pragma mark - Init
 
-- (id)initWithUsername:(NSString *)username
-              password:(NSString *)password
+- (id)initWithLogin:(NSString *)login
+              token:(NSString *)token
 {
     self = [super init];
     if (self)
     {
-        self.username = username;
-        self.password = password;
+        self.login = login;
+        self.token = token;
     }
     
     return self;

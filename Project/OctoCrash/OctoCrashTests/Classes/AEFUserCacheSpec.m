@@ -19,7 +19,7 @@ describe(@"AEFUserCache", ^{
     __block AEFUser *user;
     
     beforeEach(^{
-        user = [[AEFUser alloc] initWithUsername:@"mrtest" password:@"testpass"];
+        user = [[AEFUser alloc] initWithLogin:@"mrtest" token:@"testpass"];
     });
     
     context(@"when caching", ^{

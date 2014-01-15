@@ -15,23 +15,24 @@
 @interface AEFUser : MTLModel
 
 /**
- The users Github username
+ The users Github login
  */
-@property (nonatomic, copy, readonly) NSString *username;
+@property (nonatomic, copy, readonly) NSString *login;
 
 /**
- The users Github password
+ The users Github token, this token may be out of date if
+ the user has revoked access
  */
-@property (nonatomic, copy, readonly) NSString *password;
+@property (nonatomic, copy, readonly) NSString *token;
 
 /**
  Init a new user object with a username and password
- @param username The user's username
- @param password The user's password
+ @param username The user's login
+ @param password The user's token
  
  @returns A new user object
  */
-- (id)initWithUsername:(NSString *)username
-              password:(NSString *)password;
+- (id)initWithLogin:(NSString *)login
+              token:(NSString *)token;
 
 @end

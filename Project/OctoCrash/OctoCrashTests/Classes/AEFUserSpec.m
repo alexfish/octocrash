@@ -19,15 +19,15 @@ describe(@"AEFUser", ^{
     context(@"when initialized", ^{
         
         beforeEach(^{
-            user = [[AEFUser alloc] initWithUsername:@"testname" password:@"testpass"];
+            user = [[AEFUser alloc] initWithLogin:@"testname" token:@"testpass"];
         });
         
         it(@"should assign a username", ^{
-            [[user.username should] equal:@"testname"];
+            [[user.login should] equal:@"testname"];
         });
         
         it(@"should assign a password", ^{
-            [[user.password should] equal:@"testpass"];
+            [[user.token should] equal:@"testpass"];
         });
     });
 });
