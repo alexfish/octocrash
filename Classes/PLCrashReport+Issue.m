@@ -31,7 +31,9 @@ NSString * const AEFIssueBodyKey  = @"body";
 
 - (NSString *)title
 {
-    return [NSString stringWithFormat:@"Crash: %@", self.exceptionInfo.exceptionName];
+    return [NSString stringWithFormat:@"%@: %@",
+            self.exceptionInfo.exceptionName,
+            self.exceptionInfo.exceptionReason];
 }
 
 @end

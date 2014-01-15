@@ -16,14 +16,17 @@ describe(@"PLCrashReport_Issue", ^{
     
     __block PLCrashReport *report;
     __block NSString *crashName;
+    __block NSString *crashReason;
     
     beforeEach(^{
        
         report = [[PLCrashReport alloc] init];
         crashName = @"Test Crash";
+        crashReason = @"Somehting Happened";
         
         PLCrashReportExceptionInfo *exceptionInfo = [PLCrashReportExceptionInfo mock];
         [exceptionInfo stub:@selector(exceptionName) andReturn:crashName];
+        [exceptionInfo stub:@selector(exceptionReason) andReturn:crashReason];
         [report stub:@selector(exceptionInfo) andReturn:exceptionInfo];
         
     });
@@ -38,9 +41,12 @@ describe(@"PLCrashReport_Issue", ^{
             [[[[report parameters] objectForKey:AEFIssueBodyKey] should] beNonNil];
         });
         
-        it(@"should contain a user friendly title", ^{
-            NSString *friendlyTitle = [NSString stringWithFormat:@"Crash: %@", crashName];
-            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] equal:friendlyTitle];
+        it(@"should contain the crash name in the title", ^{
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] containString:crashName];
+        });
+        
+        it(@"should contain the crash reason in the title", ^{
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] containString:crashReason];
         });
     });
     
