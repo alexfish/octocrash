@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 060CF4E4187F53E400FF2793 /* AEFUser.m */; };
+		060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 060CF4E6187F53F000FF2793 /* AEFUserSpec.m */; };
 		061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */; };
 		061CEE021860CC3D00AA9CC4 /* OctoCrash.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 06993533185F5CC200B9A5F3 /* OctoCrash.h */; };
 		061CEE031860CC5400AA9CC4 /* AEFCrashReporter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */; };
@@ -39,7 +41,6 @@
 		063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */; };
 		063248DD1860FC4F00CB60BE /* AEFCrashCollector.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063248D21860E73100CB60BE /* AEFCrashCollector.h */; };
 		063248FD1861BF9900CB60BE /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DA70F185F769000A52644 /* CrashReporter.framework */; };
-		063249121861C51F00CB60BE /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		063249141861C64900CB60BE /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */; };
 		063249391861E41600CB60BE /* AEFClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 063249381861E41600CB60BE /* AEFClientSpec.m */; };
 		0632493A1861E80E00CB60BE /* AEFCrashReporting.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 063249231861E3F800CB60BE /* AEFCrashReporting.h */; };
@@ -52,7 +53,14 @@
 		0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351D185F5CA600B9A5F3 /* UIKit.framework */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
+		06B1DB7B1887352F000004B8 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
+		06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734061881D05D00F98B67 /* AEFUserCache.m */; };
+		06B734231881D0C500F98B67 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734201881D0C500F98B67 /* SSKeychain.m */; };
+		06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734221881D0C500F98B67 /* SSKeychainQuery.m */; };
+		06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */; };
+		06DFD4621885EB6600873491 /* PLCrashReport_IssueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DFD4611885EB6600873491 /* PLCrashReport_IssueSpec.m */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
+		CF86D739188573D9009CB8DD /* PLCrashReport+Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +218,13 @@
 			remoteGlobalIDString = 06993508185F5CA600B9A5F3;
 			remoteInfo = OctoCrash;
 		};
+		06B2981F18849208004073CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 061CF59E1860DDF600AA9CC4 /* ReactiveCocoa.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88F440AA153DAC820097B4C3;
+			remoteInfo = "ReactiveCocoa-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -232,6 +247,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		060CF4E3187F53E400FF2793 /* AEFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUser.h; sourceTree = "<group>"; };
+		060CF4E4187F53E400FF2793 /* AEFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUser.m; sourceTree = "<group>"; };
+		060CF4E6187F53F000FF2793 /* AEFUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserSpec.m; sourceTree = "<group>"; };
 		061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFCrashReporterSpec.m; sourceTree = "<group>"; };
 		061CF5641860DDC100AA9CC4 /* OctoKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OctoKit.xcodeproj; sourceTree = "<group>"; };
 		061CF57D1860DDE500AA9CC4 /* OctoKitDependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OctoKitDependencies.xcodeproj; path = External/OctoKitDependencies/OctoKitDependencies.xcodeproj; sourceTree = "<group>"; };
@@ -261,11 +279,22 @@
 		06993524185F5CA600B9A5F3 /* OctoCrashTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OctoCrashTests-Info.plist"; sourceTree = "<group>"; };
 		06993526185F5CA600B9A5F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06993533185F5CC200B9A5F3 /* OctoCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctoCrash.h; sourceTree = "<group>"; };
-		0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrash.xcconfig"; path = "../Pods/Pods-OctoCrash.xcconfig"; sourceTree = "<group>"; };
+		06B734051881D05D00F98B67 /* AEFUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUserCache.h; sourceTree = "<group>"; };
+		06B734061881D05D00F98B67 /* AEFUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCache.m; sourceTree = "<group>"; };
+		06B7341E1881D0C500F98B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		06B7341F1881D0C500F98B67 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		06B734201881D0C500F98B67 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		06B734211881D0C500F98B67 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		06B734221881D0C500F98B67 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCacheSpec.m; sourceTree = "<group>"; };
+		06DFD4611885EB6600873491 /* PLCrashReport_IssueSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLCrashReport_IssueSpec.m; sourceTree = "<group>"; };
 		21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrashTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		282CAA8734FA4431A7C14282 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrashTests.xcconfig"; path = "../Pods/Pods-OctoCrashTests.xcconfig"; sourceTree = "<group>"; };
 		91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF86D737188573D9009CB8DD /* PLCrashReport+Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLCrashReport+Issue.h"; sourceTree = "<group>"; };
+		CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PLCrashReport+Issue.m"; sourceTree = "<group>"; };
+		CF90CD6118870FCE00255F04 /* AEFClient_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFClient_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,10 +317,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B1DB7B1887352F000004B8 /* libOctoCrash.a in Frameworks */,
 				063248FD1861BF9900CB60BE /* CrashReporter.framework in Frameworks */,
 				0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */,
 				063249141861C64900CB60BE /* libISO8601DateFormatter.a in Frameworks */,
-				063249121861C51F00CB60BE /* libOctoCrash.a in Frameworks */,
 				9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */,
 				063248D61860F45F00CB60BE /* MobileCoreServices.framework in Frameworks */,
 				063248D51860F45900CB60BE /* SystemConfiguration.framework in Frameworks */,
@@ -303,12 +332,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		060CF4E2187F539F00FF2793 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				060CF4E3187F53E400FF2793 /* AEFUser.h */,
+				060CF4E4187F53E400FF2793 /* AEFUser.m */,
+				06B734051881D05D00F98B67 /* AEFUserCache.h */,
+				06B734061881D05D00F98B67 /* AEFUserCache.m */,
+			);
+			name = Cache;
+			sourceTree = "<group>";
+		};
 		061CEDE8185FB80600AA9CC4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				063249381861E41600CB60BE /* AEFClientSpec.m */,
 				063248DB1860FC0000CB60BE /* AEFCrashCollectorSpec.m */,
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
+				06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */,
+				060CF4E6187F53F000FF2793 /* AEFUserSpec.m */,
+				06DFD4611885EB6600873491 /* PLCrashReport_IssueSpec.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -317,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				061CEE051860DCC600AA9CC4 /* OctoKit */,
+				06B7341C1881D0C500F98B67 /* SSKeychain */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -335,10 +379,10 @@
 		061CF5651860DDC100AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
+				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
 				061CF57A1860DDC200AA9CC4 /* libOctoKit.a */,
 				061CF57C1860DDC200AA9CC4 /* OctoKit iOS Tests.octest */,
-				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
-				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -347,8 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				061CF5851860DDE600AA9CC4 /* AFNetworking.framework */,
-				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
 				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
+				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
 				061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */,
 			);
 			name = Products;
@@ -357,11 +401,11 @@
 		061CF58D1860DDEF00AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5991860DDF000AA9CC4 /* libMantle-iOS.a */,
-				061CF59D1860DDF000AA9CC4 /* libMantle-Mac.a */,
-				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
-				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
 				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
+				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
+				061CF5991860DDF000AA9CC4 /* libMantle-iOS.a */,
+				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
+				061CF59D1860DDF000AA9CC4 /* libMantle-Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -369,13 +413,13 @@
 		061CF59F1860DDF600AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
 				061CF5AB1860DDF600AA9CC4 /* libReactiveCocoa-iOS.a */,
-				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
+				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
+				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
 				061CF5B11860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
 				061CF5B31860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
-				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
-				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
-				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
+				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,6 +429,7 @@
 			children = (
 				063248CF1860E4D900CB60BE /* AEFClient.h */,
 				063248D01860E4D900CB60BE /* AEFClient.m */,
+				CF90CD6118870FCE00255F04 /* AEFClient_Private.h */,
 			);
 			name = Client;
 			sourceTree = "<group>";
@@ -397,6 +442,8 @@
 				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
 				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
 				063249231861E3F800CB60BE /* AEFCrashReporting.h */,
+				CF86D737188573D9009CB8DD /* PLCrashReport+Issue.h */,
+				CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */,
 			);
 			name = Crashes;
 			sourceTree = "<group>";
@@ -408,7 +455,6 @@
 				0699350E185F5CA600B9A5F3 /* OctoCrash */,
 				06993522185F5CA600B9A5F3 /* OctoCrashTests */,
 				0699350A185F5CA600B9A5F3 /* Products */,
-				0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */,
 				604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -480,12 +526,26 @@
 		06993532185F5CC200B9A5F3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				060CF4E2187F539F00FF2793 /* Cache */,
 				063249491861EFD100CB60BE /* Client */,
 				0632495E1861EFDC00CB60BE /* Crashes */,
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
 			);
 			name = Classes;
 			path = ../../../Classes;
+			sourceTree = "<group>";
+		};
+		06B7341C1881D0C500F98B67 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				06B7341F1881D0C500F98B67 /* SSKeychain.h */,
+				06B734201881D0C500F98B67 /* SSKeychain.m */,
+				06B7341D1881D0C500F98B67 /* SSKeychain.strings */,
+				06B734211881D0C500F98B67 /* SSKeychainQuery.h */,
+				06B734221881D0C500F98B67 /* SSKeychainQuery.m */,
+			);
+			name = SSKeychain;
+			path = SSKeychain/SSKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,6 +562,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				06B2982018849208004073CB /* PBXTargetDependency */,
 			);
 			name = OctoCrash;
 			productName = OctoCrash;
@@ -782,6 +843,11 @@
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
+				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
+				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
+				CF86D739188573D9009CB8DD /* PLCrashReport+Issue.m in Sources */,
+				06B734231881D0C500F98B67 /* SSKeychain.m in Sources */,
+				06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,9 +855,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06DFD4621885EB6600873491 /* PLCrashReport_IssueSpec.m in Sources */,
 				063249391861E41600CB60BE /* AEFClientSpec.m in Sources */,
 				063248DC1860FC0000CB60BE /* AEFCrashCollectorSpec.m in Sources */,
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
+				06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */,
+				060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +877,11 @@
 			target = 06993508185F5CA600B9A5F3 /* OctoCrash */;
 			targetProxy = 0699351F185F5CA600B9A5F3 /* PBXContainerItemProxy */;
 		};
+		06B2982018849208004073CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ReactiveCocoa-iOS";
+			targetProxy = 06B2981F18849208004073CB /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -817,6 +891,14 @@
 				06993526185F5CA600B9A5F3 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		06B7341D1881D0C500F98B67 /* SSKeychain.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06B7341E1881D0C500F98B67 /* en */,
+			);
+			name = SSKeychain.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -908,7 +990,6 @@
 		};
 		0699352D185F5CA600B9A5F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/OctoCrash.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -931,7 +1012,6 @@
 		};
 		0699352E185F5CA600B9A5F3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0EE1EB4BC60548B4A233F466 /* Pods-OctoCrash.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/OctoCrash.dst;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -7,7 +7,10 @@
 //
 
 #import <Kiwi/Kiwi.h>
-#import <OctoCrash/OctoCrash.h>
+#import "AEFClient_Private.h"
+#import <CrashReporter/CrashReporter.h>
+#import <OctoKit/OctoKit.h>
+
 
 SPEC_BEGIN(AEFClientSpec)
 
@@ -46,6 +49,23 @@ describe(@"AEFClient", ^{
             [[client.clientSecret should] equal:@"secret"];
         });
     });
+    
+    context(@"when sending reports", ^{
+       
+        it(@"should send them if authenticated successfully", ^{
+            OCTClient *mockClient = [OCTClient mock];
+            [mockClient stub:@selector(isAuthenticated) andReturn:theValue(YES)];
+            KWCaptureSpy *spy = [client captureArgument:@selector(authenticate:) atIndex:0];
+            
+            [[client should] receive:@selector(sendRequest:report:)];
+            [client sendReport:[PLCrashReport mock]];
+            
+            void *(^complete)(OCTClient *client) = spy.argument;
+            complete(mockClient);
+        });
+        
+    });
+    
 });
 
 SPEC_END
