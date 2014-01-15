@@ -43,7 +43,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
         self.clientID = clientID;
         self.clientSecret = clientSecret;
         
-        [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
+        [OCTClient setClientID:clientID clientSecret:clientSecret];
     }
     
     return self;
@@ -119,7 +119,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     [[OCTClient signInAsUser:user
                     password:password
              oneTimePassword:oneTimePassword
-                      scopes:OCTClientAuthorizationScopesUser]
+                      scopes:OCTClientAuthorizationScopesRepository]
      subscribeNext:^(OCTClient *authenticatedClient) {
          
          AEFUser *authenticatedUser = [[AEFUser alloc] initWithLogin:login token:authenticatedClient.token];
