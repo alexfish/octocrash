@@ -68,4 +68,13 @@
  */
 - (void)displayAuthError;
 
+/**
+ *  Handles any NSError object  in an elegant manor, this can be 
+ *  UI feedback to the user or another attempt at authenticating
+ *  with a different authentication method.
+ *
+ *  @param error The error to handle gracefully
+ */
+- (void)handleError:(NSError *)error;
+
 @end

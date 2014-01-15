@@ -153,16 +153,24 @@ NS_ENUM(NSInteger, AEFAlertViewType)
          typeof (self) __strong strongSelf = weakSelf;
          if (!strongSelf) return;
          
-         if ([error.domain isEqual:OCTClientErrorDomain] && error.code == OCTClientErrorTwoFactorAuthenticationOneTimePasswordRequired)
-         {
-             [strongSelf displayOneTimePasswordLogin];
-         }
-         else
-         {
-            [AEFUserCache clearCache];
-            [strongSelf displayAuthError];
-         }
+         [strongSelf handleError:error];
      }];
+}
+
+
+#pragma mark - Errors (Private)
+
+- (void)handleError:(NSError *)error
+{
+    if ([error.domain isEqual:OCTClientErrorDomain] && error.code == OCTClientErrorTwoFactorAuthenticationOneTimePasswordRequired)
+    {
+        [self displayOneTimePasswordLogin];
+    }
+    else
+    {
+        [AEFUserCache clearCache];
+        [self displayAuthError];
+    }
 }
 
 
