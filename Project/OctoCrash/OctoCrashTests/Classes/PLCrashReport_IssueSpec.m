@@ -14,10 +14,34 @@ SPEC_BEGIN(PLCrashReport_IssueSpec)
 
 describe(@"PLCrashReport_Issue", ^{
     
-    __unused __block PLCrashReport *report = [[PLCrashReport alloc] init];
+    __block PLCrashReport *report;
+    __block NSString *crashName;
+    
+    beforeEach(^{
+       
+        report = [[PLCrashReport alloc] init];
+        crashName = @"Test Crash";
+        
+        PLCrashReportExceptionInfo *exceptionInfo = [PLCrashReportExceptionInfo mock];
+        [exceptionInfo stub:@selector(exceptionName) andReturn:crashName];
+        [report stub:@selector(exceptionInfo) andReturn:exceptionInfo];
+        
+    });
     
     context(@"when returning paramaters", ^{
         
+        it(@"should contain a title", ^{
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] beNonNil];
+        });
+        
+        it(@"should contain a body", ^{
+            [[[[report parameters] objectForKey:AEFIssueBodyKey] should] beNonNil];
+        });
+        
+        it(@"should contain a user friendly title", ^{
+            NSString *friendlyTitle = [NSString stringWithFormat:@"Crash: %@", crashName];
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] equal:friendlyTitle];
+        });
     });
     
 });

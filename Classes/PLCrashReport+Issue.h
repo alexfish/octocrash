@@ -8,6 +8,11 @@
 
 #import <CrashReporter/CrashReporter.h>
 
+
+extern NSString * const AEFIssueTitleKey;
+extern NSString * const AEFIssueBodyKey;
+
+
 /**
  A catergory on PLCrashReport to provide some additional
  functionality to handle the repoting of PLCrashReport objects

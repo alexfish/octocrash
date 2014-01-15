@@ -8,6 +8,11 @@
 
 #import "PLCrashReport+Issue.h"
 
+
+NSString * const AEFIssueTitleKey = @"title";
+NSString * const AEFIssueBodyKey  = @"body";
+
+
 @implementation PLCrashReport (AEFIssue)
 
 
@@ -15,10 +20,18 @@
 
 - (NSDictionary *)parameters
 {
-    NSString *title = @"Test Title";
+    NSString *title = [self title];
     NSString *body = @"Test Body";
     
-    return @{@"title": title, @"body": body};
+    return @{AEFIssueTitleKey: title, AEFIssueBodyKey: body};
+}
+
+
+#pragma mark - Paramaters (Private)
+
+- (NSString *)title
+{
+    return [NSString stringWithFormat:@"Crash: %@", self.exceptionInfo.exceptionName];
 }
 
 @end
