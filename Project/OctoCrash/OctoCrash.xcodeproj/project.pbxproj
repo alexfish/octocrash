@@ -294,6 +294,7 @@
 		91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF86D737188573D9009CB8DD /* PLCrashReport+Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLCrashReport+Issue.h"; sourceTree = "<group>"; };
 		CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PLCrashReport+Issue.m"; sourceTree = "<group>"; };
+		CF90CD6118870FCE00255F04 /* AEFClient_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFClient_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +429,7 @@
 			children = (
 				063248CF1860E4D900CB60BE /* AEFClient.h */,
 				063248D01860E4D900CB60BE /* AEFClient.m */,
+				CF90CD6118870FCE00255F04 /* AEFClient_Private.h */,
 			);
 			name = Client;
 			sourceTree = "<group>";

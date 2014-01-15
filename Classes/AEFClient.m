@@ -16,6 +16,7 @@
 
 // Extensions
 #import "PLCrashReport+Issue.h"
+#import "AEFClient_Private.h"
 
 
 // Types
