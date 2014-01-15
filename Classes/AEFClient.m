@@ -18,6 +18,14 @@
 #import "PLCrashReport+Issue.h"
 
 
+// Types
+NS_ENUM(NSInteger, AEFAlertViewType)
+{
+    AEFAlertViewTypeDefault         = 0,
+    AEFAlertViewTypeOneTimePassword = 1,
+};
+
+
 // Class extension
 @interface AEFClient () <UIAlertViewDelegate>
 
@@ -74,6 +82,9 @@
     }];
 }
 
+
+#pragma mark - Reports (Private)
+
 - (void)sendRequest:(OCTClient *)client report:(PLCrashReport *)report
 {
     
@@ -112,7 +123,9 @@
     }
 }
 
-- (void)authenticateLogin:(NSString *)login password:(NSString *)password
+- (void)authenticateLogin:(NSString *)login
+                 password:(NSString *)password
+          oneTimePassword:(NSString *)oneTimePassword
 {
     OCTUser *user = [OCTUser userWithLogin:login
                                     server:OCTServer.dotComServer];
@@ -121,7 +134,7 @@
     [OCTClient setClientID:self.clientID clientSecret:self.clientSecret];
     [[OCTClient signInAsUser:user
                     password:password
-             oneTimePassword:nil
+             oneTimePassword:oneTimePassword
                       scopes:OCTClientAuthorizationScopesUser]
      subscribeNext:^(OCTClient *authenticatedClient) {
          
@@ -136,17 +149,35 @@
              strongSelf.authenticated(YES, authenticatedClient);
          }
      } error:^(NSError *error) {
-         [AEFUserCache clearCache];
-         
          typeof (self) __strong strongSelf = weakSelf;
          if (!strongSelf) return;
          
-         [strongSelf displayLogin];
+         if ([error.domain isEqual:OCTClientErrorDomain] && error.code == OCTClientErrorTwoFactorAuthenticationOneTimePasswordRequired)
+         {
+             [strongSelf displayOneTimePasswordLogin];
+         }
+         else
+         {
+            [AEFUserCache clearCache];
+            [strongSelf displayAuthError];
+         }
      }];
 }
 
 
 #pragma mark - Login UI (Private)
+
+- (void)displayOneTimePasswordLogin
+{
+    UIAlertView *alertView = [[UIAlertView alloc] init];
+    [alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+    [alertView setDelegate:self];
+    [alertView setTitle:NSLocalizedString(@"LOGIN_OTP_TITLE", nil)];
+    [alertView addButtonWithTitle:NSLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
+    [alertView setTag:AEFAlertViewTypeOneTimePassword];
+    [alertView show];
+
+}
 
 - (void)displayLogin
 {
@@ -155,15 +186,41 @@
     [alertView setDelegate:self];
     [alertView setTitle:NSLocalizedString(@"LOGIN_ALERT_TITLE", nil)];
     [alertView addButtonWithTitle:NSLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
+    [alertView setTag:AEFAlertViewTypeDefault];
+    [alertView show];
+}
+
+- (void)displayAuthError
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LOGIN_FAILED_TITLE", nil)
+                                                        message:NSLocalizedString(@"LOGIN_FAILED_MESSAGE", nil)
+                                                       delegate:nil
+                                              cancelButtonTitle:nil
+                                              otherButtonTitles:NSLocalizedString(@"LOGIN_OK_TITLE", nil), nil];
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSString *login     = [[alertView textFieldAtIndex:0] text];
-    NSString *password  = [[alertView textFieldAtIndex:1] text];
+    static NSString *login = nil;
+    static NSString *password = nil;
     
-    [self authenticateLogin:login password:password];
+    // if there is a text field at this index then we know it's a normal
+    // login UI
+    if (alertView.tag == AEFAlertViewTypeDefault)
+    {
+        login     = [[alertView textFieldAtIndex:0] text];
+        password  = [[alertView textFieldAtIndex:1] text];
+        
+        [self authenticateLogin:login password:password oneTimePassword:nil];
+    }
+    else
+    {
+        NSString *oneTimePassword = [[alertView textFieldAtIndex:0] text];
+        
+        [self authenticateLogin:login password:password oneTimePassword:oneTimePassword];
+    }
+    
 }
 
 @end

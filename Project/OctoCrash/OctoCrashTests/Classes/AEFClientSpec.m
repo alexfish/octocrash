@@ -46,6 +46,7 @@ describe(@"AEFClient", ^{
             [[client.clientSecret should] equal:@"secret"];
         });
     });
+    
 });
 
 SPEC_END
