@@ -94,7 +94,6 @@
     if (pendingReport)
     {
         [self sendReport:pendingReport];
-        [self.collector purge];
     }
 }
 
@@ -112,7 +111,18 @@
                                          clientID:self.clientID
                                      clientSecret:self.clientSecret];
     
-    [self.client sendReport:report];
+    __weak typeof(self) weakSelf = self;
+    [self.client authenticate:^(OCTClient *client) {
+        typeof (self) __strong strongSelf = weakSelf;
+        if (!strongSelf) return;
+        
+        [strongSelf.client sendReport:report client:client completion:^(BOOL sent) {
+            if (sent)
+            {
+                [strongSelf.collector purge];
+            }
+        }];
+    }];
 }
 
 @end

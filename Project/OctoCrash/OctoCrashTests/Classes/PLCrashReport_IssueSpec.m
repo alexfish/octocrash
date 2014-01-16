@@ -14,10 +14,49 @@ SPEC_BEGIN(PLCrashReport_IssueSpec)
 
 describe(@"PLCrashReport_Issue", ^{
     
-    __unused __block PLCrashReport *report = [[PLCrashReport alloc] init];
+    __block PLCrashReport *report;
+    __block NSString *crashName;
+    __block NSString *crashReason;
+    
+    beforeEach(^{
+       
+        report = [[PLCrashReport alloc] init];
+        crashName = @"Test Crash";
+        crashReason = @"Somehting Happened";
+        
+        PLCrashReportExceptionInfo *exceptionInfo = [PLCrashReportExceptionInfo mock];
+        [exceptionInfo stub:@selector(stackFrames) andReturn:@[]];
+        [exceptionInfo stub:@selector(exceptionName) andReturn:crashName];
+        [exceptionInfo stub:@selector(exceptionReason) andReturn:crashReason];
+        [report stub:@selector(exceptionInfo) andReturn:exceptionInfo];
+        
+    });
     
     context(@"when returning paramaters", ^{
         
+        it(@"should contain a title", ^{
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] beNonNil];
+        });
+        
+        it(@"should contain a body", ^{
+            [[[[report parameters] objectForKey:AEFIssueBodyKey] should] beNonNil];
+        });
+        
+        it(@"should contain the crash name in the title", ^{
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] containString:crashName];
+        });
+        
+        it(@"should contain the crash reason in the title", ^{
+            [[[[report parameters] objectForKey:AEFIssueTitleKey] should] containString:crashReason];
+        });
+        
+        it(@"should prepend an opening pre tag for nicer reading", ^{
+            [[[[report parameters] objectForKey:AEFIssueBodyKey] should] containString:@"<pre>"];
+        });
+        
+        it(@"should append a closing pre tag for nicer reading", ^{
+            [[[[report parameters] objectForKey:AEFIssueBodyKey] should] containString:@"</pre>"];
+        });
     });
     
 });

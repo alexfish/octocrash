@@ -10,6 +10,7 @@
 #import "AEFClient_Private.h"
 #import <CrashReporter/CrashReporter.h>
 #import <OctoKit/OctoKit.h>
+#import "PLCrashReport+Issue.h"
 
 
 SPEC_BEGIN(AEFClientSpec)
@@ -52,16 +53,15 @@ describe(@"AEFClient", ^{
     
     context(@"when sending reports", ^{
        
-        it(@"should send them if authenticated successfully", ^{
+        it(@"should send them if authenticated", ^{
             OCTClient *mockClient = [OCTClient mock];
             [mockClient stub:@selector(isAuthenticated) andReturn:theValue(YES)];
-            KWCaptureSpy *spy = [client captureArgument:@selector(authenticate:) atIndex:0];
             
-            [[client should] receive:@selector(sendRequest:report:)];
-            [client sendReport:[PLCrashReport mock]];
+            PLCrashReport *report = [PLCrashReport mock];
+            [report stub:@selector(parameters)];
             
-            void *(^complete)(OCTClient *client) = spy.argument;
-            complete(mockClient);
+            [[client should] receive:@selector(sendRequestWithClient:report:completion:)];
+            [client sendReport:report client:mockClient completion:nil];
         });
         
     });
