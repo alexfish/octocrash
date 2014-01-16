@@ -13,6 +13,7 @@
 
 
 @class PLCrashReport;
+@class OCTClient;
 
 
 /**
@@ -32,9 +33,22 @@
 
 /**
  Send a crash report to Github, creating an issue on the client's
- repo, the client will attempt to authenticate itself before sending
+ repo
  @param report The crash report to send to Github
+ @param client An authenticated OCTClient instance.
  */
-- (void)sendReport:(PLCrashReport *)report;
+- (void)sendReport:(PLCrashReport *)report client:(OCTClient *)client;
+
+
+/**
+ *  Authenticate with the Github API, this method will also check the user cache for
+ *  any previously authenticated users, if you do not wish to authenticate with the
+ *  the cached user then clear the cache before calling this method.
+ *
+ *  @param completion A completion callback which contains an authenticated instance
+ *         of an OCTClient, you can query the OCTClient using it's authenticated method
+ *         to check it really is authenticated.
+ */
+- (void)authenticate:(void (^)(OCTClient *client))completion;
 
 @end

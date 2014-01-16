@@ -52,31 +52,25 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 #pragma mark - Reports
 
-- (void)sendReport:(PLCrashReport *)report
+- (void)sendReport:(PLCrashReport *)report client:(OCTClient *)client
 {
-    __weak typeof(self) weakSelf = self;
-    [self authenticate:^(OCTClient *client) {
-        if (client.authenticated)
-        {
-            typeof (self) __strong strongSelf = weakSelf;
-            if (!strongSelf) return;
-            
-            strongSelf.authenticated = nil;
-            [strongSelf sendRequest:client report:report];
-        }
-    }];
+    if (client.authenticated)
+    {
+        [self sendRequestWithClient:client report:report];
+    }
 }
 
 
-#pragma mark - Reports (Private)
+#pragma mark - Request (Private)
 
-- (void)sendRequest:(OCTClient *)client report:(PLCrashReport *)report
+- (void)sendRequestWithClient:(OCTClient *)client report:(PLCrashReport *)report
 {
     
-    NSMutableURLRequest *request = [client requestWithMethod:@"POST"
-                                                        path:[NSString stringWithFormat:@"repos/%@/issues", self.repo]
-                                                  parameters:report.parameters
-                                             notMatchingEtag:nil];
+    NSURLRequest *request = [client requestWithMethod:@"POST"
+                                                 path:[self issuesPath]
+                                           parameters:report.parameters
+                                      notMatchingEtag:nil];
+    
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
     [signal subscribeNext:^(OCTIssue *issue) {
         NSLog(@"%@", issue);
@@ -87,8 +81,13 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     }];
 }
 
+- (NSString *)issuesPath
+{
+    return [NSString stringWithFormat:@"repos/%@/issues", self.repo];
+}
 
-#pragma mark - Authentication (Private)
+
+#pragma mark - Authentication
 
 - (void)authenticate:(void (^)(OCTClient *client))completion
 {
@@ -107,6 +106,9 @@ NS_ENUM(NSInteger, AEFAlertViewType)
         [self displayLogin];
     }
 }
+
+
+#pragma mark - Authentication (Private)
 
 - (void)authenticateLogin:(NSString *)login
                  password:(NSString *)password
@@ -131,6 +133,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
          if (strongSelf.authenticated)
          {
              strongSelf.authenticated(authenticatedClient);
+             strongSelf.authenticated = nil;
          }
      } error:^(NSError *error) {
          typeof (self) __strong strongSelf = weakSelf;

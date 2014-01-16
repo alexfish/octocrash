@@ -53,19 +53,15 @@ describe(@"AEFClient", ^{
     
     context(@"when sending reports", ^{
        
-        it(@"should send them if authenticated successfully", ^{
+        it(@"should send them if authenticated", ^{
             OCTClient *mockClient = [OCTClient mock];
             [mockClient stub:@selector(isAuthenticated) andReturn:theValue(YES)];
-            KWCaptureSpy *spy = [client captureArgument:@selector(authenticate:) atIndex:0];
             
             PLCrashReport *report = [PLCrashReport mock];
             [report stub:@selector(parameters)];
             
-            [[client should] receive:@selector(sendRequest:report:)];
-            [client sendReport:report];
-            
-            void *(^complete)(OCTClient *client) = spy.argument;
-            complete(mockClient);
+            [[client should] receive:@selector(sendRequestWithClient:report:)];
+            [client sendReport:report client:mockClient];
         });
         
     });

@@ -38,18 +38,7 @@
  *
  *  @param report The crash report to send
  */
-- (void)sendRequest:(OCTClient *)client report:(PLCrashReport *)report;
-
-/**
- *  Authenticate with the Github API, this method will also check the user cache for
- *  any previously authenticated users, if you do not wish to authenticate with the
- *  the cached user then clear the cache before calling this method. 
- *
- *  @param completion A completion callback which contains an authenticated instance
- *         of an OCTClient, you can query the OCTClient using it's authenticated method
- *         to check it really is authenticated. 
- */
-- (void)authenticate:(void (^)(OCTClient *client))completion;
+- (void)sendRequestWithClient:(OCTClient *)client report:(PLCrashReport *)report;
 
 /**
  *  Authenticate with a login, password and one time password, it is possible to pass
