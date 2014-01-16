@@ -25,6 +25,7 @@ describe(@"PLCrashReport_Issue", ^{
         crashReason = @"Somehting Happened";
         
         PLCrashReportExceptionInfo *exceptionInfo = [PLCrashReportExceptionInfo mock];
+        [exceptionInfo stub:@selector(stackFrames) andReturn:@[]];
         [exceptionInfo stub:@selector(exceptionName) andReturn:crashName];
         [exceptionInfo stub:@selector(exceptionReason) andReturn:crashReason];
         [report stub:@selector(exceptionInfo) andReturn:exceptionInfo];
@@ -47,6 +48,14 @@ describe(@"PLCrashReport_Issue", ^{
         
         it(@"should contain the crash reason in the title", ^{
             [[[[report parameters] objectForKey:AEFIssueTitleKey] should] containString:crashReason];
+        });
+        
+        it(@"should prepend an opening pre tag for nicer reading", ^{
+            [[[[report parameters] objectForKey:AEFIssueBodyKey] should] containString:@"<pre>"];
+        });
+        
+        it(@"should append a closing pre tag for nicer reading", ^{
+            [[[[report parameters] objectForKey:AEFIssueBodyKey] should] containString:@"</pre>"];
         });
     });
     

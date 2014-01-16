@@ -21,7 +21,7 @@ NSString * const AEFIssueBodyKey  = @"body";
 - (NSDictionary *)parameters
 {
     NSString *title = [self title];
-    NSString *body = @"Test Body";
+    NSString *body = [self body];
     
     return @{AEFIssueTitleKey: title, AEFIssueBodyKey: body};
 }
@@ -34,6 +34,16 @@ NSString * const AEFIssueBodyKey  = @"body";
     return [NSString stringWithFormat:@"%@: %@",
             self.exceptionInfo.exceptionName,
             self.exceptionInfo.exceptionReason];
+}
+
+- (NSString *)body
+{
+    NSString *humanReadable = [PLCrashReportTextFormatter stringValueForCrashReport:self
+                                                                     withTextFormat:PLCrashReportTextFormatiOS];
+    humanReadable = [NSString stringWithFormat:@"<pre>%@</pre>", humanReadable];
+    
+    return humanReadable;
+
 }
 
 @end
