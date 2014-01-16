@@ -76,7 +76,9 @@ NS_ENUM(NSInteger, AEFAlertViewType)
                                       notMatchingEtag:nil];
     
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
-    [signal subscribeNext:nil error:^(NSError *error) {
+    [signal subscribeNext:^(id x) {
+        // Do nothing
+    } error:^(NSError *error) {
         completion(NO);
     } completed:^{
         completion(YES);
