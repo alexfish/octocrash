@@ -94,7 +94,6 @@
     if (pendingReport)
     {
         [self sendReport:pendingReport];
-        [self.collector purge];
     }
 }
 
@@ -117,7 +116,12 @@
         typeof (self) __strong strongSelf = weakSelf;
         if (!strongSelf) return;
         
-        [strongSelf.client sendReport:report client:client];
+        [strongSelf.client sendReport:report client:client completion:^(BOOL sent) {
+            if (sent)
+            {
+                [strongSelf.collector purge];
+            }
+        }];
     }];
 }
 

@@ -37,8 +37,11 @@
  *         if the client isn't previously authenticated.
  *
  *  @param report The crash report to send
+ *  @param completion A completion block called on successful issue creation
  */
-- (void)sendRequestWithClient:(OCTClient *)client report:(PLCrashReport *)report;
+- (void)sendRequestWithClient:(OCTClient *)client
+                       report:(PLCrashReport *)report
+                   completion:(void (^)(BOOL sent))completion;
 
 /**
  *  Authenticate with a login, password and one time password, it is possible to pass

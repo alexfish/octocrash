@@ -52,18 +52,22 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 #pragma mark - Reports
 
-- (void)sendReport:(PLCrashReport *)report client:(OCTClient *)client
+- (void)sendReport:(PLCrashReport *)report
+            client:(OCTClient *)client
+        completion:(void (^)(BOOL sent))completion
 {
     if (client.authenticated)
     {
-        [self sendRequestWithClient:client report:report];
+        [self sendRequestWithClient:client report:report completion:completion];
     }
 }
 
 
 #pragma mark - Request (Private)
 
-- (void)sendRequestWithClient:(OCTClient *)client report:(PLCrashReport *)report
+- (void)sendRequestWithClient:(OCTClient *)client
+                       report:(PLCrashReport *)report
+                   completion:(void (^)(BOOL sent))completion
 {
     
     NSURLRequest *request = [client requestWithMethod:@"POST"
@@ -72,8 +76,10 @@ NS_ENUM(NSInteger, AEFAlertViewType)
                                       notMatchingEtag:nil];
     
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
-    [signal subscribeCompleted:^{
-        NSLog(@"Issue Created");
+    [signal subscribeNext:nil error:^(NSError *error) {
+        completion(NO);
+    } completed:^{
+        completion(YES);
     }];
 }
 
