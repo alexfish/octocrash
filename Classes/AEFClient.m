@@ -173,8 +173,9 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     UIAlertView *alertView = [[UIAlertView alloc] init];
     [alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
     [alertView setDelegate:self];
-    [alertView setTitle:NSLocalizedString(@"LOGIN_OTP_TITLE", nil)];
-    [alertView addButtonWithTitle:NSLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
+    [alertView setTitle:AEFLocalizedString(@"LOGIN_OTP_TITLE", nil)];
+    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_CANCEL_TITLE", nil)];
+    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
     [alertView setTag:AEFAlertViewTypeOneTimePassword];
     [alertView show];
 
@@ -185,24 +186,28 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     UIAlertView *alertView = [[UIAlertView alloc] init];
     [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
     [alertView setDelegate:self];
-    [alertView setTitle:NSLocalizedString(@"LOGIN_ALERT_TITLE", nil)];
-    [alertView addButtonWithTitle:NSLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
+    [alertView setTitle:AEFLocalizedString(@"LOGIN_ALERT_TITLE", nil)];
+    [alertView setMessage:AEFLocalizedString(@"LOGIN_ALERT_MESSAGE", nil)];
+    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_CANCEL_TITLE", nil)];
+    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
     [alertView setTag:AEFAlertViewTypeDefault];
     [alertView show];
 }
 
 - (void)displayAuthError
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LOGIN_FAILED_TITLE", nil)
-                                                        message:NSLocalizedString(@"LOGIN_FAILED_MESSAGE", nil)
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AEFLocalizedString(@"LOGIN_FAILED_TITLE", nil)
+                                                        message:AEFLocalizedString(@"LOGIN_FAILED_MESSAGE", nil)
                                                        delegate:nil
                                               cancelButtonTitle:nil
-                                              otherButtonTitles:NSLocalizedString(@"LOGIN_OK_TITLE", nil), nil];
+                                              otherButtonTitles:AEFLocalizedString(@"LOGIN_OK_TITLE", nil), nil];
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (buttonIndex == 0) return; // Cancel button
+    
     static NSString *login = nil;
     static NSString *password = nil;
     

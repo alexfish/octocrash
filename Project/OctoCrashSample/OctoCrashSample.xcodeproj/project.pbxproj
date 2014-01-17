@@ -20,6 +20,7 @@
 		06993556185F5CD900B9A5F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06993554185F5CD900B9A5F3 /* Main.storyboard */; };
 		06993559185F5CDA00B9A5F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06993558185F5CDA00B9A5F3 /* ViewController.m */; };
 		0699355B185F5CDA00B9A5F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0699355A185F5CDA00B9A5F3 /* Images.xcassets */; };
+		06B1DC421889DDCF000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC3F1889DDCF000004B8 /* AEFLocalizable.strings */; };
 		06B2983818849267004073CB /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B2983718849267004073CB /* libISO8601DateFormatter.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		06993558185F5CDA00B9A5F3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0699355A185F5CDA00B9A5F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		06993561185F5CDA00B9A5F3 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		06B1DC401889DDCF000004B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AEFLocalizable.strings; sourceTree = "<group>"; };
 		06B2983518849229004073CB /* libReactiveCocoa-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libReactiveCocoa-iOS.a"; path = "../OctoCrash/OctoCrash/External/OctoKit/External/ReactiveCocoa/ReactiveCocoaFramework/build/Debug-iphoneos/libReactiveCocoa-iOS.a"; sourceTree = "<group>"; };
 		06B2983718849267004073CB /* libISO8601DateFormatter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libISO8601DateFormatter.a; path = "../OctoCrash/OctoCrash/External/OctoKit/External/OctoKitDependencies/build/Debug-iphoneos/libISO8601DateFormatter.a"; sourceTree = "<group>"; };
 		06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOctoCrash.a; path = "../../../../Library/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos/libOctoCrash.a"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		06993548185F5CD900B9A5F3 /* OctoCrashSample */ = {
 			isa = PBXGroup;
 			children = (
+				06B1DC3E1889DDCF000004B8 /* Resources */,
 				06993551185F5CD900B9A5F3 /* AppDelegate.h */,
 				06993552185F5CD900B9A5F3 /* AppDelegate.m */,
 				06993554185F5CD900B9A5F3 /* Main.storyboard */,
@@ -125,6 +128,15 @@
 				06993550185F5CD900B9A5F3 /* OctoCrashSample-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06B1DC3E1889DDCF000004B8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				06B1DC3F1889DDCF000004B8 /* AEFLocalizable.strings */,
+			);
+			name = Resources;
+			path = ../../../Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +175,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = 06993536185F5CD900B9A5F3;
 			productRefGroup = 06993540185F5CD900B9A5F3 /* Products */;
@@ -179,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B1DC421889DDCF000004B8 /* AEFLocalizable.strings in Resources */,
 				0699355B185F5CDA00B9A5F3 /* Images.xcassets in Resources */,
 				0699354D185F5CD900B9A5F3 /* InfoPlist.strings in Resources */,
 				06993556185F5CD900B9A5F3 /* Main.storyboard in Resources */,
@@ -215,6 +229,14 @@
 				06993555185F5CD900B9A5F3 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		06B1DC3F1889DDCF000004B8 /* AEFLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06B1DC401889DDCF000004B8 /* en */,
+			);
+			name = AEFLocalizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
