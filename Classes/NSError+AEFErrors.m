@@ -8,6 +8,9 @@
 
 #import "NSError+AEFErrors.h"
 
+// Models
+#import "AEFStrings.h"
+
 
 @implementation NSError (AEFErrors)
 

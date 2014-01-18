@@ -7,8 +7,15 @@
 //
 
 #import "AEFClient+Login.h"
-#import "AEFClient_Private.h"
+
+// Frameworks
 #import <UIKit/UIKit.h>
+
+// Extensions
+#import "AEFClient_Private.h"
+
+// Models
+#import "AEFStrings.h"
 
 
 @implementation AEFClient (Login)
