@@ -55,6 +55,8 @@
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
 		06B1DB7B1887352F000004B8 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06B1DC3D1889D75A000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC171889D263000004B8 /* AEFLocalizable.strings */; };
+		06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */; };
+		06B1DCEC188AC098000004B8 /* NSArray_IssuesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */; };
 		06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734061881D05D00F98B67 /* AEFUserCache.m */; };
 		06B734231881D0C500F98B67 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734201881D0C500F98B67 /* SSKeychain.m */; };
 		06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734221881D0C500F98B67 /* SSKeychainQuery.m */; };
@@ -282,6 +284,9 @@
 		06993533185F5CC200B9A5F3 /* OctoCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctoCrash.h; sourceTree = "<group>"; };
 		06B1DC161889D263000004B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AEFLocalizable.strings; sourceTree = "<group>"; };
 		06B1DC191889D288000004B8 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
+		06B1DCE8188ABFD8000004B8 /* NSArray+Issues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Issues.h"; sourceTree = "<group>"; };
+		06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Issues.m"; sourceTree = "<group>"; };
+		06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_IssuesSpec.m; sourceTree = "<group>"; };
 		06B734051881D05D00F98B67 /* AEFUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUserCache.h; sourceTree = "<group>"; };
 		06B734061881D05D00F98B67 /* AEFUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCache.m; sourceTree = "<group>"; };
 		06B7341E1881D0C500F98B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
@@ -354,6 +359,7 @@
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
 				06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */,
 				060CF4E6187F53F000FF2793 /* AEFUserSpec.m */,
+				06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */,
 				06DFD4611885EB6600873491 /* PLCrashReport_IssueSpec.m */,
 			);
 			path = Classes;
@@ -382,10 +388,10 @@
 		061CF5651860DDC100AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
-				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
 				061CF57A1860DDC200AA9CC4 /* libOctoKit.a */,
 				061CF57C1860DDC200AA9CC4 /* OctoKit iOS Tests.octest */,
+				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
+				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,8 +400,8 @@
 			isa = PBXGroup;
 			children = (
 				061CF5851860DDE600AA9CC4 /* AFNetworking.framework */,
-				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
+				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */,
 			);
 			name = Products;
@@ -404,11 +410,11 @@
 		061CF58D1860DDEF00AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
-				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
 				061CF5991860DDF000AA9CC4 /* libMantle-iOS.a */,
-				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
 				061CF59D1860DDF000AA9CC4 /* libMantle-Mac.a */,
+				061CF5971860DDF000AA9CC4 /* Mantle Tests.octest */,
+				061CF59B1860DDF000AA9CC4 /* Mantle-iOS Tests.octest */,
+				061CF5951860DDF000AA9CC4 /* Mantle.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -416,13 +422,13 @@
 		061CF59F1860DDF600AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
 				061CF5AB1860DDF600AA9CC4 /* libReactiveCocoa-iOS.a */,
-				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
-				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
+				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
 				061CF5B11860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHost.app */,
 				061CF5B31860DDF600AA9CC4 /* ReactiveCocoa-iOS-UIKitTestHostTests.octest */,
-				061CF5B51860DDF600AA9CC4 /* libReactiveCocoa-Mac.a */,
+				061CF5A91860DDF600AA9CC4 /* ReactiveCocoa.framework */,
+				061CF5AF1860DDF600AA9CC4 /* ReactiveCocoaTests-iOS.octest */,
+				061CF5AD1860DDF600AA9CC4 /* ReactiveCocoaTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -533,6 +539,7 @@
 				060CF4E2187F539F00FF2793 /* Cache */,
 				063249491861EFD100CB60BE /* Client */,
 				0632495E1861EFDC00CB60BE /* Crashes */,
+				06B1DCD4188ABE97000004B8 /* Shared */,
 				06B1DC181889D270000004B8 /* Strings */,
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
 			);
@@ -555,6 +562,15 @@
 				06B1DC191889D288000004B8 /* Strings.h */,
 			);
 			name = Strings;
+			sourceTree = "<group>";
+		};
+		06B1DCD4188ABE97000004B8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				06B1DCE8188ABFD8000004B8 /* NSArray+Issues.h */,
+				06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		06B7341C1881D0C500F98B67 /* SSKeychain */ = {
@@ -878,6 +894,7 @@
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
 				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
+				06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */,
 				CF86D739188573D9009CB8DD /* PLCrashReport+Issues.m in Sources */,
 				06B734231881D0C500F98B67 /* SSKeychain.m in Sources */,
 				06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */,
@@ -893,6 +910,7 @@
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
 				06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */,
 				060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */,
+				06B1DCEC188AC098000004B8 /* NSArray_IssuesSpec.m in Sources */,
 				06DFD4621885EB6600873491 /* PLCrashReport_IssueSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
