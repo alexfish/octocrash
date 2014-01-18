@@ -65,10 +65,13 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 - (void)getReport:(PLCrashReport *)report
            client:(OCTClient *)client
-        completed:(void (^)(NSInteger reportID))completed
-            error:(void (^)(NSError *error))error
+        completed:(void (^)(NSInteger reportID))completedBlock
+            error:(void (^)(NSError *error))errorBlock
 {
-    completed(AEFReportNotFound);
+    if (errorBlock)
+    {
+        errorBlock(nil);
+    }
 }
 
 
@@ -89,9 +92,15 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     [signal subscribeNext:^(id x) {
         // Do nothing
     } error:^(NSError *error) {
-        errorBlock(error);
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
     } completed:^{
-        completedBlock();
+        if (completedBlock)
+        {
+            completedBlock();
+        }
     }];
 }
 
@@ -103,7 +112,7 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 #pragma mark - Authentication
 
-- (void)authenticate:(void (^)(OCTClient *client))completion
+- (void)authenticate:(void (^)(OCTClient *client))completedBlock
 {
     AEFUser *cachedUser = [AEFUserCache cachedUser];
     if (cachedUser)
@@ -112,11 +121,14 @@ NS_ENUM(NSInteger, AEFAlertViewType)
         OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
         OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
         
-        completion(client);
+        if (completedBlock)
+        {
+            completedBlock(client);
+        }
     }
     else
     {
-        [self setAuthenticated:completion];
+        [self setAuthenticated:completedBlock];
         [self displayLogin];
     }
 }

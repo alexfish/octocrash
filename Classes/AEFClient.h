@@ -56,10 +56,10 @@
  *  any previously authenticated users, if you do not wish to authenticate with the
  *  the cached user then clear the cache before calling this method.
  *
- *  @param completion A completion callback which contains an authenticated instance
+ *  @param completedBlock A completion callback which contains an authenticated instance
  *         of an OCTClient, you can query the OCTClient using it's authenticated method
  *         to check it really is authenticated.
  */
-- (void)authenticate:(void (^)(OCTClient *client))completion;
+- (void)authenticate:(void (^)(OCTClient *client))completedBlock;
 
 @end

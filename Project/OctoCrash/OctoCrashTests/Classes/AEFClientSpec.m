@@ -60,8 +60,8 @@ describe(@"AEFClient", ^{
             PLCrashReport *report = [PLCrashReport mock];
             [report stub:@selector(parameters)];
             
-            [[client should] receive:@selector(sendRequestWithClient:report:completion:)];
-            [client sendReport:report client:mockClient completion:nil];
+            [[client should] receive:@selector(sendRequestWithClient:report:completed:error:)];
+            [client sendReport:report client:mockClient completed:nil error:nil];
         });
         
     });
