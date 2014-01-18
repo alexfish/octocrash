@@ -7,9 +7,15 @@
 //
 
 #import "PLCrashReport+Issues.h"
+
+// Frameworks
 #import <OctoKit/OctoKit.h>
 
+// Models
+#import "AEFStrings.h"
 
+
+// Strings
 NSString * const AEFIssueTitleKey = @"title";
 NSString * const AEFIssueBodyKey  = @"body";
 

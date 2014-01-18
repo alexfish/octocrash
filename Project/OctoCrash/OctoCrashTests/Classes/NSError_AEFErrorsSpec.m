@@ -8,7 +8,7 @@
 
 #import <Kiwi/Kiwi.h>
 #import "NSError+AEFErrors.h"
-
+#import "AEFStrings.h"
 
 SPEC_BEGIN(NSError_AEFErrorsSpec)
 
