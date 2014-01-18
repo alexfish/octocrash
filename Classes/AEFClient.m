@@ -13,18 +13,13 @@
 #import <CrashReporter/PLCrashReport.h>
 #import "AEFUserCache.h"
 #import "AEFUser.h"
+#import "NSError+AEFErrors.h"
 
 // Extensions
-#import "PLCrashReport+Issue.h"
+#import "PLCrashReport+Issues.h"
+#import "NSArray+Issues.h"
+#import "AEFClient+Login.h"
 #import "AEFClient_Private.h"
-
-
-// Types
-NS_ENUM(NSInteger, AEFAlertViewType)
-{
-    AEFAlertViewTypeDefault         = 0,
-    AEFAlertViewTypeOneTimePassword = 1,
-};
 
 
 @implementation AEFClient
@@ -52,36 +47,122 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 #pragma mark - Reports
 
-- (void)sendReport:(PLCrashReport *)report
-            client:(OCTClient *)client
-        completion:(void (^)(BOOL sent))completion
+- (void)createReport:(PLCrashReport *)report
+              client:(OCTClient *)client
+           completed:(void (^)(id response))completedBlock
+               error:(void (^)(NSError *error))errorBlock
 {
     if (client.authenticated)
     {
-        [self sendRequestWithClient:client report:report completion:completion];
+        [self requestWithClient:client
+                           path:[self issuesPath]
+                         method:@"POST"
+                     parameters:report.parameters
+                      completed:completedBlock
+                          error:errorBlock];
+    }
+    else
+    {
+        if (errorBlock)
+        {
+            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+        }
+    }
+}
+
+- (void)getReport:(PLCrashReport *)report
+           client:(OCTClient *)client
+        completed:(void (^)(NSURL *reportURL))completedBlock
+            error:(void (^)(NSError *error))errorBlock
+{
+    if (client.authenticated)
+    {
+        __weak typeof(self) weakSelf = self;
+        [self requestWithClient:client path:[self issuesPath] method:@"GET" parameters:nil completed:^(id response) {
+            
+            typeof (self) __strong strongSelf = weakSelf;
+            if (!strongSelf) return;
+            
+            NSURL *URL = [response reportURL:report];
+            
+            if (URL)
+            {
+                if (completedBlock)
+                {
+                    completedBlock(URL);
+                }
+            }
+            else
+            {
+                if (errorBlock)
+                {
+                    errorBlock([NSError errorWithCode:AEFErrorCodeNotFound]);
+                }
+            }
+        } error:errorBlock];
+    }
+    else
+    {
+        if (errorBlock)
+        {
+            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+        }
+    }
+}
+
+- (void)updateReport:(PLCrashReport *)report
+                path:(NSString *)path
+              client:(OCTClient *)client
+           completed:(void (^)())completedBlock
+               error:(void (^)(NSError *))errorBlock
+{
+    
+    if (client.authenticated)
+    {
+        [self requestWithClient:client
+                           path:[self commentsPathWithReportPath:path]
+                         method:@"POST"
+                     parameters:report.commentParameters
+                      completed:completedBlock
+                          error:errorBlock];
+    }
+    else
+    {
+        if (errorBlock)
+        {
+            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+        }
     }
 }
 
 
 #pragma mark - Request (Private)
 
-- (void)sendRequestWithClient:(OCTClient *)client
-                       report:(PLCrashReport *)report
-                   completion:(void (^)(BOOL sent))completion
+
+- (void)requestWithClient:(OCTClient *)client
+                     path:(NSString *)path
+                   method:(NSString *)method
+               parameters:(NSDictionary *)paramaters
+                completed:(void (^)(id response))completedBlock
+                    error:(void (^)(NSError *error))errorBlock
 {
     
-    NSURLRequest *request = [client requestWithMethod:@"POST"
-                                                 path:[self issuesPath]
-                                           parameters:report.parameters
+    NSURLRequest *request = [client requestWithMethod:method
+                                                 path:path
+                                           parameters:paramaters
                                       notMatchingEtag:nil];
     
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
-    [signal subscribeNext:^(id x) {
-        // Do nothing
+    [[signal collect] subscribeNext:^(id response) {
+        if (completedBlock)
+        {
+            completedBlock(response);
+        }
     } error:^(NSError *error) {
-        completion(NO);
-    } completed:^{
-        completion(YES);
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
     }];
 }
 
@@ -90,10 +171,18 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     return [NSString stringWithFormat:@"repos/%@/issues", self.repo];
 }
 
+- (NSString *)commentsPathWithReportPath:(NSString *)reportPath
+{
+    NSString *apiPath = [reportPath stringByReplacingOccurrencesOfString:kAEFGithubBaseURL withString:@"repos/"];
+    apiPath = [apiPath stringByAppendingString:@"/comments"];
+    
+    return apiPath;
+}
+
 
 #pragma mark - Authentication
 
-- (void)authenticate:(void (^)(OCTClient *client))completion
+- (void)authenticate:(void (^)(OCTClient *client))completedBlock
 {
     AEFUser *cachedUser = [AEFUserCache cachedUser];
     if (cachedUser)
@@ -102,11 +191,14 @@ NS_ENUM(NSInteger, AEFAlertViewType)
         OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
         OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
         
-        completion(client);
+        if (completedBlock)
+        {
+            completedBlock(client);
+        }
     }
     else
     {
-        [self setAuthenticated:completion];
+        [self setAuthenticated:completedBlock];
         [self displayLogin];
     }
 }
@@ -165,66 +257,5 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     }
 }
 
-
-#pragma mark - Login UI (Private)
-
-- (void)displayOneTimePasswordLogin
-{
-    UIAlertView *alertView = [[UIAlertView alloc] init];
-    [alertView setAlertViewStyle:UIAlertViewStyleSecureTextInput];
-    [alertView setDelegate:self];
-    [alertView setTitle:AEFLocalizedString(@"LOGIN_OTP_TITLE", nil)];
-    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_CANCEL_TITLE", nil)];
-    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
-    [alertView setTag:AEFAlertViewTypeOneTimePassword];
-    [alertView show];
-
-}
-
-- (void)displayLogin
-{
-    UIAlertView *alertView = [[UIAlertView alloc] init];
-    [alertView setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-    [alertView setDelegate:self];
-    [alertView setTitle:AEFLocalizedString(@"LOGIN_ALERT_TITLE", nil)];
-    [alertView setMessage:AEFLocalizedString(@"LOGIN_ALERT_MESSAGE", nil)];
-    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_CANCEL_TITLE", nil)];
-    [alertView addButtonWithTitle:AEFLocalizedString(@"LOGIN_ALERT_BUTTON_TITLE", nil)];
-    [alertView setTag:AEFAlertViewTypeDefault];
-    [alertView show];
-}
-
-- (void)displayAuthError
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AEFLocalizedString(@"LOGIN_FAILED_TITLE", nil)
-                                                        message:AEFLocalizedString(@"LOGIN_FAILED_MESSAGE", nil)
-                                                       delegate:nil
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:AEFLocalizedString(@"LOGIN_OK_TITLE", nil), nil];
-    [alertView show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) return; // Cancel button
-    
-    static NSString *login = nil;
-    static NSString *password = nil;
-    
-    if (alertView.tag == AEFAlertViewTypeDefault)
-    {
-        login     = [[alertView textFieldAtIndex:0] text];
-        password  = [[alertView textFieldAtIndex:1] text];
-        
-        [self authenticateLogin:login password:password oneTimePassword:nil];
-    }
-    else
-    {
-        NSString *oneTimePassword = [[alertView textFieldAtIndex:0] text];
-        
-        [self authenticateLogin:login password:password oneTimePassword:oneTimePassword];
-    }
-    
-}
 
 @end

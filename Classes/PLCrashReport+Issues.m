@@ -1,19 +1,20 @@
 //
-//  PLCrashReport+Issue.m
+//  PLCrashReport+Issues.m
 //  OctoCrash
 //
 //  Created by Alex Fish on 1/14/14.
 //  Copyright (c) 2014 alexefish. All rights reserved.
 //
 
-#import "PLCrashReport+Issue.h"
+#import "PLCrashReport+Issues.h"
+#import <OctoKit/OctoKit.h>
 
 
 NSString * const AEFIssueTitleKey = @"title";
 NSString * const AEFIssueBodyKey  = @"body";
 
 
-@implementation PLCrashReport (AEFIssue)
+@implementation PLCrashReport (Issues)
 
 
 #pragma mark - Paramaters
@@ -24,6 +25,13 @@ NSString * const AEFIssueBodyKey  = @"body";
     NSString *body = [self body];
     
     return @{AEFIssueTitleKey: title, AEFIssueBodyKey: body};
+}
+
+- (NSDictionary *)commentParameters
+{
+    NSString *body = [NSString stringWithFormat:AEFLocalizedString(@"CRASH_COMMENT_BODY", nil), [self title]];
+    
+    return @{AEFIssueBodyKey: body};
 }
 
 
@@ -43,7 +51,21 @@ NSString * const AEFIssueBodyKey  = @"body";
     humanReadable = [NSString stringWithFormat:@"<pre>%@</pre>", humanReadable];
     
     return humanReadable;
+}
 
+
+#pragma mark - Matching
+
+- (BOOL)isEqualToIssue:(OCTIssue *)issue
+{
+    BOOL isEqual = NO;
+    
+    if ([issue isKindOfClass:[OCTIssue class]])
+    {
+        isEqual = [self.title isEqualToString:issue.title];
+    }
+    
+    return isEqual;
 }
 
 @end

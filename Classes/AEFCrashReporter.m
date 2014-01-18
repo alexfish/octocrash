@@ -12,6 +12,9 @@
 #import "AEFCrashCollector.h"
 #import "AEFClient.h"
 
+// Extensions
+#import "NSError+AEFErrors.h"
+
 
 // Class Extension
 @interface AEFCrashReporter ()
@@ -116,13 +119,26 @@
         typeof (self) __strong strongSelf = weakSelf;
         if (!strongSelf) return;
         
-        [strongSelf.client sendReport:report client:client completion:^(BOOL sent) {
-            if (sent)
+        [strongSelf.client getReport:report client:client completed:^(NSURL *reportURL) {
+            
+            [strongSelf.client updateReport:report path:reportURL.absoluteString client:client completed:^{
+                [strongSelf reportSent];
+            } error:nil];
+            
+        } error:^(NSError *error) {
+            if (error.code == AEFErrorCodeNotFound)
             {
-                [strongSelf.collector purge];
+                [strongSelf.client createReport:report client:client completed:^(id response) {
+                    [strongSelf reportSent];
+                } error:nil];
             }
         }];
     }];
+}
+
+- (void)reportSent
+{
+    [self.collector purge];
 }
 
 @end

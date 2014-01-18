@@ -12,6 +12,9 @@
 @class OCTClient;
 
 
+static NSString * const kAEFGithubBaseURL = @"https://github.com/";
+
+
 /**
  *  AEFClient's private method declarations, shhh.
  */
@@ -30,18 +33,22 @@
 @property (nonatomic, copy) void (^authenticated)(OCTClient *client);
 
 /**
- *  Send a crash report request to Github via an OCTClient instance,
- *  the OCTClient should be authenticated.
+ *  Send a request to Github via an authentivated OCTIstance.
  *
- *  @param client An authenticaed OCTClient instance, this method will fail
- *         if the client isn't previously authenticated.
- *
- *  @param report The crash report to send
- *  @param completion A completion block called on successful issue creation
+ *  @param client         An authenticaed OCTClient instance, this method will fail
+ *                        if the client isn't previously authenticated.
+ *  @param path           The path to request relative to the base API URL
+ *  @param method         The HTTP method to use
+ *  @param paramaters     A dictionary of paramaters to send with the request
+ *  @param completedBlock A completion block containing the response
+ *  @param errorBlock     A completion block containing any errors
  */
-- (void)sendRequestWithClient:(OCTClient *)client
-                       report:(PLCrashReport *)report
-                   completion:(void (^)(BOOL sent))completion;
+- (void)requestWithClient:(OCTClient *)client
+                     path:(NSString *)path
+                   method:(NSString *)method
+               parameters:(NSDictionary *)paramaters
+                completed:(void (^)(id response))completedBlock
+                    error:(void (^)(NSError *error))errorBlock;
 
 /**
  *  Authenticate with a login, password and one time password, it is possible to pass
@@ -56,29 +63,30 @@
           oneTimePassword:(NSString *)oneTimePassword;
 
 /**
- *  Display the UI for a user to enter their one time password.
- */
-- (void)displayOneTimePasswordLogin;
-
-/**
- *  Display the UI for a user to enter their standard Github login
- *  and password.
- */
-- (void)displayLogin;
-
-/**
- *  Display the UI for an authentication error, containing imformation
- *  as to why the authentication failed.
- */
-- (void)displayAuthError;
-
-/**
- *  Handles any NSError object  in an elegant manor, this can be 
+ *  Handles any NSError object  in an elegant manor, this can be
  *  UI feedback to the user or another attempt at authenticating
  *  with a different authentication method.
  *
  *  @param error The error to handle gracefully
  */
 - (void)handleError:(NSError *)error;
+
+/**
+ *  The API path for Github issues
+ *
+ *  @return The API path ready to use with OCTClient requests for issues
+ */
+- (NSString *)issuesPath;
+
+/**
+ *  Convert a report's URL to a Github API ready comments path, this will use elements
+ *  of the reports existing path to generate an API URL for adding comments to the report
+ *
+ *  @param reportPath The report full github path to a github issue
+ *  to generate a comments path with
+ *
+ *  @return A path for comments based on the report path.
+ */
+- (NSString *)commentsPathWithReportPath:(NSString *)reportPath;
 
 @end

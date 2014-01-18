@@ -41,22 +41,55 @@
  *
  *  @param report     The crash report to send to Github
  *  @param client     An authenticated client instance 
- *  @param completion A completion block called on success or failure
+ *  @param completed  A completion block called on success
+ *  @param error      An error block called on failure containing the error
  */
-- (void)sendReport:(PLCrashReport *)report
-            client:(OCTClient *)client
-        completion:(void (^)(BOOL sent))completion;
+- (void)createReport:(PLCrashReport *)report
+              client:(OCTClient *)client
+           completed:(void (^)(id response))completedBlock
+               error:(void (^)(NSError *error))errorBlock;
 
+/**
+ *  Get an existing report from Github, this method is used to query Github
+ *  for an existing crash report, if one is found then the report ID will be
+ *  returned in the completion block
+ *
+ *  @param report     The crash report to use to find if the report is already reported
+ *  @param client     An authenticated client instance
+ *  @param completed  A completion block called on success containing the reports URL
+ *  @param error      An error block called on failure containing the error
+ */
+- (void)getReport:(PLCrashReport *)report
+           client:(OCTClient *)client
+        completed:(void (^)(NSURL *reportURL))completedBlock
+            error:(void (^)(NSError *error))errorBlock;
+
+/**
+ *  Update a report with an existing issue at a given path, this can be useful if a crash already
+ *  exists so that a duplicate issue is not created.
+ *
+ *  @param report         The crash report to update
+ *  @param path           The full Github URL path of the report to update,
+ *                        e.g: https://github.com/alexfish/octocrash/issues/1
+ *  @param client         An authenticated client instance
+ *  @param completedBlock A completion block called on success
+ *  @param errorBlock     An error block called when something goes wrong, contains the error
+ */
+- (void)updateReport:(PLCrashReport *)report
+                path:(NSString *)path
+              client:(OCTClient *)client
+           completed:(void (^)())completedBlock
+               error:(void (^)(NSError *error))errorBlock;
 
 /**
  *  Authenticate with the Github API, this method will also check the user cache for
  *  any previously authenticated users, if you do not wish to authenticate with the
  *  the cached user then clear the cache before calling this method.
  *
- *  @param completion A completion callback which contains an authenticated instance
+ *  @param completedBlock A completion callback which contains an authenticated instance
  *         of an OCTClient, you can query the OCTClient using it's authenticated method
  *         to check it really is authenticated.
  */
-- (void)authenticate:(void (^)(OCTClient *client))completion;
+- (void)authenticate:(void (^)(OCTClient *client))completedBlock;
 
 @end

@@ -55,13 +55,18 @@
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
 		06B1DB7B1887352F000004B8 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06B1DC3D1889D75A000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC171889D263000004B8 /* AEFLocalizable.strings */; };
+		06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */; };
+		06B1DCEC188AC098000004B8 /* NSArray_IssuesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */; };
+		06B1DCFD188AC402000004B8 /* AEFClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCFC188AC402000004B8 /* AEFClient+Login.m */; };
+		06B1DD21188AC5B4000004B8 /* NSError+AEFErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DD20188AC5B4000004B8 /* NSError+AEFErrors.m */; };
+		06B1DD36188AC93E000004B8 /* NSError_AEFErrorsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DD35188AC93E000004B8 /* NSError_AEFErrorsSpec.m */; };
 		06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734061881D05D00F98B67 /* AEFUserCache.m */; };
 		06B734231881D0C500F98B67 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734201881D0C500F98B67 /* SSKeychain.m */; };
 		06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734221881D0C500F98B67 /* SSKeychainQuery.m */; };
 		06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */; };
 		06DFD4621885EB6600873491 /* PLCrashReport_IssueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DFD4611885EB6600873491 /* PLCrashReport_IssueSpec.m */; };
 		9EAD17F14E784C249DAE2D3A /* libPods-OctoCrashTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A857C55BCD4F49AA44ACEF /* libPods-OctoCrashTests.a */; };
-		CF86D739188573D9009CB8DD /* PLCrashReport+Issue.m in Sources */ = {isa = PBXBuildFile; fileRef = CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */; };
+		CF86D739188573D9009CB8DD /* PLCrashReport+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = CF86D738188573D9009CB8DD /* PLCrashReport+Issues.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,7 +286,15 @@
 		06993526185F5CA600B9A5F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06993533185F5CC200B9A5F3 /* OctoCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctoCrash.h; sourceTree = "<group>"; };
 		06B1DC161889D263000004B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AEFLocalizable.strings; sourceTree = "<group>"; };
-		06B1DC191889D288000004B8 /* Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Strings.h; sourceTree = "<group>"; };
+		06B1DC191889D288000004B8 /* AEFStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFStrings.h; sourceTree = "<group>"; };
+		06B1DCE8188ABFD8000004B8 /* NSArray+Issues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Issues.h"; sourceTree = "<group>"; };
+		06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Issues.m"; sourceTree = "<group>"; };
+		06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_IssuesSpec.m; sourceTree = "<group>"; };
+		06B1DCFB188AC402000004B8 /* AEFClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AEFClient+Login.h"; sourceTree = "<group>"; };
+		06B1DCFC188AC402000004B8 /* AEFClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AEFClient+Login.m"; sourceTree = "<group>"; };
+		06B1DD1F188AC5B4000004B8 /* NSError+AEFErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+AEFErrors.h"; sourceTree = "<group>"; };
+		06B1DD20188AC5B4000004B8 /* NSError+AEFErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+AEFErrors.m"; sourceTree = "<group>"; };
+		06B1DD35188AC93E000004B8 /* NSError_AEFErrorsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSError_AEFErrorsSpec.m; sourceTree = "<group>"; };
 		06B734051881D05D00F98B67 /* AEFUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUserCache.h; sourceTree = "<group>"; };
 		06B734061881D05D00F98B67 /* AEFUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCache.m; sourceTree = "<group>"; };
 		06B7341E1881D0C500F98B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
@@ -295,8 +308,8 @@
 		282CAA8734FA4431A7C14282 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoCrashTests.xcconfig"; path = "../Pods/Pods-OctoCrashTests.xcconfig"; sourceTree = "<group>"; };
 		91B4A52909194FAD9E0DE202 /* libPods-OctoCrash.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OctoCrash.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF86D737188573D9009CB8DD /* PLCrashReport+Issue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLCrashReport+Issue.h"; sourceTree = "<group>"; };
-		CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PLCrashReport+Issue.m"; sourceTree = "<group>"; };
+		CF86D737188573D9009CB8DD /* PLCrashReport+Issues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PLCrashReport+Issues.h"; sourceTree = "<group>"; };
+		CF86D738188573D9009CB8DD /* PLCrashReport+Issues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PLCrashReport+Issues.m"; sourceTree = "<group>"; };
 		CF90CD6118870FCE00255F04 /* AEFClient_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFClient_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -354,6 +367,8 @@
 				061CEDE9185FB81200AA9CC4 /* AEFCrashReporterSpec.m */,
 				06B734251881D11D00F98B67 /* AEFUserCacheSpec.m */,
 				060CF4E6187F53F000FF2793 /* AEFUserSpec.m */,
+				06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */,
+				06B1DD35188AC93E000004B8 /* NSError_AEFErrorsSpec.m */,
 				06DFD4611885EB6600873491 /* PLCrashReport_IssueSpec.m */,
 			);
 			path = Classes;
@@ -430,6 +445,8 @@
 		063249491861EFD100CB60BE /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				06B1DCFB188AC402000004B8 /* AEFClient+Login.h */,
+				06B1DCFC188AC402000004B8 /* AEFClient+Login.m */,
 				063248CF1860E4D900CB60BE /* AEFClient.h */,
 				063248D01860E4D900CB60BE /* AEFClient.m */,
 				CF90CD6118870FCE00255F04 /* AEFClient_Private.h */,
@@ -445,8 +462,8 @@
 				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
 				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
 				063249231861E3F800CB60BE /* AEFCrashReporting.h */,
-				CF86D737188573D9009CB8DD /* PLCrashReport+Issue.h */,
-				CF86D738188573D9009CB8DD /* PLCrashReport+Issue.m */,
+				CF86D737188573D9009CB8DD /* PLCrashReport+Issues.h */,
+				CF86D738188573D9009CB8DD /* PLCrashReport+Issues.m */,
 			);
 			name = Crashes;
 			sourceTree = "<group>";
@@ -533,6 +550,7 @@
 				060CF4E2187F539F00FF2793 /* Cache */,
 				063249491861EFD100CB60BE /* Client */,
 				0632495E1861EFDC00CB60BE /* Crashes */,
+				06B1DCD4188ABE97000004B8 /* Shared */,
 				06B1DC181889D270000004B8 /* Strings */,
 				06993533185F5CC200B9A5F3 /* OctoCrash.h */,
 			);
@@ -552,9 +570,20 @@
 		06B1DC181889D270000004B8 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
-				06B1DC191889D288000004B8 /* Strings.h */,
+				06B1DC191889D288000004B8 /* AEFStrings.h */,
 			);
 			name = Strings;
+			sourceTree = "<group>";
+		};
+		06B1DCD4188ABE97000004B8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				06B1DCE8188ABFD8000004B8 /* NSArray+Issues.h */,
+				06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */,
+				06B1DD1F188AC5B4000004B8 /* NSError+AEFErrors.h */,
+				06B1DD20188AC5B4000004B8 /* NSError+AEFErrors.m */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		06B7341C1881D0C500F98B67 /* SSKeychain */ = {
@@ -873,12 +902,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B1DCFD188AC402000004B8 /* AEFClient+Login.m in Sources */,
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
 				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
-				CF86D739188573D9009CB8DD /* PLCrashReport+Issue.m in Sources */,
+				06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */,
+				06B1DD21188AC5B4000004B8 /* NSError+AEFErrors.m in Sources */,
+				CF86D739188573D9009CB8DD /* PLCrashReport+Issues.m in Sources */,
 				06B734231881D0C500F98B67 /* SSKeychain.m in Sources */,
 				06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */,
 			);
@@ -893,6 +925,8 @@
 				061CEDEA185FB81200AA9CC4 /* AEFCrashReporterSpec.m in Sources */,
 				06B734261881D11D00F98B67 /* AEFUserCacheSpec.m in Sources */,
 				060CF4E7187F53F000FF2793 /* AEFUserSpec.m in Sources */,
+				06B1DCEC188AC098000004B8 /* NSArray_IssuesSpec.m in Sources */,
+				06B1DD36188AC93E000004B8 /* NSError_AEFErrorsSpec.m in Sources */,
 				06DFD4621885EB6600873491 /* PLCrashReport_IssueSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
