@@ -33,16 +33,30 @@
  *  Send a crash report request to Github via an OCTClient instance,
  *  the OCTClient should be authenticated.
  *
- *  @param client An authenticaed OCTClient instance, this method will fail
- *         if the client isn't previously authenticated.
- *  @param report The crash report to send
- *  @param completed A completion block called on successful issue creation
- *  @param error An error block called on failure, contains the error
+ *  @param client           An authenticaed OCTClient instance, this method will fail
+ *                          if the client isn't previously authenticated.
+ *  @param report           The crash report to send
+ *  @param completedBlock   A completion block called on successful issue creation
+ *  @param errorBlock       An error block called on failure, contains the error
  */
 - (void)sendRequestWithClient:(OCTClient *)client
                        report:(PLCrashReport *)report
                     completed:(void (^)(void))completedBlock
                         error:(void (^)(NSError *error))errorBlock;
+
+/**
+ *  Get an array of issue from Github via an OCTCLient istance, 
+ *  the OCTClient instance should be authenticated
+ *
+ *  @param client         An authenticated OCTClient instance
+ *  @param completedBlock A block called on completion containing an
+ *                        array of github issues
+ *  @param errorBlock     An error block called on failure containing 
+ *                        error
+ */
+- (void)getRequestWithClient:(OCTClient *)client
+                   completed:(void (^)(NSArray *issues))completedBlock
+                       error:(void (^)(NSError *error))errorBlock;
 
 /**
  *  Authenticate with a login, password and one time password, it is possible to pass
@@ -55,9 +69,6 @@
 - (void)authenticateLogin:(NSString *)login
                  password:(NSString *)password
           oneTimePassword:(NSString *)oneTimePassword;
-
-
-
 
 /**
  *  Handles any NSError object  in an elegant manor, this can be

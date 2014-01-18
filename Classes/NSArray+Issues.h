@@ -24,7 +24,7 @@
  *
  *  @param report A crash report object to check the array for
  *
- *  @return A NSURL for the report on an external service
+ *  @return A NSURL for the report, nil if the report is not found
  */
 - (NSURL *)reportURL:(PLCrashReport *)report;
 

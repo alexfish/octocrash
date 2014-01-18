@@ -49,6 +49,20 @@
          completed:(void (^)(void))completedBlock
              error:(void (^)(NSError *error))errorBlock;
 
+/**
+ *  Get an existing report from Github, this method is used to query Github
+ *  for an existing crash report, if one is found then the report ID will be
+ *  returned in the completion block
+ *
+ *  @param report     The crash report to use to find if the report is already reported
+ *  @param client     An authenticated client instance
+ *  @param completed  A completion block called on success containing the reports URL
+ *  @param error      An error block called on failure containing the error
+ */
+- (void)getReport:(PLCrashReport *)report
+           client:(OCTClient *)client
+        completed:(void (^)(NSURL *reportURL))completedBlock
+            error:(void (^)(NSError *error))errorBlock;
 
 
 /**

@@ -13,6 +13,7 @@
 #import <CrashReporter/PLCrashReport.h>
 #import "AEFUserCache.h"
 #import "AEFUser.h"
+#import "NSError+AEFErrors.h"
 
 // Extensions
 #import "PLCrashReport+Issues.h"
@@ -53,19 +54,79 @@
 {
     if (client.authenticated)
     {
-        [self sendRequestWithClient:client report:report completed:completedBlock error:errorBlock];
+        [self sendRequestWithClient:client
+                             report:report
+                          completed:completedBlock
+                              error:errorBlock];
+    }
+    else
+    {
+        if (errorBlock)
+        {
+            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+        }
     }
 }
 
 - (void)getReport:(PLCrashReport *)report
            client:(OCTClient *)client
-        completed:(void (^)(NSInteger reportID))completedBlock
+        completed:(void (^)(NSURL *reportURL))completedBlock
             error:(void (^)(NSError *error))errorBlock
 {
-    if (errorBlock)
+    if (client.authenticated)
     {
-        errorBlock(nil);
+        __weak typeof(self) weakSelf = self;
+        [self getRequestWithClient:client completed:^(NSArray *issues) {
+            typeof (self) __strong strongSelf = weakSelf;
+            if (!strongSelf) return;
+            
+            NSURL *URL = [issues reportURL:report];
+            
+            if (URL)
+            {
+                if (completedBlock)
+                {
+                    completedBlock(URL);
+                }
+            }
+            else
+            {
+                if (errorBlock)
+                {
+                    errorBlock([NSError errorWithCode:AEFErrorCodeNotFound]);
+                }
+            }
+        } error:^(NSError *error) {
+            if (errorBlock)
+            {
+                errorBlock(error);
+            }
+        }];
     }
+    else
+    {
+        if (errorBlock)
+        {
+            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+        }
+    }
+}
+
+- (NSURL *)matchedURLForReport:(PLCrashReport *)report inArray:(NSArray *)array
+{
+    NSURL *URL = nil;
+    
+    for (OCTResponse *response in array)
+    {
+        OCTIssue *issue = response.parsedResult;
+        if ([report isEqualToIssue:issue])
+        {
+            URL = issue.HTMLURL;
+            break;
+        }
+    }
+    
+    return URL;
 }
 
 
@@ -83,17 +144,38 @@
                                       notMatchingEtag:nil];
     
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
-    [signal subscribeNext:^(id x) {
-        // Do nothing
+    [[signal collect] subscribeNext:^(id x) {
+        if (completedBlock)
+        {
+            completedBlock();
+        }
     } error:^(NSError *error) {
         if (errorBlock)
         {
             errorBlock(error);
         }
-    } completed:^{
+    }];
+}
+
+- (void)getRequestWithClient:(OCTClient *)client
+                   completed:(void (^)(NSArray *issues))completedBlock
+                       error:(void (^)(NSError *error))errorBlock
+{
+    NSURLRequest *request = [client requestWithMethod:@"GET"
+                                                 path:[self issuesPath]
+                                           parameters:nil
+                                      notMatchingEtag:nil];
+    
+    RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
+    [[signal collect] subscribeNext:^(NSArray *issues) {
         if (completedBlock)
         {
-            completedBlock();
+            completedBlock(issues);
+        }
+    } error:^(NSError *error) {
+        if (errorBlock)
+        {
+            errorBlock(error);
         }
     }];
 }
