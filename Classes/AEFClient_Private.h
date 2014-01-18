@@ -56,25 +56,11 @@
                  password:(NSString *)password
           oneTimePassword:(NSString *)oneTimePassword;
 
-/**
- *  Display the UI for a user to enter their one time password.
- */
-- (void)displayOneTimePasswordLogin;
+
+
 
 /**
- *  Display the UI for a user to enter their standard Github login
- *  and password.
- */
-- (void)displayLogin;
-
-/**
- *  Display the UI for an authentication error, containing imformation
- *  as to why the authentication failed.
- */
-- (void)displayAuthError;
-
-/**
- *  Handles any NSError object  in an elegant manor, this can be 
+ *  Handles any NSError object  in an elegant manor, this can be
  *  UI feedback to the user or another attempt at authenticating
  *  with a different authentication method.
  *

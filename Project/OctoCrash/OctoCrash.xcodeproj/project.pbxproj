@@ -57,6 +57,7 @@
 		06B1DC3D1889D75A000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC171889D263000004B8 /* AEFLocalizable.strings */; };
 		06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */; };
 		06B1DCEC188AC098000004B8 /* NSArray_IssuesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */; };
+		06B1DCFD188AC402000004B8 /* AEFClient+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B1DCFC188AC402000004B8 /* AEFClient+Login.m */; };
 		06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734061881D05D00F98B67 /* AEFUserCache.m */; };
 		06B734231881D0C500F98B67 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734201881D0C500F98B67 /* SSKeychain.m */; };
 		06B734241881D0C500F98B67 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B734221881D0C500F98B67 /* SSKeychainQuery.m */; };
@@ -287,6 +288,8 @@
 		06B1DCE8188ABFD8000004B8 /* NSArray+Issues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Issues.h"; sourceTree = "<group>"; };
 		06B1DCE9188ABFD8000004B8 /* NSArray+Issues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Issues.m"; sourceTree = "<group>"; };
 		06B1DCEB188AC098000004B8 /* NSArray_IssuesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArray_IssuesSpec.m; sourceTree = "<group>"; };
+		06B1DCFB188AC402000004B8 /* AEFClient+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AEFClient+Login.h"; sourceTree = "<group>"; };
+		06B1DCFC188AC402000004B8 /* AEFClient+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AEFClient+Login.m"; sourceTree = "<group>"; };
 		06B734051881D05D00F98B67 /* AEFUserCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFUserCache.h; sourceTree = "<group>"; };
 		06B734061881D05D00F98B67 /* AEFUserCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEFUserCache.m; sourceTree = "<group>"; };
 		06B7341E1881D0C500F98B67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 		063249491861EFD100CB60BE /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				06B1DCFB188AC402000004B8 /* AEFClient+Login.h */,
+				06B1DCFC188AC402000004B8 /* AEFClient+Login.m */,
 				063248CF1860E4D900CB60BE /* AEFClient.h */,
 				063248D01860E4D900CB60BE /* AEFClient.m */,
 				CF90CD6118870FCE00255F04 /* AEFClient_Private.h */,
@@ -889,6 +894,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B1DCFD188AC402000004B8 /* AEFClient+Login.m in Sources */,
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
