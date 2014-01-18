@@ -8,7 +8,7 @@
 
 #import <Kiwi/Kiwi.h>
 #import "PLCrashReport+Issue.h"
-
+#import <OctoKit/OctoKit.h>
 
 SPEC_BEGIN(PLCrashReport_IssueSpec)
 
@@ -56,6 +56,17 @@ describe(@"PLCrashReport_Issue", ^{
         
         it(@"should append a closing pre tag for nicer reading", ^{
             [[[[report parameters] objectForKey:AEFIssueBodyKey] should] containString:@"</pre>"];
+        });
+    });
+    
+    context(@"when matching issues", ^{
+       
+        it(@"should match if the titles are the same'", ^{
+            [report stub:@selector(title) andReturn:@"Test Crash"];
+            OCTIssue *issue = [OCTIssue mock];
+            [issue stub:@selector(title) andReturn:@"Test Crash"];
+            
+            [[theValue([report isEqualToIssue:issue]) should] beYes];
         });
     });
     

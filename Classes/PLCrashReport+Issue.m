@@ -7,6 +7,7 @@
 //
 
 #import "PLCrashReport+Issue.h"
+#import <OctoKit/OctoKit.h>
 
 
 NSString * const AEFIssueTitleKey = @"title";
@@ -44,6 +45,14 @@ NSString * const AEFIssueBodyKey  = @"body";
     
     return humanReadable;
 
+}
+
+
+#pragma mark - Matching
+
+- (BOOL)isEqualToIssue:(OCTIssue *)issue
+{
+    return [self.title isEqualToString:issue.title];
 }
 
 @end
