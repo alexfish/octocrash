@@ -10,7 +10,7 @@
 #import "AEFClient_Private.h"
 #import <CrashReporter/CrashReporter.h>
 #import <OctoKit/OctoKit.h>
-#import "PLCrashReport+Issue.h"
+#import "PLCrashReport+Issues.h"
 
 
 SPEC_BEGIN(AEFClientSpec)

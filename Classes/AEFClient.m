@@ -15,7 +15,7 @@
 #import "AEFUser.h"
 
 // Extensions
-#import "PLCrashReport+Issue.h"
+#import "PLCrashReport+Issues.h"
 #import "AEFClient_Private.h"
 
 

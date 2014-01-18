@@ -1,5 +1,5 @@
 //
-//  PLCrashReport+Issue
+//  PLCrashReport+Issues
 //  OctoCrash
 //
 //  Created by Alex Fish on 1/14/14.
@@ -21,7 +21,7 @@ extern NSString * const AEFIssueBodyKey;
  functionality to handle the repoting of PLCrashReport objects
  as github issues
  */
-@interface PLCrashReport (Issue)
+@interface PLCrashReport (Issues)
 
 /**
  The crash report represented as a dictionary of paramaters,

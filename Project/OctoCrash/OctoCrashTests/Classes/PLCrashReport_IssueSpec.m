@@ -7,7 +7,7 @@
 //
 
 #import <Kiwi/Kiwi.h>
-#import "PLCrashReport+Issue.h"
+#import "PLCrashReport+Issues.h"
 #import <OctoKit/OctoKit.h>
 
 SPEC_BEGIN(PLCrashReport_IssueSpec)

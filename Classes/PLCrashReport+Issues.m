@@ -1,12 +1,12 @@
 //
-//  PLCrashReport+Issue.m
+//  PLCrashReport+Issues.m
 //  OctoCrash
 //
 //  Created by Alex Fish on 1/14/14.
 //  Copyright (c) 2014 alexefish. All rights reserved.
 //
 
-#import "PLCrashReport+Issue.h"
+#import "PLCrashReport+Issues.h"
 #import <OctoKit/OctoKit.h>
 
 
@@ -14,7 +14,7 @@ NSString * const AEFIssueTitleKey = @"title";
 NSString * const AEFIssueBodyKey  = @"body";
 
 
-@implementation PLCrashReport (AEFIssue)
+@implementation PLCrashReport (Issues)
 
 
 #pragma mark - Paramaters
