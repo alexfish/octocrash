@@ -116,13 +116,17 @@
         typeof (self) __strong strongSelf = weakSelf;
         if (!strongSelf) return;
         
-        [strongSelf.client sendReport:report client:client completion:^(BOOL sent) {
-            if (sent)
-            {
-                [strongSelf.collector purge];
-            }
+        [strongSelf.client sendReport:report client:client completed:^{
+            [strongSelf reportSent];
+        } error:^(NSError *error) {
+            
         }];
     }];
+}
+
+- (void)reportSent
+{
+    [self.collector purge];
 }
 
 @end

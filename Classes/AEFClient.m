@@ -54,12 +54,21 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 - (void)sendReport:(PLCrashReport *)report
             client:(OCTClient *)client
-        completion:(void (^)(BOOL sent))completion
+         completed:(void (^)(void))completedBlock
+             error:(void (^)(NSError *error))errorBlock
 {
     if (client.authenticated)
     {
-        [self sendRequestWithClient:client report:report completion:completion];
+        [self sendRequestWithClient:client report:report completed:completedBlock error:errorBlock];
     }
+}
+
+- (void)getReport:(PLCrashReport *)report
+           client:(OCTClient *)client
+        completed:(void (^)(NSInteger reportID))completed
+            error:(void (^)(NSError *error))error
+{
+    completed(AEFReportNotFound);
 }
 
 
@@ -67,7 +76,8 @@ NS_ENUM(NSInteger, AEFAlertViewType)
 
 - (void)sendRequestWithClient:(OCTClient *)client
                        report:(PLCrashReport *)report
-                   completion:(void (^)(BOOL sent))completion
+                    completed:(void (^)(void))completedBlock
+                        error:(void (^)(NSError *error))errorBlock
 {
     
     NSURLRequest *request = [client requestWithMethod:@"POST"
@@ -79,9 +89,9 @@ NS_ENUM(NSInteger, AEFAlertViewType)
     [signal subscribeNext:^(id x) {
         // Do nothing
     } error:^(NSError *error) {
-        completion(NO);
+        errorBlock(error);
     } completed:^{
-        completion(YES);
+        completedBlock();
     }];
 }
 

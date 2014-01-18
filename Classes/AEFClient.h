@@ -41,11 +41,14 @@
  *
  *  @param report     The crash report to send to Github
  *  @param client     An authenticated client instance 
- *  @param completion A completion block called on success or failure
+ *  @param completed  A completion block called on success
+ *  @param error      An error block called on failure containing the error
  */
 - (void)sendReport:(PLCrashReport *)report
             client:(OCTClient *)client
-        completion:(void (^)(BOOL sent))completion;
+         completed:(void (^)(void))completedBlock
+             error:(void (^)(NSError *error))errorBlock;
+
 
 
 /**
