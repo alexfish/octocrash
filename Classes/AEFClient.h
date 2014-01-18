@@ -46,7 +46,7 @@
  */
 - (void)sendReport:(PLCrashReport *)report
             client:(OCTClient *)client
-         completed:(void (^)(void))completedBlock
+         completed:(void (^)(id response))completedBlock
              error:(void (^)(NSError *error))errorBlock;
 
 /**

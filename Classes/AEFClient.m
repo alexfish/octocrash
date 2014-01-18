@@ -49,15 +49,17 @@
 
 - (void)sendReport:(PLCrashReport *)report
             client:(OCTClient *)client
-         completed:(void (^)(void))completedBlock
+         completed:(void (^)(id response))completedBlock
              error:(void (^)(NSError *error))errorBlock
 {
     if (client.authenticated)
     {
-        [self sendRequestWithClient:client
-                             report:report
-                          completed:completedBlock
-                              error:errorBlock];
+        [self requestWithClient:client
+                           path:[self issuesPath]
+                         method:@"POST"
+                     parameters:report.parameters
+                      completed:completedBlock
+                          error:errorBlock];
     }
     else
     {
@@ -76,11 +78,12 @@
     if (client.authenticated)
     {
         __weak typeof(self) weakSelf = self;
-        [self getRequestWithClient:client completed:^(NSArray *issues) {
+        [self requestWithClient:client path:[self issuesPath] method:@"GET" parameters:nil completed:^(id response) {
+            
             typeof (self) __strong strongSelf = weakSelf;
             if (!strongSelf) return;
             
-            NSURL *URL = [issues reportURL:report];
+            NSURL *URL = [response reportURL:report];
             
             if (URL)
             {
@@ -96,12 +99,7 @@
                     errorBlock([NSError errorWithCode:AEFErrorCodeNotFound]);
                 }
             }
-        } error:^(NSError *error) {
-            if (errorBlock)
-            {
-                errorBlock(error);
-            }
-        }];
+        } error:errorBlock];
     }
     else
     {
@@ -112,65 +110,37 @@
     }
 }
 
-- (NSURL *)matchedURLForReport:(PLCrashReport *)report inArray:(NSArray *)array
+- (void)updateReport:(PLCrashReport *)report
+                path:(NSURL *)path
+              client:(OCTClient *)client
+           completed:(void (^)())completedBlock
+               error:(void (^)(NSError *))errorBlock
 {
-    NSURL *URL = nil;
     
-    for (OCTResponse *response in array)
-    {
-        OCTIssue *issue = response.parsedResult;
-        if ([report isEqualToIssue:issue])
-        {
-            URL = issue.HTMLURL;
-            break;
-        }
-    }
-    
-    return URL;
 }
 
 
 #pragma mark - Request (Private)
 
-- (void)sendRequestWithClient:(OCTClient *)client
-                       report:(PLCrashReport *)report
-                    completed:(void (^)(void))completedBlock
-                        error:(void (^)(NSError *error))errorBlock
-{
-    
-    NSURLRequest *request = [client requestWithMethod:@"POST"
-                                                 path:[self issuesPath]
-                                           parameters:report.parameters
-                                      notMatchingEtag:nil];
-    
-    RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
-    [[signal collect] subscribeNext:^(id x) {
-        if (completedBlock)
-        {
-            completedBlock();
-        }
-    } error:^(NSError *error) {
-        if (errorBlock)
-        {
-            errorBlock(error);
-        }
-    }];
-}
 
-- (void)getRequestWithClient:(OCTClient *)client
-                   completed:(void (^)(NSArray *issues))completedBlock
-                       error:(void (^)(NSError *error))errorBlock
+- (void)requestWithClient:(OCTClient *)client
+                     path:(NSString *)path
+                   method:(NSString *)method
+               parameters:(NSDictionary *)paramaters
+                completed:(void (^)(id response))completedBlock
+                    error:(void (^)(NSError *error))errorBlock
 {
-    NSURLRequest *request = [client requestWithMethod:@"GET"
-                                                 path:[self issuesPath]
-                                           parameters:nil
+    
+    NSURLRequest *request = [client requestWithMethod:method
+                                                 path:path
+                                           parameters:paramaters
                                       notMatchingEtag:nil];
     
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
-    [[signal collect] subscribeNext:^(NSArray *issues) {
+    [[signal collect] subscribeNext:^(id response) {
         if (completedBlock)
         {
-            completedBlock(issues);
+            completedBlock(response);
         }
     } error:^(NSError *error) {
         if (errorBlock)

@@ -61,7 +61,7 @@ describe(@"AEFClient", ^{
             PLCrashReport *report = [PLCrashReport mock];
             [report stub:@selector(parameters)];
             
-            [[client should] receive:@selector(sendRequestWithClient:report:completed:error:)];
+            [[client should] receive:@selector(requestWithClient:path:method:parameters:completed:error:)];
             [client sendReport:report client:mockClient completed:nil error:nil];
         });
         
@@ -80,7 +80,7 @@ describe(@"AEFClient", ^{
             [report stub:@selector(title)];
             
             mockClient = [OCTClient mock];
-            [client stub:@selector(getRequestWithClient:completed:error:)];
+            [client stub:@selector(requestWithClient:path:method:parameters:completed:error:)];
             
             fakeURL = [NSURL URLWithString:@"testURL"];
             
@@ -90,7 +90,7 @@ describe(@"AEFClient", ^{
             [mockIssue stub:@selector(title)];
             [mockResponse stub:@selector(parsedResult) andReturn:mockIssue];
             
-            completeSpy = [client captureArgument:@selector(getRequestWithClient:completed:error:) atIndex:1];
+            completeSpy = [client captureArgument:@selector(requestWithClient:path:method:parameters:completed:error:) atIndex:4];
         });
         
         it(@"should get a report url if it exists'", ^{

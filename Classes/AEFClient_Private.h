@@ -30,33 +30,22 @@
 @property (nonatomic, copy) void (^authenticated)(OCTClient *client);
 
 /**
- *  Send a crash report request to Github via an OCTClient instance,
- *  the OCTClient should be authenticated.
+ *  Send a request to Github via an authentivated OCTIstance.
  *
- *  @param client           An authenticaed OCTClient instance, this method will fail
- *                          if the client isn't previously authenticated.
- *  @param report           The crash report to send
- *  @param completedBlock   A completion block called on successful issue creation
- *  @param errorBlock       An error block called on failure, contains the error
+ *  @param client         An authenticaed OCTClient instance, this method will fail
+ *                        if the client isn't previously authenticated.
+ *  @param path           The path to request relative to the base API URL
+ *  @param method         The HTTP method to use
+ *  @param paramaters     A dictionary of paramaters to send with the request
+ *  @param completedBlock A completion block containing the response
+ *  @param errorBlock     A completion block containing any errors
  */
-- (void)sendRequestWithClient:(OCTClient *)client
-                       report:(PLCrashReport *)report
-                    completed:(void (^)(void))completedBlock
-                        error:(void (^)(NSError *error))errorBlock;
-
-/**
- *  Get an array of issue from Github via an OCTCLient istance, 
- *  the OCTClient instance should be authenticated
- *
- *  @param client         An authenticated OCTClient instance
- *  @param completedBlock A block called on completion containing an
- *                        array of github issues
- *  @param errorBlock     An error block called on failure containing 
- *                        error
- */
-- (void)getRequestWithClient:(OCTClient *)client
-                   completed:(void (^)(NSArray *issues))completedBlock
-                       error:(void (^)(NSError *error))errorBlock;
+- (void)requestWithClient:(OCTClient *)client
+                     path:(NSString *)path
+                   method:(NSString *)method
+               parameters:(NSDictionary *)paramaters
+                completed:(void (^)(id response))completedBlock
+                    error:(void (^)(NSError *error))errorBlock;
 
 /**
  *  Authenticate with a login, password and one time password, it is possible to pass
