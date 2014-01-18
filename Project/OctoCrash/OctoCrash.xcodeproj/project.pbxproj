@@ -564,7 +564,7 @@
 		06B1DC181889D270000004B8 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
-				06B1DC191889D288000004B8 /* Strings.h */,
+				06B1DC191889D288000004B8 /* AEFStrings.h */,
 			);
 			name = Strings;
 			sourceTree = "<group>";
