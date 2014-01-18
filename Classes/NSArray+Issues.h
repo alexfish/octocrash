@@ -20,7 +20,7 @@
 
 /**
  *  Search an array for a crash report's URL, the array should contain
- *  OCTIssue objects for the best chance of finding a valid URL
+ *  OCTResponse objects for the best chance of finding a valid URL
  *
  *  @param report A crash report object to check the array for
  *

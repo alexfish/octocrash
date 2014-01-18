@@ -44,7 +44,6 @@ NSString * const AEFIssueBodyKey  = @"body";
     humanReadable = [NSString stringWithFormat:@"<pre>%@</pre>", humanReadable];
     
     return humanReadable;
-
 }
 
 
@@ -52,7 +51,14 @@ NSString * const AEFIssueBodyKey  = @"body";
 
 - (BOOL)isEqualToIssue:(OCTIssue *)issue
 {
-    return [self.title isEqualToString:issue.title];
+    BOOL isEqual = NO;
+    
+    if ([issue isKindOfClass:[OCTIssue class]])
+    {
+        isEqual = [self.title isEqualToString:issue.title];
+    }
+    
+    return isEqual;
 }
 
 @end

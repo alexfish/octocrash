@@ -24,13 +24,17 @@
 {
     NSURL *url = nil;
     
-    for (OCTIssue *issue in self)
+    for (OCTResponse *response in self)
     {
-        if ([issue isKindOfClass:[OCTIssue class]] &&
-            [report isEqualToIssue:issue])
+        if ([response isKindOfClass:[OCTResponse class]])
         {
-            url = issue.HTMLURL;
-            break;
+            OCTIssue *issue = response.parsedResult;
+
+            if ([report isEqualToIssue:issue])
+            {
+                url = issue.HTMLURL;
+                break;
+            }
         }
     }
     

@@ -23,8 +23,11 @@ describe(@"NSArray_Issues", ^{
         
         beforeEach(^{
             OCTIssue *issue = [[OCTIssue alloc] init];
+            OCTResponse *response = [OCTResponse mock];
+            [response stub:@selector(parsedResult) andReturn:issue];
+            
             [issue stub:@selector(HTMLURL) andReturn:[NSURL URLWithString:@"testURL"]];
-            array = @[issue];
+            array = @[response];
             
             report = [[PLCrashReport alloc] init];
         });

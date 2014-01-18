@@ -73,18 +73,22 @@ describe(@"AEFClient", ^{
         __block OCTClient *mockClient;
         __block KWCaptureSpy *completeSpy;
         __block NSURL *fakeURL;
-        __block OCTIssue *mockIssue;
+        __block OCTResponse *mockResponse;
         
         beforeEach(^{
             report = [PLCrashReport mock];
+            [report stub:@selector(title)];
+            
             mockClient = [OCTClient mock];
             [client stub:@selector(getRequestWithClient:completed:error:)];
             
             fakeURL = [NSURL URLWithString:@"testURL"];
             
-            mockIssue = [OCTIssue mock];
+            mockResponse = [OCTResponse mock];
+            OCTIssue *mockIssue = [OCTIssue mock];
             [mockIssue stub:@selector(HTMLURL) andReturn:fakeURL];
             [mockIssue stub:@selector(title)];
+            [mockResponse stub:@selector(parsedResult) andReturn:mockIssue];
             
             completeSpy = [client captureArgument:@selector(getRequestWithClient:completed:error:) atIndex:1];
         });
@@ -97,12 +101,8 @@ describe(@"AEFClient", ^{
                 [[reportURL should] equal:fakeURL];
             } error:nil];
             
-            OCTIssue *issue = [OCTIssue mock];
-            [issue stub:@selector(HTMLURL) andReturn:fakeURL];
-            [issue stub:@selector(title)];
-            
             void *(^complete)(NSArray *issues) = completeSpy.argument;
-            complete(@[mockIssue]);
+            complete(@[mockResponse]);
         });
         
         it(@"should not get a report id if not authenticated", ^{
@@ -123,7 +123,7 @@ describe(@"AEFClient", ^{
             }];
             
             void *(^complete)(NSArray *issues) = completeSpy.argument;
-            complete(@[mockIssue]);
+            complete(@[mockResponse]);
         });
     });
     
