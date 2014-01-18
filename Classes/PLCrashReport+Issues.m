@@ -27,6 +27,13 @@ NSString * const AEFIssueBodyKey  = @"body";
     return @{AEFIssueTitleKey: title, AEFIssueBodyKey: body};
 }
 
+- (NSDictionary *)commentParameters
+{
+    NSString *body = @"This happened again";
+    
+    return @{AEFIssueBodyKey: body};
+}
+
 
 #pragma mark - Paramaters (Private)
 

@@ -30,6 +30,12 @@ extern NSString * const AEFIssueBodyKey;
 @property (nonatomic, copy, readonly) NSDictionary *parameters;
 
 /**
+ *  The crash report represented as a dictionary of paramters for a comment,
+ *  this is useful for sending requests that need less information
+ */
+@property (nonatomic, copy, readonly) NSDictionary *commentParameters;
+
+/**
  *  The crash reports user friendly title, contains the excaption name and reason.
  */
 @property (nonatomic, copy, readonly) NSString *title;

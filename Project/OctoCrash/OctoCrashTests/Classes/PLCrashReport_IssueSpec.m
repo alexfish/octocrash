@@ -59,6 +59,13 @@ describe(@"PLCrashReport_Issue", ^{
         });
     });
     
+    context(@"when returning comment paramaters", ^{
+        
+        it(@"should contain a body", ^{
+            [[[[report commentParameters] objectForKey:AEFIssueBodyKey] should] beNonNil];
+        });
+    });
+    
     context(@"when matching issues", ^{
        
         it(@"should match if the titles are the same'", ^{

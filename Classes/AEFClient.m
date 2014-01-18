@@ -47,10 +47,10 @@
 
 #pragma mark - Reports
 
-- (void)sendReport:(PLCrashReport *)report
-            client:(OCTClient *)client
-         completed:(void (^)(id response))completedBlock
-             error:(void (^)(NSError *error))errorBlock
+- (void)createReport:(PLCrashReport *)report
+              client:(OCTClient *)client
+           completed:(void (^)(id response))completedBlock
+               error:(void (^)(NSError *error))errorBlock
 {
     if (client.authenticated)
     {
@@ -111,12 +111,28 @@
 }
 
 - (void)updateReport:(PLCrashReport *)report
-                path:(NSURL *)path
+                path:(NSString *)path
               client:(OCTClient *)client
            completed:(void (^)())completedBlock
                error:(void (^)(NSError *))errorBlock
 {
     
+    if (client.authenticated)
+    {
+        [self requestWithClient:client
+                           path:[self commentsPathWithReportPath:path]
+                         method:@"POST"
+                     parameters:report.commentParameters
+                      completed:completedBlock
+                          error:errorBlock];
+    }
+    else
+    {
+        if (errorBlock)
+        {
+            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+        }
+    }
 }
 
 
@@ -153,6 +169,14 @@
 - (NSString *)issuesPath
 {
     return [NSString stringWithFormat:@"repos/%@/issues", self.repo];
+}
+
+- (NSString *)commentsPathWithReportPath:(NSString *)reportPath
+{
+    NSString *apiPath = [reportPath stringByReplacingOccurrencesOfString:kAEFGithubBaseURL withString:@"repos/"];
+    apiPath = [apiPath stringByAppendingString:@"/comments"];
+    
+    return apiPath;
 }
 
 

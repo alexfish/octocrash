@@ -12,6 +12,9 @@
 @class OCTClient;
 
 
+static NSString * const kAEFGithubBaseURL = @"https://github.com/";
+
+
 /**
  *  AEFClient's private method declarations, shhh.
  */
@@ -67,5 +70,23 @@
  *  @param error The error to handle gracefully
  */
 - (void)handleError:(NSError *)error;
+
+/**
+ *  The API path for Github issues
+ *
+ *  @return The API path ready to use with OCTClient requests for issues
+ */
+- (NSString *)issuesPath;
+
+/**
+ *  Convert a report's URL to a Github API ready comments path, this will use elements
+ *  of the reports existing path to generate an API URL for adding comments to the report
+ *
+ *  @param reportPath The report full github path to a github issue
+ *  to generate a comments path with
+ *
+ *  @return A path for comments based on the report path.
+ */
+- (NSString *)commentsPathWithReportPath:(NSString *)reportPath;
 
 @end

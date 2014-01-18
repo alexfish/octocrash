@@ -62,7 +62,7 @@ describe(@"AEFClient", ^{
             [report stub:@selector(parameters)];
             
             [[client should] receive:@selector(requestWithClient:path:method:parameters:completed:error:)];
-            [client sendReport:report client:mockClient completed:nil error:nil];
+            [client createReport:report client:mockClient completed:nil error:nil];
         });
         
     });
@@ -127,6 +127,36 @@ describe(@"AEFClient", ^{
         });
     });
     
+    context(@"when updating reports", ^{
+       
+        __block PLCrashReport *report;
+        __block OCTClient *mockClient;
+        
+        beforeEach(^{
+            report = [PLCrashReport mock];
+            [report stub:@selector(commentParameters)];
+            
+            mockClient = [OCTClient mock];
+            [client stub:@selector(requestWithClient:path:method:parameters:completed:error:)];
+        });
+        
+        it(@"should send the update to the correct URL", ^{
+            [mockClient stub:@selector(isAuthenticated) andReturn:theValue(YES)];
+            NSString *path = @"https://github.com/alexfish/octocrash/issues/1";
+            
+            [[client should] receive:@selector(requestWithClient:path:method:parameters:completed:error:) withArguments:any(), @"repos/alexfish/octocrash/issues/1/comments", any(), any(), any(), any()];
+            
+            [client updateReport:report path:path client:mockClient completed:nil error:nil];
+        });
+        
+        it(@"should not update a report if not authenticated", ^{
+            [mockClient stub:@selector(isAuthenticated) andReturn:theValue(NO)];
+            
+            [client updateReport:report path:@"" client:mockClient completed:nil error:^(NSError *error) {
+                [[theValue(error.code) should] equal:theValue(AEFErrorCodeAuthFailed)];
+            }];
+        });
+    });
 });
 
 SPEC_END

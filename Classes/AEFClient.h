@@ -44,10 +44,10 @@
  *  @param completed  A completion block called on success
  *  @param error      An error block called on failure containing the error
  */
-- (void)sendReport:(PLCrashReport *)report
-            client:(OCTClient *)client
-         completed:(void (^)(id response))completedBlock
-             error:(void (^)(NSError *error))errorBlock;
+- (void)createReport:(PLCrashReport *)report
+              client:(OCTClient *)client
+           completed:(void (^)(id response))completedBlock
+               error:(void (^)(NSError *error))errorBlock;
 
 /**
  *  Get an existing report from Github, this method is used to query Github
@@ -64,6 +64,22 @@
         completed:(void (^)(NSURL *reportURL))completedBlock
             error:(void (^)(NSError *error))errorBlock;
 
+/**
+ *  Update a report with an existing issue at a given path, this can be useful if a crash already
+ *  exists so that a duplicate issue is not created.
+ *
+ *  @param report         The crash report to update
+ *  @param path           The full Github URL path of the report to update,
+ *                        e.g: https://github.com/alexfish/octocrash/issues/1
+ *  @param client         An authenticated client instance
+ *  @param completedBlock A completion block called on success
+ *  @param errorBlock     An error block called when something goes wrong, contains the error
+ */
+- (void)updateReport:(PLCrashReport *)report
+                path:(NSString *)path
+              client:(OCTClient *)client
+           completed:(void (^)())completedBlock
+               error:(void (^)(NSError *error))errorBlock;
 
 /**
  *  Authenticate with the Github API, this method will also check the user cache for
