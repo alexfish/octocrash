@@ -20,8 +20,12 @@ describe(@"NSError_AEFErrors", ^{
             [[[[[NSError errorWithCode:0] userInfo] objectForKey:NSLocalizedDescriptionKey] should] equal:AEFLocalizedString(@"ERROR_DESCRIPTION_GENERIC", nil)];
         });
         
-        it(@"Should return a not found error by default", ^{
+        it(@"Should return a not found error", ^{
             [[[[[NSError errorWithCode:AEFErrorCodeNotFound] userInfo] objectForKey:NSLocalizedDescriptionKey] should] equal:AEFLocalizedString(@"ERROR_DESCRIPTION_NOT_FOUND", nil)];
+        });
+        
+        it(@"should return an auth error", ^{
+            [[[[[NSError errorWithCode:AEFErrorCodeAuthFailed] userInfo] objectForKey:NSLocalizedDescriptionKey] should] equal:AEFLocalizedString(@"ERROR_DESCRIPTION_AUTH", nil)];
         });
     });
 });

@@ -14,8 +14,12 @@
  */
 NS_ENUM(NSInteger, AEFErrorCode)
 {
-    /** A generic error code when something is not found */
-    AEFErrorCodeNotFound = 800,
+    /** A generic error code when something goes wrong */
+    AEFErrorCodeGeneric = 800,
+    /** An error code when auth fails */
+    AEFErrorCodeAuthFailed = 801,
+    /** An error code when something is not found */
+    AEFErrorCodeNotFound = 802,
 };
 
 /**

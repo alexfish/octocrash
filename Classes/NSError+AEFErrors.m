@@ -22,6 +22,9 @@
         case AEFErrorCodeNotFound:
             error = [NSError notFoundError];
             break;
+        case AEFErrorCodeAuthFailed:
+            error = [NSError authError];
+            break;
         default:
             error = [NSError genericError];
             break;
@@ -42,6 +45,16 @@
 	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeNotFound userInfo:userInfo];
 }
 
++ (NSError *)authError
+{
+	NSDictionary *userInfo = @{
+                               NSLocalizedDescriptionKey: AEFLocalizedString(@"ERROR_DESCRIPTION_AUTH", @""),
+                               NSLocalizedFailureReasonErrorKey: AEFLocalizedString(@"ERROR_REASON_AUTH", nil),
+                               };
+    
+	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeAuthFailed userInfo:userInfo];
+}
+
 + (NSError *)genericError
 {
 	NSDictionary *userInfo = @{
@@ -49,7 +62,7 @@
                                NSLocalizedFailureReasonErrorKey: AEFLocalizedString(@"ERROR_REASON_GENERIC", nil),
                                };
     
-	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeNotFound userInfo:userInfo];
+	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeGeneric userInfo:userInfo];
 }
 
 @end

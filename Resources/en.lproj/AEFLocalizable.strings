@@ -20,4 +20,6 @@
 "ERROR_DESCRIPTION_GENERIC"     = "Error";
 "ERROR_REASON_GENERIC"          = "Something went wrong, nothing to see here..";
 "ERROR_DESCRIPTION_NOT_FOUND"   = "Not Found";
-"ERROR_REASON_NOT_FOUND"        = "Couldn't find what you were looking for."
+"ERROR_REASON_NOT_FOUND"        = "Couldn't find what you were looking for.";
+"ERROR_DESCRIPTION_AUTH"        = "Authenticaton failed";
+"ERROR_REASON_AUTH"             = "Failed to authenticate";
