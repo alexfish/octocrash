@@ -29,7 +29,7 @@ NSString * const AEFIssueBodyKey  = @"body";
 
 - (NSDictionary *)commentParameters
 {
-    NSString *body = @"This happened again";
+    NSString *body = [NSString stringWithFormat:AEFLocalizedString(@"CRASH_COMMENT_BODY", nil), [self title]];
     
     return @{AEFIssueBodyKey: body};
 }

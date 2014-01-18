@@ -6,6 +6,8 @@
   Copyright (c) 2014 alexefish. All rights reserved.
 */
 
+// Login
+
 "LOGIN_ALERT_TITLE"             = "Github";
 "LOGIN_ALERT_MESSAGE"           = "Login to automatically create Github issues from crashes.";
 "LOGIN_ALERT_BUTTON_TITLE"      = "Login";
@@ -23,3 +25,7 @@
 "ERROR_REASON_NOT_FOUND"        = "Couldn't find what you were looking for.";
 "ERROR_DESCRIPTION_AUTH"        = "Authenticaton failed";
 "ERROR_REASON_AUTH"             = "Failed to authenticate";
+
+// Crashes
+
+"CRASH_COMMENT_BODY"            = "Duplicate crash occurred: **%@** \n\n`via octocrash`";
