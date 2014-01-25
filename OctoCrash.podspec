@@ -15,15 +15,17 @@ Pod::Spec.new do |s|
   s.homepage      = "https://github.com/alexfish/octocrash"
   s.license       = 'MIT'
   s.author        = { "Alex Fish" => "alex@alexefish.com" }
-  s.source       = { :git => "git@github.com:alexfish/octocrash.git", :tag => s.version.to_s }
+  s.source        = { :git => "git@github.com:alexfish/octocrash.git", :tag => s.version.to_s }
 
   s.platform      = :ios, '6.0'
   s.requires_arc  = true
 
   s.source_files  = 'Classes'
   s.resources     = 'Resources'
+  s.dependency    'SSKeychain', '~> 1.2.1'
+  s.dependency    'ReactiveCocoa', '>= 2.2.2'
+  s.dependency    'OctoKit', '~> 0.4'
 
-  s.dependency   "OctoKit", "~> 0.4"
   s.frameworks = 'SystemConfiguration', 'MobileCoreServices'
   s.vendored_frameworks = 'Vendor/CrashReporter.framework'
 end
