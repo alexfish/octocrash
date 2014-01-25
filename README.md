@@ -2,9 +2,9 @@
 
 [![Build Status](https://api.travis-ci.org/alexfish/octocrash.png?branch=master,develop)](https://travis-ci.org/alexfish/octocrash)
 
-Automatically create Github issues from crashes. 
+A Github issue crash reporter for iOS.
 
-OctoCrash is designed for use within your team during development, distrubute in house builds with OctoCrash enabled to capture all crashes as GitHub issues, ship to the App Store with OctoCrash at your own peril **(don't do it)**.
+OctoCrash is designed for use within your team during development, distribute in house builds with OctoCrash enabled to capture all crashes as GitHub issues, ship to the App Store with OctoCrash at your own peril **(don't do it)**.
 
 ## Dependencies
 
@@ -30,11 +30,11 @@ Start capturing crashes
 
     [[AEFCrashReporter sharedReporter] startReporting];
 
-It is not recommened to ship to the App Store with OctoCrash, to be extra safe wrap OctoCrash setup in `#ifdef INHOUSE` or whatever suits your project. 
+It is not recommended to ship to the App Store with OctoCrash, to be extra safe wrap OctoCrash setup in `#ifdef INHOUSE` or whatever suits your project. 
 
 ## Installation
 
-1. Add the reporistory as a subomdule of your application's repository.
+1. Add the repository as a submodule of your application's repository.
 2. Run `bootstrap/script` from within the OctoCrash folder.
 3. Drag and drop `OctoCrash.xcproj` into your application's project file or workspace.
 4. Add `libOctoCrash.a`, `libISO8601DateFormatter.a` and `CrashReporter.framework` to your application's `Link Binary With Libraries` build phase. 
