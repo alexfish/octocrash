@@ -36,11 +36,11 @@ It is not recommened to ship to the App Store with OctoCrash, to be extra safe w
 
 1. Add the reporistory as a subomdule of your application's repository.
 2. Run `bootstrap/script` from within the OctoCrash folder.
-3. Drag and drop `OctoCrash.xcproj` into your application\s project file or workspace.
+3. Drag and drop `OctoCrash.xcproj` into your application's project file or workspace.
 4. Add `libOctoCrash.a`, `libISO8601DateFormatter.a` and `CrashReporter.framework` to your application's `Link Binary With Libraries` build phase. 
 5. Add `AEFLocalizable.strings` to your application's `Copy Bundle Resources` build phase.
 
-Due to some dependency issues OctoCrash is not currently available through Cocoapods, check the `feature/cocoapods` branch for current status.
+Due to some dependency issues OctoCrash is not currently available through Cocoapods, check the `feature/cocoapods` branch for the podspec.
 
 ## Author
 
