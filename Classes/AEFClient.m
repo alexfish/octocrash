@@ -188,7 +188,7 @@
     if (cachedUser)
     {
         // Use the cached user token to autenticate
-        OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
+        OCTUser *user = [OCTUser userWithRawLogin:cachedUser.login server:OCTServer.dotComServer];
         OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
         
         if (completedBlock)
@@ -210,8 +210,8 @@
                  password:(NSString *)password
           oneTimePassword:(NSString *)oneTimePassword
 {
-    OCTUser *user = [OCTUser userWithLogin:login
-                                    server:OCTServer.dotComServer];
+    OCTUser *user = [OCTUser userWithRawLogin:login
+                                       server:OCTServer.dotComServer];
     
     __weak typeof(self) weakSelf = self;
     [[OCTClient signInAsUser:user

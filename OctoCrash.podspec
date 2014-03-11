@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.resources     = 'Resources'
   s.dependency    'SSKeychain', '~> 1.2.1'
   s.dependency    'ReactiveCocoa', '>= 2.2.2'
-  s.dependency    'OctoKit', '~> 0.4'
+  s.dependency    'OctoKit', '~> 0.5'
 
   s.frameworks = 'SystemConfiguration', 'MobileCoreServices'
   s.vendored_frameworks = 'Vendor/CrashReporter.framework'
