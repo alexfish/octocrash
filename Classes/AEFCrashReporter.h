@@ -34,9 +34,9 @@
  @param clientID The Github OAuth application client ID
  @param clientSecret The Github OAuth application client secret
  */
-- (void)configureRepo:(NSString *)repo
-             clientID:(NSString *)clientID
-         clientSecret:(NSString *)clientSecret;
+- (void)setRepo:(NSString *)repo
+       clientID:(NSString *)clientID
+   clientSecret:(NSString *)clientSecret;
 
 /**
  Starts the crash reporter sending any pending crash reports

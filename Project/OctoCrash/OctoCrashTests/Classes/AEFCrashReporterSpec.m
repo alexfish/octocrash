@@ -41,7 +41,7 @@ describe(@"AEFCrashReporter", ^{
     context(@"when configuring", ^{
         
         beforeEach(^{
-            [reporter configureRepo:@"repo" clientID:@"id" clientSecret:@"secret"];
+            [reporter setRepo:@"repo" clientID:@"id" clientSecret:@"secret"];
         });
         
         it(@"should set a repo", ^{

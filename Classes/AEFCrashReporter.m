@@ -69,9 +69,9 @@
 
 #pragma mark - Configuration
 
-- (void)configureRepo:(NSString *)repo
-             clientID:(NSString *)clientID
-         clientSecret:(NSString *)clientSecret
+- (void)setRepo:(NSString *)repo
+       clientID:(NSString *)clientID
+   clientSecret:(NSString *)clientSecret
 {
     self.repo = repo;
     self.clientID = clientID;
