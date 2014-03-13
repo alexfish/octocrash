@@ -36,6 +36,10 @@ describe(@"AEFCrashReporter", ^{
         it(@"should have a client secret", ^{
             [[reporter should] respondToSelector:@selector(clientSecret)];
         });
+        
+        it(@"should have labels", ^{
+            [[reporter should] respondToSelector:@selector(labels)];
+        });
     });
     
     context(@"when configuring", ^{

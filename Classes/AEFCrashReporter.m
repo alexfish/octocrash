@@ -32,9 +32,10 @@
 /**
  Protocol properties
  */
-@property (nonatomic, copy) NSString *repo;
-@property (nonatomic, copy) NSString *clientID;
-@property (nonatomic, copy) NSString *clientSecret;
+@property (nonatomic, copy) NSString    *repo;
+@property (nonatomic, copy) NSString    *clientID;
+@property (nonatomic, copy) NSString    *clientSecret;
+@property (nonatomic, copy) NSArray     *labels;
 
 @end
 
