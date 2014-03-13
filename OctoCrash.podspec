@@ -27,5 +27,5 @@ Pod::Spec.new do |s|
   s.dependency    'OctoKit', '~> 0.5'
 
   s.frameworks = 'SystemConfiguration', 'MobileCoreServices'
-  s.vendored_frameworks = 'Vendor/CrashReporter.framework'
+  s.ios.vendored_frameworks = 'Vendor/CrashReporter.framework'
 end
