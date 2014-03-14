@@ -36,12 +36,16 @@ describe(@"AEFCrashReporter", ^{
         it(@"should have a client secret", ^{
             [[reporter should] respondToSelector:@selector(clientSecret)];
         });
+        
+        it(@"should have labels", ^{
+            [[reporter should] respondToSelector:@selector(labels)];
+        });
     });
     
     context(@"when configuring", ^{
         
         beforeEach(^{
-            [reporter configureRepo:@"repo" clientID:@"id" clientSecret:@"secret"];
+            [reporter setRepo:@"repo" clientID:@"id" clientSecret:@"secret"];
         });
         
         it(@"should set a repo", ^{

@@ -8,12 +8,12 @@
 
 // Login
 
-"LOGIN_ALERT_TITLE"             = "Github";
-"LOGIN_ALERT_MESSAGE"           = "Login to automatically create Github issues from crashes.";
+"LOGIN_ALERT_TITLE"             = "GitHub Login";
+"LOGIN_ALERT_MESSAGE"           = "Login to automatically create GitHub issues from crashes. Your password will never be saved.";
 "LOGIN_ALERT_BUTTON_TITLE"      = "Login";
-"LOGIN_OTP_TITLE"                   = "Enter your one time password";
+"LOGIN_OTP_TITLE"               = "Authentication Code";
 "LOGIN_FAILED_TITLE"            = "Login Failed";
-"LOGIN_FAILED_MESSAGE"          = "Your Github login failed, reports will be sent on next launch";
+"LOGIN_FAILED_MESSAGE"          = "Your GitHub login failed, reports will be sent on next launch";
 "LOGIN_OK_TITLE"                = "Ok";
 "LOGIN_CANCEL_TITLE"            = "Cancel";
 

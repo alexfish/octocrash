@@ -14,7 +14,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     AEFCrashReporter *reporter = [AEFCrashReporter sharedReporter];
-    [reporter configureRepo:@"user/repo" clientID:@"id" clientSecret:@"secret"];
+    [reporter setRepo:@"user/repo" clientID:@"id" clientSecret:@"secret"];
+    [reporter setLabels:@[@"bug"]];
     [reporter startReporting];
     
     // Override point for customization after application launch.

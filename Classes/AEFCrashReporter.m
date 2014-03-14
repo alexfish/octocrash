@@ -13,30 +13,10 @@
 #import "AEFClient.h"
 
 // Extensions
+#import "AEFCrashReporter_Private.h"
+#import "PLCrashReport+Issues.h"
 #import "NSError+AEFErrors.h"
-
-
-// Class Extension
-@interface AEFCrashReporter ()
-
-/**
- The collector collects crashes..
- */
-@property (nonatomic, strong) AEFCrashCollector *collector;
-
-/**
- The client sends crash reports to Github
-*/
-@property (nonatomic, strong) AEFClient *client;
-
-/**
- Protocol properties
- */
-@property (nonatomic, copy) NSString *repo;
-@property (nonatomic, copy) NSString *clientID;
-@property (nonatomic, copy) NSString *clientSecret;
-
-@end
+#import "EXTScope.h"
 
 
 @implementation AEFCrashReporter
@@ -69,9 +49,9 @@
 
 #pragma mark - Configuration
 
-- (void)configureRepo:(NSString *)repo
-             clientID:(NSString *)clientID
-         clientSecret:(NSString *)clientSecret
+- (void)setRepo:(NSString *)repo
+       clientID:(NSString *)clientID
+   clientSecret:(NSString *)clientSecret
 {
     self.repo = repo;
     self.clientID = clientID;
@@ -96,6 +76,7 @@
     
     if (pendingReport)
     {
+        [pendingReport setLabels:self.labels];
         [self sendReport:pendingReport];
     }
 }
@@ -114,22 +95,21 @@
                                          clientID:self.clientID
                                      clientSecret:self.clientSecret];
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self);
     [self.client authenticate:^(OCTClient *client) {
-        typeof (self) __strong strongSelf = weakSelf;
-        if (!strongSelf) return;
+        @strongify(self);
         
-        [strongSelf.client getReport:report client:client completed:^(NSURL *reportURL) {
+        [self.client getReport:report client:client completed:^(NSURL *reportURL) {
             
-            [strongSelf.client updateReport:report path:reportURL.absoluteString client:client completed:^{
-                [strongSelf reportSent];
+            [self.client updateReport:report path:reportURL.absoluteString client:client completed:^{
+                [self reportSent];
             } error:nil];
             
         } error:^(NSError *error) {
             if (error.code == AEFErrorCodeNotFound)
             {
-                [strongSelf.client createReport:report client:client completed:^(id response) {
-                    [strongSelf reportSent];
+                [self.client createReport:report client:client completed:^(id response) {
+                    [self reportSent];
                 } error:nil];
             }
         }];

@@ -22,15 +22,19 @@ Import OctoCrash in your application delegate
 
 Configure OctoCrash by setting the *repository name* to report issues to as well as your Github OAuth applications *client id* and *client secret* in the following format. 
 
-    [[AEFCrashReporter sharedReporter] configureRepo:@"user/repo"
-                                            clientID:@"client_id"
-                                        clientSecret:@"client_secret"];
+    [[AEFCrashReporter sharedReporter] setRepo:@"user/repo"
+                                      clientID:@"client_id"
+                                  clientSecret:@"client_secret"];
 
 Start capturing crashes
 
     [[AEFCrashReporter sharedReporter] startReporting];
 
-It is not recommended to ship to the App Store with OctoCrash, to be extra safe wrap OctoCrash setup in `#ifdef INHOUSE` or whatever suits your project. 
+### Labels
+
+As of verson 0.2.0 it is possible to apply labels to crash report issues by setting the labels property before starting reporting:
+
+    [[AEFCrashReporter sharedReporter] setLabels:@[@"bug", @"crash"]];
 
 ## Installation
 

@@ -42,6 +42,18 @@ describe(@"PLCrashReport_Issue", ^{
             [[[[report parameters] objectForKey:AEFIssueBodyKey] should] beNonNil];
         });
         
+        it(@"should contain labels", ^{
+            [report setLabels:@[@"Hello", @"World"]];
+            [[[[report parameters] objectForKey:AEFLabelsKey] should] beNonNil];
+        });
+        
+        it(@"should contain the correct label in the labels", ^{
+            NSString *label = @"Hello";
+            
+            [report setLabels:@[label]];
+            [[[[[report parameters] objectForKey:AEFLabelsKey] firstObject] should] equal:label];
+        });
+        
         it(@"should contain the crash name in the title", ^{
             [[[[report parameters] objectForKey:AEFIssueTitleKey] should] containString:crashName];
         });

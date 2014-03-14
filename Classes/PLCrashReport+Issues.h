@@ -12,8 +12,13 @@
 @class OCTIssue;
 
 
-extern NSString * const AEFIssueTitleKey;
-extern NSString * const AEFIssueBodyKey;
+/**
+ *  Dictionary keys representing the issues paramter keys
+ *  related to the GitHub API
+ */
+FOUNDATION_EXPORT NSString * const AEFIssueTitleKey; // title
+FOUNDATION_EXPORT NSString * const AEFIssueBodyKey; // body
+FOUNDATION_EXPORT NSString * const AEFLabelsKey; // labels
 
 
 /**
@@ -45,6 +50,12 @@ extern NSString * const AEFIssueBodyKey;
  *  stack trace.
  */
 @property (nonatomic, copy, readonly) NSString *body;
+
+/**
+ *  An array of labels associated to the crash report, these labels will be applied
+ *  to the GitHub issue created from the report.
+ */
+@property (nonatomic, copy) NSArray *labels;
 
 /**
  *  Returns a BOOL indicator if the OCTIssue object matches the crash report 

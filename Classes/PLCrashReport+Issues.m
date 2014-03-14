@@ -14,23 +14,30 @@
 // Models
 #import "AEFStrings.h"
 
+// Extensions
+#import "EXTSynthesize.h"
+
 
 // Strings
 NSString * const AEFIssueTitleKey = @"title";
 NSString * const AEFIssueBodyKey  = @"body";
+NSString * const AEFLabelsKey     = @"labels";
 
 
 @implementation PLCrashReport (Issues)
+
+@synthesizeAssociation(PLCrashReport, labels);
 
 
 #pragma mark - Paramaters
 
 - (NSDictionary *)parameters
 {
-    NSString *title = [self title];
-    NSString *body = [self body];
-    
-    return @{AEFIssueTitleKey: title, AEFIssueBodyKey: body};
+    NSString *title     = [self title];
+    NSString *body      = [self body];
+    NSArray *labels     = [NSArray arrayWithArray:self.labels]; // never nil
+
+    return @{AEFIssueTitleKey: title, AEFIssueBodyKey: body, AEFLabelsKey: labels};
 }
 
 - (NSDictionary *)commentParameters
