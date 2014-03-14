@@ -11,6 +11,9 @@
 // Models
 #import "AEFStrings.h"
 
+// Strings
+NSString *const kAEFErrorDomain = @"AEFError";
+
 
 @implementation NSError (AEFErrors)
 

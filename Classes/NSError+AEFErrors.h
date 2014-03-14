@@ -45,7 +45,7 @@ FOUNDATION_EXPORT NSString *AEFErrorCodeFailureReason(NSInteger errorCode);
 /**
  *  The AEFErrorDomain name
  */
-static NSString *const kAEFErrorDomain = @"AEFError";
+FOUNDATION_EXPORT NSString *const kAEFErrorDomain;
 
 
 /**
