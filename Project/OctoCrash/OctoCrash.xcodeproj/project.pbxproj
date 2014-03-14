@@ -53,6 +53,7 @@
 		0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351D185F5CA600B9A5F3 /* UIKit.framework */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
 		069DA83418D3B01C00393EEB /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 069DA83218D3B01C00393EEB /* EXTScope.m */; };
+		069DA86D18D3B5BB00393EEB /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 069DA86C18D3B5BB00393EEB /* EXTRuntimeExtensions.m */; };
 		06A8CA6818945105008474F8 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8CA67189450FE008474F8 /* CrashReporter.framework */; };
 		06B1DB7B1887352F000004B8 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06B1DC3D1889D75A000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC171889D263000004B8 /* AEFLocalizable.strings */; };
@@ -290,6 +291,9 @@
 		069DA83218D3B01C00393EEB /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = libextobj/extobjc/EXTScope.m; sourceTree = "<group>"; };
 		069DA83318D3B01C00393EEB /* EXTSynthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTSynthesize.h; path = libextobj/extobjc/EXTSynthesize.h; sourceTree = "<group>"; };
 		069DA85818D3B4CB00393EEB /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = libextobj/extobjc/metamacros.h; sourceTree = "<group>"; };
+		069DA86B18D3B5BB00393EEB /* EXTRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTRuntimeExtensions.h; path = libextobj/extobjc/EXTRuntimeExtensions.h; sourceTree = "<group>"; };
+		069DA86C18D3B5BB00393EEB /* EXTRuntimeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTRuntimeExtensions.m; path = libextobj/extobjc/EXTRuntimeExtensions.m; sourceTree = "<group>"; };
+		069DA87618D3B91F00393EEB /* AEFCrashReporter_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFCrashReporter_Private.h; sourceTree = "<group>"; };
 		06A8CA67189450FE008474F8 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		06B1DC161889D263000004B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AEFLocalizable.strings; sourceTree = "<group>"; };
 		06B1DC191889D288000004B8 /* AEFStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFStrings.h; sourceTree = "<group>"; };
@@ -468,6 +472,7 @@
 				063248D31860E73100CB60BE /* AEFCrashCollector.m */,
 				063DA71B185FB3DA00A52644 /* AEFCrashReporter.h */,
 				063DA71C185FB3DA00A52644 /* AEFCrashReporter.m */,
+				069DA87618D3B91F00393EEB /* AEFCrashReporter_Private.h */,
 				063249231861E3F800CB60BE /* AEFCrashReporting.h */,
 				CF86D737188573D9009CB8DD /* PLCrashReport+Issues.h */,
 				CF86D738188573D9009CB8DD /* PLCrashReport+Issues.m */,
@@ -569,6 +574,8 @@
 		069DA83018D3B00500393EEB /* extobjc */ = {
 			isa = PBXGroup;
 			children = (
+				069DA86B18D3B5BB00393EEB /* EXTRuntimeExtensions.h */,
+				069DA86C18D3B5BB00393EEB /* EXTRuntimeExtensions.m */,
 				069DA83118D3B01C00393EEB /* EXTScope.h */,
 				069DA83218D3B01C00393EEB /* EXTScope.m */,
 				069DA83318D3B01C00393EEB /* EXTSynthesize.h */,
@@ -936,6 +943,7 @@
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
 				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
+				069DA86D18D3B5BB00393EEB /* EXTRuntimeExtensions.m in Sources */,
 				069DA83418D3B01C00393EEB /* EXTScope.m in Sources */,
 				06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */,
 				06B1DD21188AC5B4000004B8 /* NSError+AEFErrors.m in Sources */,

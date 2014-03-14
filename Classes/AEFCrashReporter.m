@@ -13,32 +13,10 @@
 #import "AEFClient.h"
 
 // Extensions
+#import "AEFCrashReporter_Private.h"
+#import "PLCrashReport+Issues.h"
 #import "NSError+AEFErrors.h"
 #import "EXTScope.h"
-
-
-// Class Extension
-@interface AEFCrashReporter ()
-
-/**
- The collector collects crashes..
- */
-@property (nonatomic, strong) AEFCrashCollector *collector;
-
-/**
- The client sends crash reports to Github
-*/
-@property (nonatomic, strong) AEFClient *client;
-
-/**
- Protocol properties
- */
-@property (nonatomic, copy) NSString    *repo;
-@property (nonatomic, copy) NSString    *clientID;
-@property (nonatomic, copy) NSString    *clientSecret;
-@property (nonatomic, copy) NSArray     *labels;
-
-@end
 
 
 @implementation AEFCrashReporter
@@ -98,6 +76,7 @@
     
     if (pendingReport)
     {
+        [pendingReport setLabels:self.labels];
         [self sendReport:pendingReport];
     }
 }

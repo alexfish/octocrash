@@ -26,9 +26,4 @@
  */
 @property (nonatomic, copy, readonly) NSString *clientSecret;
 
-/**
- *  An array of labels to apply to any created GitHub issued
- */
-@property (nonatomic, copy, readonly) NSArray *labels;
-
 @end

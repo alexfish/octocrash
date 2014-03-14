@@ -21,6 +21,12 @@
 @interface AEFCrashReporter : NSObject <AEFCrashReporting>
 
 /**
+ *  An array of labels to attach to any crash reports, these labels
+ *  will be attached to each new GitHub issue created for a report
+ */
+@property (nonatomic, copy) NSArray *labels;
+
+/**
  Returns the default crash reporter
  @returns A Singleton instance of the crash reporter
  */

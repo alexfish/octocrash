@@ -26,7 +26,6 @@ static NSString * const kAEFGithubBaseURL = @"https://github.com/";
 @property (nonatomic, copy) NSString *repo;
 @property (nonatomic, copy) NSString *clientID;
 @property (nonatomic, copy) NSString *clientSecret;
-@property (nonatomic, copy) NSArray  *labels;
 
 /**
  Callback block fired when the client has authenticated

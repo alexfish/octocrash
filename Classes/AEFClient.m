@@ -78,11 +78,7 @@
 {
     if (client.authenticated)
     {
-        @weakify(completedBlock);
-        @weakify(errorBlock);
         [self requestWithClient:client path:[self issuesPath] method:@"GET" parameters:nil completed:^(id response) {
-            @strongify(completedBlock);
-            @strongify(errorBlock);
             
             NSURL *URL = [response reportURL:report];
             
@@ -153,19 +149,13 @@
                                            parameters:paramaters
                                       notMatchingEtag:nil];
     
-    @weakify(completedBlock);
-    @weakify(errorBlock);
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
     [[signal collect] subscribeNext:^(id response) {
-        @strongify(completedBlock);
-        
         if (completedBlock)
         {
             completedBlock(response);
         }
     } error:^(NSError *error) {
-        @strongify(errorBlock);
-        
         if (errorBlock)
         {
             errorBlock(error);
