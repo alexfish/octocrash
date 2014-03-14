@@ -24,7 +24,7 @@
  Returns the default crash reporter
  @returns A Singleton instance of the crash reporter
  */
-+ (id)sharedReporter;
++ (id)sharedReporter __attribute__((const));
 
 /**
  Configure the reporter ready for crash reporting, this method should
