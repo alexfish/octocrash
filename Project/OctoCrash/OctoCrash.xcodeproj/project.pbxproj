@@ -403,10 +403,10 @@
 		061CF5651860DDC100AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
+				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
 				061CF57A1860DDC200AA9CC4 /* libOctoKit.a */,
 				061CF57C1860DDC200AA9CC4 /* OctoKit iOS Tests.octest */,
-				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
-				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -415,8 +415,8 @@
 			isa = PBXGroup;
 			children = (
 				061CF5851860DDE600AA9CC4 /* AFNetworking.framework */,
-				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
 				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
+				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
 				061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */,
 			);
 			name = Products;
@@ -674,7 +674,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AEF;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = alexefish;
 			};
 			buildConfigurationList = 06993504185F5CA600B9A5F3 /* Build configuration list for PBXProject "OctoCrash" */;
@@ -1024,7 +1024,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1062,7 +1061,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1138,7 +1136,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1161,7 +1158,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 604D0A4BECB44755A924A7EB /* Pods-OctoCrashTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
