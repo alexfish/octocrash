@@ -52,6 +52,7 @@
 		0699351C185F5CA600B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699350C185F5CA600B9A5F3 /* Foundation.framework */; };
 		0699351E185F5CA600B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0699351D185F5CA600B9A5F3 /* UIKit.framework */; };
 		06993527185F5CA600B9A5F3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06993525185F5CA600B9A5F3 /* InfoPlist.strings */; };
+		069DA83418D3B01C00393EEB /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 069DA83218D3B01C00393EEB /* EXTScope.m */; };
 		06A8CA6818945105008474F8 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06A8CA67189450FE008474F8 /* CrashReporter.framework */; };
 		06B1DB7B1887352F000004B8 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993509185F5CA600B9A5F3 /* libOctoCrash.a */; };
 		06B1DC3D1889D75A000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC171889D263000004B8 /* AEFLocalizable.strings */; };
@@ -285,6 +286,9 @@
 		06993524185F5CA600B9A5F3 /* OctoCrashTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OctoCrashTests-Info.plist"; sourceTree = "<group>"; };
 		06993526185F5CA600B9A5F3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06993533185F5CC200B9A5F3 /* OctoCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OctoCrash.h; sourceTree = "<group>"; };
+		069DA83118D3B01C00393EEB /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = libextobj/extobjc/EXTScope.h; sourceTree = "<group>"; };
+		069DA83218D3B01C00393EEB /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = libextobj/extobjc/EXTScope.m; sourceTree = "<group>"; };
+		069DA83318D3B01C00393EEB /* EXTSynthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTSynthesize.h; path = libextobj/extobjc/EXTSynthesize.h; sourceTree = "<group>"; };
 		06A8CA67189450FE008474F8 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		06B1DC161889D263000004B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AEFLocalizable.strings; sourceTree = "<group>"; };
 		06B1DC191889D288000004B8 /* AEFStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFStrings.h; sourceTree = "<group>"; };
@@ -378,6 +382,7 @@
 		061CEE041860DCC600AA9CC4 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				069DA83018D3B00500393EEB /* extobjc */,
 				061CEE051860DCC600AA9CC4 /* OctoKit */,
 				06B7341C1881D0C500F98B67 /* SSKeychain */,
 			);
@@ -558,6 +563,16 @@
 			);
 			name = Classes;
 			path = ../../../Classes;
+			sourceTree = "<group>";
+		};
+		069DA83018D3B00500393EEB /* extobjc */ = {
+			isa = PBXGroup;
+			children = (
+				069DA83118D3B01C00393EEB /* EXTScope.h */,
+				069DA83218D3B01C00393EEB /* EXTScope.m */,
+				069DA83318D3B01C00393EEB /* EXTSynthesize.h */,
+			);
+			name = extobjc;
 			sourceTree = "<group>";
 		};
 		06A8CA66189450FD008474F8 /* Vendor */ = {
@@ -913,6 +928,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				069DA83418D3B01C00393EEB /* EXTScope.m in Sources */,
 				06B1DCFD188AC402000004B8 /* AEFClient+Login.m in Sources */,
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,

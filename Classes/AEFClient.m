@@ -16,6 +16,7 @@
 #import "NSError+AEFErrors.h"
 
 // Extensions
+#import "EXTScope.h"
 #import "PLCrashReport+Issues.h"
 #import "NSArray+Issues.h"
 #import "AEFClient+Login.h"
@@ -77,11 +78,11 @@
 {
     if (client.authenticated)
     {
-        __weak typeof(self) weakSelf = self;
+        @weakify(completedBlock);
+        @weakify(errorBlock);
         [self requestWithClient:client path:[self issuesPath] method:@"GET" parameters:nil completed:^(id response) {
-            
-            typeof (self) __strong strongSelf = weakSelf;
-            if (!strongSelf) return;
+            @strongify(completedBlock);
+            @strongify(errorBlock);
             
             NSURL *URL = [response reportURL:report];
             
@@ -152,13 +153,19 @@
                                            parameters:paramaters
                                       notMatchingEtag:nil];
     
+    @weakify(completedBlock);
+    @weakify(errorBlock);
     RACSignal *signal = [client enqueueRequest:request resultClass:[OCTIssue class]];
     [[signal collect] subscribeNext:^(id response) {
+        @strongify(completedBlock);
+        
         if (completedBlock)
         {
             completedBlock(response);
         }
     } error:^(NSError *error) {
+        @strongify(errorBlock);
+        
         if (errorBlock)
         {
             errorBlock(error);
@@ -213,29 +220,27 @@
     OCTUser *user = [OCTUser userWithLogin:login
                                     server:OCTServer.dotComServer];
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self);
     [[OCTClient signInAsUser:user
                     password:password
              oneTimePassword:oneTimePassword
                       scopes:OCTClientAuthorizationScopesRepository]
      subscribeNext:^(OCTClient *authenticatedClient) {
-         
-         AEFUser *authenticatedUser = [[AEFUser alloc] initWithLogin:login token:authenticatedClient.token];
+         @strongify(self);
+
+         AEFUser *authenticatedUser = [[AEFUser alloc] initWithLogin:login
+                                                               token:authenticatedClient.token];
          [AEFUserCache cacheUser:authenticatedUser];
          
-         typeof (self) __strong strongSelf = weakSelf;
-         if (!strongSelf) return;
-         
-         if (strongSelf.authenticated)
+         if (self.authenticated)
          {
-             strongSelf.authenticated(authenticatedClient);
-             strongSelf.authenticated = nil;
+             self.authenticated(authenticatedClient);
+             self.authenticated = nil;
          }
      } error:^(NSError *error) {
-         typeof (self) __strong strongSelf = weakSelf;
-         if (!strongSelf) return;
+         @strongify(self);
          
-         [strongSelf handleError:error];
+         [self handleError:error];
      }];
 }
 

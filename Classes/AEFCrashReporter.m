@@ -14,6 +14,7 @@
 
 // Extensions
 #import "NSError+AEFErrors.h"
+#import "EXTScope.h"
 
 
 // Class Extension
@@ -115,22 +116,21 @@
                                          clientID:self.clientID
                                      clientSecret:self.clientSecret];
     
-    __weak typeof(self) weakSelf = self;
+    @weakify(self);
     [self.client authenticate:^(OCTClient *client) {
-        typeof (self) __strong strongSelf = weakSelf;
-        if (!strongSelf) return;
+        @strongify(self);
         
-        [strongSelf.client getReport:report client:client completed:^(NSURL *reportURL) {
+        [self.client getReport:report client:client completed:^(NSURL *reportURL) {
             
-            [strongSelf.client updateReport:report path:reportURL.absoluteString client:client completed:^{
-                [strongSelf reportSent];
+            [self.client updateReport:report path:reportURL.absoluteString client:client completed:^{
+                [self reportSent];
             } error:nil];
             
         } error:^(NSError *error) {
             if (error.code == AEFErrorCodeNotFound)
             {
-                [strongSelf.client createReport:report client:client completed:^(id response) {
-                    [strongSelf reportSent];
+                [self.client createReport:report client:client completed:^(id response) {
+                    [self reportSent];
                 } error:nil];
             }
         }];
