@@ -289,6 +289,7 @@
 		069DA83118D3B01C00393EEB /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = libextobj/extobjc/EXTScope.h; sourceTree = "<group>"; };
 		069DA83218D3B01C00393EEB /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EXTScope.m; path = libextobj/extobjc/EXTScope.m; sourceTree = "<group>"; };
 		069DA83318D3B01C00393EEB /* EXTSynthesize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTSynthesize.h; path = libextobj/extobjc/EXTSynthesize.h; sourceTree = "<group>"; };
+		069DA85818D3B4CB00393EEB /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = metamacros.h; path = libextobj/extobjc/metamacros.h; sourceTree = "<group>"; };
 		06A8CA67189450FE008474F8 /* CrashReporter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CrashReporter.framework; sourceTree = "<group>"; };
 		06B1DC161889D263000004B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AEFLocalizable.strings; sourceTree = "<group>"; };
 		06B1DC191889D288000004B8 /* AEFStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEFStrings.h; sourceTree = "<group>"; };
@@ -403,10 +404,10 @@
 		061CF5651860DDC100AA9CC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
-				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
 				061CF57A1860DDC200AA9CC4 /* libOctoKit.a */,
 				061CF57C1860DDC200AA9CC4 /* OctoKit iOS Tests.octest */,
+				061CF5781860DDC200AA9CC4 /* OctoKit Mac Tests.octest */,
+				061CF5761860DDC200AA9CC4 /* OctoKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -415,8 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				061CF5851860DDE600AA9CC4 /* AFNetworking.framework */,
-				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF5891860DDE600AA9CC4 /* ISO8601DateFormatter.framework */,
+				061CF5871860DDE600AA9CC4 /* libAFNetworking.a */,
 				061CF58B1860DDE600AA9CC4 /* libISO8601DateFormatter.a */,
 			);
 			name = Products;
@@ -571,6 +572,7 @@
 				069DA83118D3B01C00393EEB /* EXTScope.h */,
 				069DA83218D3B01C00393EEB /* EXTScope.m */,
 				069DA83318D3B01C00393EEB /* EXTSynthesize.h */,
+				069DA85818D3B4CB00393EEB /* metamacros.h */,
 			);
 			name = extobjc;
 			sourceTree = "<group>";
@@ -928,13 +930,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				069DA83418D3B01C00393EEB /* EXTScope.m in Sources */,
 				06B1DCFD188AC402000004B8 /* AEFClient+Login.m in Sources */,
 				063248D11860E4D900CB60BE /* AEFClient.m in Sources */,
 				063248D41860E73100CB60BE /* AEFCrashCollector.m in Sources */,
 				063DA71D185FB3DB00A52644 /* AEFCrashReporter.m in Sources */,
 				060CF4E5187F53E400FF2793 /* AEFUser.m in Sources */,
 				06B734071881D05D00F98B67 /* AEFUserCache.m in Sources */,
+				069DA83418D3B01C00393EEB /* EXTScope.m in Sources */,
 				06B1DCEA188ABFD8000004B8 /* NSArray+Issues.m in Sources */,
 				06B1DD21188AC5B4000004B8 /* NSError+AEFErrors.m in Sources */,
 				CF86D739188573D9009CB8DD /* PLCrashReport+Issues.m in Sources */,
