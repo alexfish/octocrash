@@ -19,53 +19,54 @@
 
 + (NSError *)errorWithCode:(NSInteger)errorCode
 {
-    NSError *error = nil;
+    NSDictionary *userInfo = @{
+                               NSLocalizedDescriptionKey: AEFErrorCodeDescription(errorCode),
+                        NSLocalizedFailureReasonErrorKey: AEFErrorCodeFailureReason(errorCode)
+                               };
+    
+	return [NSError errorWithDomain:kAEFErrorDomain code:errorCode userInfo:userInfo];
+}
+
+
+#pragma mark - Error Strings
+
+NSString *AEFErrorCodeDescription(NSInteger errorCode)
+{
+    NSString *description = nil;
     
     switch (errorCode) {
         case AEFErrorCodeNotFound:
-            error = [NSError notFoundError];
+            description = AEFLocalizedString(@"ERROR_DESCRIPTION_NOT_FOUND", nil);
             break;
         case AEFErrorCodeAuthFailed:
-            error = [NSError authError];
+            description = AEFLocalizedString(@"ERROR_DESCRIPTION_AUTH", nil);
             break;
         default:
-            error = [NSError genericError];
+            description = AEFLocalizedString(@"ERROR_DESCRIPTION_GENERIC", nil);
             break;
     }
-    return error;
-}
-
-
-#pragma mark - Errors (Private)
-
-+ (NSError *)notFoundError
-{
-	NSDictionary *userInfo = @{
-                               NSLocalizedDescriptionKey: AEFLocalizedString(@"ERROR_DESCRIPTION_NOT_FOUND", nil),
-                               NSLocalizedFailureReasonErrorKey: AEFLocalizedString(@"ERROR_REASON_NOT_FOUND", nil),
-                               };
     
-	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeNotFound userInfo:userInfo];
+    return description;
 }
 
-+ (NSError *)authError
+NSString *AEFErrorCodeFailureReason(NSInteger errorCode)
 {
-	NSDictionary *userInfo = @{
-                               NSLocalizedDescriptionKey: AEFLocalizedString(@"ERROR_DESCRIPTION_AUTH", @""),
-                               NSLocalizedFailureReasonErrorKey: AEFLocalizedString(@"ERROR_REASON_AUTH", nil),
-                               };
+    NSString *failureReason = nil;
     
-	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeAuthFailed userInfo:userInfo];
+    switch (errorCode) {
+        case AEFErrorCodeNotFound:
+            failureReason = AEFLocalizedString(@"ERROR_REASON_NOT_FOUND", nil);
+            break;
+        case AEFErrorCodeAuthFailed:
+            failureReason = AEFLocalizedString(@"ERROR_REASON_AUTH", nil);
+            break;
+        default:
+            failureReason = AEFLocalizedString(@"ERROR_REASON_GENERIC", nil);
+            break;
+    }
+    
+    return failureReason;
 }
 
-+ (NSError *)genericError
-{
-	NSDictionary *userInfo = @{
-                               NSLocalizedDescriptionKey: AEFLocalizedString(@"ERROR_DESCRIPTION_GENERIC", @""),
-                               NSLocalizedFailureReasonErrorKey: AEFLocalizedString(@"ERROR_REASON_GENERIC", nil),
-                               };
-    
-	return [NSError errorWithDomain:kAEFErrorDomain code:AEFErrorCodeGeneric userInfo:userInfo];
-}
 
 @end

@@ -22,6 +22,26 @@ NS_ENUM(NSInteger, AEFErrorCode)
     AEFErrorCodeNotFound = 802,
 };
 
+
+/**
+ *  Return a localized error description for a given error code
+ *
+ *  @param errorCode The error code to return a description for
+ *
+ *  @return A localized description explaining the error code
+ */
+FOUNDATION_EXPORT NSString *AEFErrorCodeDescription(NSInteger errorCode);
+
+/**
+ *  Return a localized error reason for a given error code
+ *
+ *  @param errorCode The error code to return a failure reason for
+ *
+ *  @return A localized failure reason for the error code
+ */
+FOUNDATION_EXPORT NSString *AEFErrorCodeFailureReason(NSInteger errorCode);
+
+
 /**
  *  The AEFErrorDomain name
  */
