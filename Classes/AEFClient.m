@@ -11,6 +11,7 @@
 // Models
 #import <OctoKit/OctoKit.h>
 #import <CrashReporter/PLCrashReport.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "AEFUserCache.h"
 #import "AEFUser.h"
 #import "NSError+AEFErrors.h"
@@ -48,88 +49,79 @@
 
 #pragma mark - Reports
 
-- (void)createReport:(PLCrashReport *)report
-              client:(OCTClient *)client
-           completed:(void (^)(id response))completedBlock
-               error:(void (^)(NSError *error))errorBlock
+- (RACSignal *)createReport:(PLCrashReport *)report client:(OCTClient *)client
 {
-    if (client.authenticated)
-    {
-        [self requestWithClient:client
-                           path:[self issuesPath]
-                         method:@"POST"
-                     parameters:report.parameters
-                      completed:completedBlock
-                          error:errorBlock];
-    }
-    else
-    {
-        if (errorBlock)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+       
+        if (client.authenticated)
         {
-            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+            [self requestWithClient:client
+                               path:self.issuesPath
+                             method:@"POST"
+                         parameters:report.parameters
+                          completed:^(id response) {
+                [subscriber sendCompleted];
+            } error:^(NSError *error) {
+                [subscriber sendError:error];
+            }];
         }
-    }
+        else
+        {
+            [subscriber sendError:[NSError errorWithCode:AEFErrorCodeAuthFailed]];
+        }
+        
+        return nil;
+    }];
 }
 
-- (void)getReport:(PLCrashReport *)report
-           client:(OCTClient *)client
-        completed:(void (^)(NSURL *reportURL))completedBlock
-            error:(void (^)(NSError *error))errorBlock
+- (RACSignal *)loadReport:(PLCrashReport *)report client:(OCTClient *)client
 {
-    if (client.authenticated)
-    {
-        [self requestWithClient:client path:[self issuesPath] method:@"GET" parameters:nil completed:^(id response) {
-            
-            NSURL *URL = [response reportURL:report];
-            
-            if (URL)
-            {
-                if (completedBlock)
-                {
-                    completedBlock(URL);
-                }
-            }
-            else
-            {
-                if (errorBlock)
-                {
-                    errorBlock([NSError errorWithCode:AEFErrorCodeNotFound]);
-                }
-            }
-        } error:errorBlock];
-    }
-    else
-    {
-        if (errorBlock)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        if (client.authenticated)
         {
-            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
+            [self requestWithClient:client path:self.issuesPath method:@"GET" parameters:nil completed:^(id response) {
+                
+                NSURL *url = [response reportURL:report];
+                
+                if (url)
+                {
+                    [subscriber sendNext:[response reportURL:report]];
+                }
+                else
+                {
+                    [subscriber sendError:[NSError errorWithCode:AEFErrorCodeNotFound]];
+                }
+                
+                [subscriber sendCompleted];
+                
+            } error:^(NSError *error) {
+                [subscriber sendError:error];
+            }];
         }
-    }
+        else
+        {
+            [subscriber sendError:[NSError errorWithCode:AEFErrorCodeAuthFailed]];
+        }
+        
+        return nil;
+    }];
 }
 
-- (void)updateReport:(PLCrashReport *)report
-                path:(NSString *)path
-              client:(OCTClient *)client
-           completed:(void (^)())completedBlock
-               error:(void (^)(NSError *))errorBlock
+- (RACSignal *)updateReport:(PLCrashReport *)report
+                       path:(NSString *)path
+                     client:(OCTClient *)client
 {
-    
-    if (client.authenticated)
-    {
-        [self requestWithClient:client
-                           path:[self commentsPathWithReportPath:path]
-                         method:@"POST"
-                     parameters:report.commentParameters
-                      completed:completedBlock
-                          error:errorBlock];
-    }
-    else
-    {
-        if (errorBlock)
-        {
-            errorBlock([NSError errorWithCode:AEFErrorCodeAuthFailed]);
-        }
-    }
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        [self requestWithClient:client path:[self commentsPathWithReportPath:path] method:@"POST" parameters:report.commentParameters completed:^(id response) {
+            [subscriber sendCompleted];
+        } error:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        
+        return nil;
+    }];
 }
 
 
@@ -179,25 +171,27 @@
 
 #pragma mark - Authentication
 
-- (void)authenticate:(void (^)(OCTClient *client))completedBlock
+- (RACSignal *)authenticate
 {
-    AEFUser *cachedUser = [AEFUserCache cachedUser];
-    if (cachedUser)
-    {
-        // Use the cached user token to autenticate
-        OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
-        OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
-        
-        if (completedBlock)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        AEFUser *cachedUser = [AEFUserCache cachedUser];
+        if (cachedUser)
         {
-            completedBlock(client);
+            // Use the cached user token to autenticate
+            OCTUser *user = [OCTUser userWithLogin:cachedUser.login server:OCTServer.dotComServer];
+            OCTClient *client = [OCTClient authenticatedClientWithUser:user token:cachedUser.token];
+            
+            [subscriber sendNext:client];
+            [subscriber sendCompleted];
         }
-    }
-    else
-    {
-        [self setAuthenticated:completedBlock];
-        [self displayLogin];
-    }
+        else
+        {
+            [self displayLogin];
+            [self setSubscriber:subscriber];
+        }
+        
+        return nil;
+    }];
 }
 
 
@@ -222,10 +216,12 @@
                                                                token:authenticatedClient.token];
          [AEFUserCache cacheUser:authenticatedUser];
          
-         if (self.authenticated)
+         if (self.subscriber)
          {
-             self.authenticated(authenticatedClient);
-             self.authenticated = nil;
+             [self.subscriber sendNext:authenticatedClient];
+             [self.subscriber sendCompleted];
+             
+             self.subscriber = nil;
          }
      } error:^(NSError *error) {
          @strongify(self);
@@ -249,6 +245,12 @@
     {
         [AEFUserCache clearCache];
         [self displayAuthError];
+    }
+    
+    if (self.subscriber)
+    {
+        [self.subscriber sendError:error];
+        self.subscriber = nil;
     }
 }
 

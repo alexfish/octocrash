@@ -11,6 +11,7 @@
 // Models
 #import "AEFCrashCollector.h"
 #import "AEFClient.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 // Extensions
 #import "AEFCrashReporter_Private.h"
@@ -95,24 +96,25 @@
                                          clientID:self.clientID
                                      clientSecret:self.clientSecret];
     
-    @weakify(self);
-    [self.client authenticate:^(OCTClient *client) {
-        @strongify(self);
+    __weak __block OCTClient *authenticatedClient;
+    
+    [[[[self.client authenticate] flattenMap:^RACStream *(OCTClient *client) {
+        authenticatedClient = client;
         
-        [self.client getReport:report client:client completed:^(NSURL *reportURL) {
-            
-            [self.client updateReport:report path:reportURL.absoluteString client:client completed:^{
+        return [self.client loadReport:report client:client];
+    }] flattenMap:^RACStream *(NSURL *reportURL) {
+        return [self.client updateReport:report
+                                    path:reportURL.absoluteString
+                                  client:authenticatedClient];
+    }] subscribeError:^(NSError *error) {
+        if (error.code == AEFErrorCodeNotFound)
+        {
+            [[self.client createReport:report client:authenticatedClient] subscribeCompleted:^{
                 [self reportSent];
-            } error:nil];
-            
-        } error:^(NSError *error) {
-            if (error.code == AEFErrorCodeNotFound)
-            {
-                [self.client createReport:report client:client completed:^(id response) {
-                    [self reportSent];
-                } error:nil];
-            }
-        }];
+            }];
+        }
+    } completed:^{
+        [self reportSent];
     }];
 }
 

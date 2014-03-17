@@ -62,7 +62,8 @@ describe(@"AEFClient", ^{
             [report stub:@selector(parameters)];
             
             [[client should] receive:@selector(requestWithClient:path:method:parameters:completed:error:)];
-            [client createReport:report client:mockClient completed:nil error:nil];
+            
+            [[client createReport:report client:mockClient] subscribeCompleted:^{}];
         });
         
     });
@@ -97,9 +98,13 @@ describe(@"AEFClient", ^{
             [report stub:@selector(isEqualToIssue:) andReturn:theValue(YES)];
             [mockClient stub:@selector(isAuthenticated) andReturn:theValue(YES)];
             
-            [client getReport:report client:mockClient completed:^(NSURL *reportURL) {
-                [[reportURL should] equal:fakeURL];
-            } error:nil];
+            __block NSURL *expectedURL;
+            
+            [[client loadReport:report client:mockClient] subscribeNext:^(NSURL *reportURL) {
+                expectedURL = reportURL;
+            }];
+            
+            [[expectedURL shouldEventually] equal:fakeURL];
             
             void *(^complete)(NSArray *issues) = completeSpy.argument;
             complete(@[mockResponse]);
@@ -108,9 +113,13 @@ describe(@"AEFClient", ^{
         it(@"should not get a report id if not authenticated", ^{
             [mockClient stub:@selector(isAuthenticated) andReturn:theValue(NO)];
             
-            [client getReport:report client:mockClient completed:nil error:^(NSError *error) {
-                [[theValue(error.code) should] equal:theValue(AEFErrorCodeAuthFailed)];
+            __block NSError *expectedError;
+            
+            [[client loadReport:report client:mockClient] subscribeError:^(NSError *error) {
+                expectedError = error;
             }];
+            
+            [[theValue(expectedError.code) shouldEventually] equal:theValue(AEFErrorCodeAuthFailed)];
         });
         
         it(@"should not get a report id that doesn't exist", ^{
@@ -118,7 +127,7 @@ describe(@"AEFClient", ^{
             
             [mockClient stub:@selector(isAuthenticated) andReturn:theValue(YES)];
             
-            [client getReport:report client:mockClient completed:nil error:^(NSError *error) {
+            [[client loadReport:report client:mockClient] subscribeError:^(NSError *error) {
                 [[theValue(error.code) should] equal:theValue(AEFErrorCodeNotFound)];
             }];
             
@@ -146,13 +155,13 @@ describe(@"AEFClient", ^{
             
             [[client should] receive:@selector(requestWithClient:path:method:parameters:completed:error:) withArguments:any(), @"repos/alexfish/octocrash/issues/1/comments", any(), any(), any(), any()];
             
-            [client updateReport:report path:path client:mockClient completed:nil error:nil];
+            [[client updateReport:report path:path client:mockClient] subscribeCompleted:^{}];
         });
         
         it(@"should not update a report if not authenticated", ^{
             [mockClient stub:@selector(isAuthenticated) andReturn:theValue(NO)];
             
-            [client updateReport:report path:@"" client:mockClient completed:nil error:^(NSError *error) {
+            [[client updateReport:report path:@"" client:mockClient] subscribeError:^(NSError *error) {
                 [[theValue(error.code) should] equal:theValue(AEFErrorCodeAuthFailed)];
             }];
         });

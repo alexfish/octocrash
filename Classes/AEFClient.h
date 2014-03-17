@@ -14,6 +14,7 @@
 
 @class PLCrashReport;
 @class OCTClient;
+@class RACSignal;
 
 
 /**
@@ -40,29 +41,26 @@
  *  repo, the client will attempt to authenticate itself before sending
  *
  *  @param report     The crash report to send to Github
- *  @param client     An authenticated client instance 
- *  @param completed  A completion block called on success
- *  @param error      An error block called on failure containing the error
+ *  @param client     An authenticated client instance
+ *
+ *  @return An RACSignal that will create the report then complete on success or error on
+ *          faiure.
  */
-- (void)createReport:(PLCrashReport *)report
-              client:(OCTClient *)client
-           completed:(void (^)(id response))completedBlock
-               error:(void (^)(NSError *error))errorBlock;
+- (RACSignal *)createReport:(PLCrashReport *)report client:(OCTClient *)client;
 
 /**
- *  Get an existing report from Github, this method is used to query Github
+ *  Load an existing report from Github, this method is used to query Github
  *  for an existing crash report, if one is found then the report ID will be
  *  returned in the completion block
  *
  *  @param report     The crash report to use to find if the report is already reported
  *  @param client     An authenticated client instance
- *  @param completed  A completion block called on success containing the reports URL
- *  @param error      An error block called on failure containing the error
+ *
+ *  @return An RACSignal that will send the report then complete on success or error on 
+ *          faiure.
  */
-- (void)getReport:(PLCrashReport *)report
-           client:(OCTClient *)client
-        completed:(void (^)(NSURL *reportURL))completedBlock
-            error:(void (^)(NSError *error))errorBlock;
+- (RACSignal *)loadReport:(PLCrashReport *)report
+                   client:(OCTClient *)client;
 
 /**
  *  Update a report with an existing issue at a given path, this can be useful if a crash already
@@ -72,24 +70,21 @@
  *  @param path           The full Github URL path of the report to update,
  *                        e.g: https://github.com/alexfish/octocrash/issues/1
  *  @param client         An authenticated client instance
- *  @param completedBlock A completion block called on success
- *  @param errorBlock     An error block called when something goes wrong, contains the error
+ *
+ *  @retrun An RACSignal what will complete on succes or error on failure.
  */
-- (void)updateReport:(PLCrashReport *)report
-                path:(NSString *)path
-              client:(OCTClient *)client
-           completed:(void (^)())completedBlock
-               error:(void (^)(NSError *error))errorBlock;
+- (RACSignal *)updateReport:(PLCrashReport *)report
+                       path:(NSString *)path
+                     client:(OCTClient *)client;
 
 /**
  *  Authenticate with the Github API, this method will also check the user cache for
  *  any previously authenticated users, if you do not wish to authenticate with the
  *  the cached user then clear the cache before calling this method.
  *
- *  @param completedBlock A completion callback which contains an authenticated instance
- *         of an OCTClient, you can query the OCTClient using it's authenticated method
- *         to check it really is authenticated.
+ *  @return An RACSignal that will send an authenticated OCTClient instance then complete
+ *          on success or error on failure
  */
-- (void)authenticate:(void (^)(OCTClient *client))completedBlock;
+- (RACSignal *)authenticate;
 
 @end

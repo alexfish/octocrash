@@ -8,7 +8,7 @@
 
 #import "AEFClient.h"
 
-
+@protocol RACSubscriber;
 @class OCTClient;
 
 
@@ -28,9 +28,9 @@ static NSString * const kAEFGithubBaseURL = @"https://github.com/";
 @property (nonatomic, copy) NSString *clientSecret;
 
 /**
- Callback block fired when the client has authenticated
+ The current subscriber waiting to recieve values from a clients signal
  */
-@property (nonatomic, copy) void (^authenticated)(OCTClient *client);
+@property (nonatomic, copy) id<RACSubscriber> subscriber;
 
 /**
  *  Send a request to Github via an authentivated OCTIstance.
