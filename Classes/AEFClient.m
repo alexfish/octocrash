@@ -23,6 +23,10 @@
 #import "AEFClient+Login.h"
 #import "AEFClient_Private.h"
 
+// Strings
+static NSString *const kAEFGETMethod    = @"GET";
+static NSString *const kAEFPOSTMethod   = @"POST";
+
 
 @implementation AEFClient
 
@@ -57,7 +61,7 @@
         {
             [self requestWithClient:client
                                path:self.issuesPath
-                             method:@"POST"
+                             method:kAEFPOSTMethod
                          parameters:report.parameters
                           completed:^(id response) {
                 [subscriber sendCompleted];
@@ -80,7 +84,11 @@
         
         if (client.authenticated)
         {
-            [self requestWithClient:client path:self.issuesPath method:@"GET" parameters:nil completed:^(id response) {
+            [self requestWithClient:client
+                               path:self.issuesPath
+                             method:kAEFGETMethod
+                         parameters:nil
+                          completed:^(id response) {
                 
                 NSURL *url = [response reportURL:report];
                 
@@ -114,7 +122,11 @@
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         
-        [self requestWithClient:client path:[self commentsPathWithReportPath:path] method:@"POST" parameters:report.commentParameters completed:^(id response) {
+        [self requestWithClient:client
+                           path:[self commentsPathWithReportPath:path]
+                         method:kAEFPOSTMethod
+                     parameters:report.commentParameters
+                      completed:^(id response) {
             [subscriber sendCompleted];
         } error:^(NSError *error) {
             [subscriber sendError:error];
@@ -155,15 +167,21 @@
     }];
 }
 
+static NSString *const kAEFFormattedIssuesPath = @"repos/%@/issues";
+
 - (NSString *)issuesPath
 {
-    return [NSString stringWithFormat:@"repos/%@/issues", self.repo];
+    return [NSString stringWithFormat:kAEFFormattedIssuesPath, self.repo];
 }
+
+static NSString *const kAEFReposPath    = @"repos/";
+static NSString *const kAEFCommentsPath = @"/comments";
 
 - (NSString *)commentsPathWithReportPath:(NSString *)reportPath
 {
-    NSString *apiPath = [reportPath stringByReplacingOccurrencesOfString:kAEFGithubBaseURL withString:@"repos/"];
-    apiPath = [apiPath stringByAppendingString:@"/comments"];
+    NSString *apiPath = [reportPath stringByReplacingOccurrencesOfString:kAEFGithubBaseURL
+                                                              withString:kAEFReposPath];
+    apiPath = [apiPath stringByAppendingString:kAEFCommentsPath];
     
     return apiPath;
 }
