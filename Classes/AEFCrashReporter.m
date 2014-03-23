@@ -11,6 +11,7 @@
 // Models
 #import "AEFCrashCollector.h"
 #import "AEFClient.h"
+#import <OctoKit/OctoKit.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 // Extensions
@@ -103,17 +104,28 @@
         
         return [self.client loadReport:report client:client];
     }] flattenMap:^RACStream *(NSURL *reportURL) {
-        return [self.client updateReport:report
-                                    path:reportURL.absoluteString
-                                  client:authenticatedClient];
-    }] subscribeError:^(NSError *error) {
-        if (error.code == AEFErrorCodeNotFound)
+        RACSignal *signal = nil;
+        
+        if (reportURL)
         {
-            [[self.client createReport:report client:authenticatedClient] subscribeCompleted:^{
-                [self reportSent];
-            }];
+            signal = [self.client updateReport:report
+                                          path:reportURL.absoluteString
+                                        client:authenticatedClient];
+        }
+        else
+        {
+            signal = [self.client createReport:report
+                                        client:authenticatedClient];
+        }
+        
+        return signal;
+    }] subscribeError:^(NSError *error) {
+        if (error.code != OCTClientErrorTwoFactorAuthenticationOneTimePasswordRequired)
+        {
+            authenticatedClient = nil;
         }
     } completed:^{
+        authenticatedClient = nil;
         [self reportSent];
     }];
 }

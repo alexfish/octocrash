@@ -89,18 +89,8 @@ static NSString *const kAEFPOSTMethod   = @"POST";
                              method:kAEFGETMethod
                          parameters:nil
                           completed:^(id response) {
-                
-                NSURL *url = [response reportURL:report];
-                
-                if (url)
-                {
-                    [subscriber sendNext:[response reportURL:report]];
-                }
-                else
-                {
-                    [subscriber sendError:[NSError errorWithCode:AEFErrorCodeNotFound]];
-                }
-                
+                              
+                [subscriber sendNext:[response reportURL:report]];
                 [subscriber sendCompleted];
                 
             } error:^(NSError *error) {

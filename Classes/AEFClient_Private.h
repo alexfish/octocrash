@@ -30,7 +30,7 @@ static NSString * const kAEFGithubBaseURL = @"https://github.com/";
 /**
  The current subscriber waiting to recieve values from a clients signal
  */
-@property (nonatomic, copy) id<RACSubscriber> subscriber;
+@property (nonatomic, strong) id<RACSubscriber> subscriber;
 
 /**
  *  Send a request to Github via an authentivated OCTIstance.
