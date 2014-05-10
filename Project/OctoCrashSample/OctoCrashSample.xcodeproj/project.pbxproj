@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		061CEE011860CB0500AA9CC4 /* libOctoCrash.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D5D50C185F61BC00CB2D56 /* libOctoCrash.a */; };
 		063248CC1860E11B00CB60BE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248CB1860E11B00CB60BE /* SystemConfiguration.framework */; };
 		063248CE1860E12000CB60BE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248CD1860E12000CB60BE /* MobileCoreServices.framework */; };
-		063248DA1860FA5500CB60BE /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063248D91860FA5500CB60BE /* CrashReporter.framework */; };
 		06993543185F5CD900B9A5F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993542185F5CD900B9A5F3 /* Foundation.framework */; };
 		06993545185F5CD900B9A5F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993544185F5CD900B9A5F3 /* CoreGraphics.framework */; };
 		06993547185F5CD900B9A5F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06993546185F5CD900B9A5F3 /* UIKit.framework */; };
@@ -21,7 +19,6 @@
 		06993559185F5CDA00B9A5F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06993558185F5CDA00B9A5F3 /* ViewController.m */; };
 		0699355B185F5CDA00B9A5F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0699355A185F5CDA00B9A5F3 /* Images.xcassets */; };
 		06B1DC421889DDCF000004B8 /* AEFLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06B1DC3F1889DDCF000004B8 /* AEFLocalizable.strings */; };
-		06B2983818849267004073CB /* libISO8601DateFormatter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B2983718849267004073CB /* libISO8601DateFormatter.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,11 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06B2983818849267004073CB /* libISO8601DateFormatter.a in Frameworks */,
-				063248DA1860FA5500CB60BE /* CrashReporter.framework in Frameworks */,
 				063248CE1860E12000CB60BE /* MobileCoreServices.framework in Frameworks */,
 				063248CC1860E11B00CB60BE /* SystemConfiguration.framework in Frameworks */,
-				061CEE011860CB0500AA9CC4 /* libOctoCrash.a in Frameworks */,
 				06993545185F5CD900B9A5F3 /* CoreGraphics.framework in Frameworks */,
 				06993547185F5CD900B9A5F3 /* UIKit.framework in Frameworks */,
 				06993543185F5CD900B9A5F3 /* Foundation.framework in Frameworks */,
@@ -328,7 +322,13 @@
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Build/Products/Debug-iphoneos",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CrashReporter,
+					"-lISO8601DateFormatter",
+					"-lOctoCrash",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}/OctoCrash";
 				WRAPPER_EXTENSION = app;

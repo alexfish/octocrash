@@ -4,8 +4,6 @@
 
 A Github issue crash reporter for iOS.
 
-OctoCrash is designed for use within your team during development, distribute in house builds with OctoCrash enabled to capture all crashes as GitHub issues, ship to the App Store with OctoCrash at your own peril **(don't do it)**.
-
 ## Dependencies
 
 OctoCrash requires a GitHub OAuth application to authenticate your users with GitHub to report issues. 
@@ -41,7 +39,7 @@ As of verson 0.2.0 it is possible to apply labels to crash report issues by sett
 1. Add the repository as a submodule of your application's repository.
 2. Run `bootstrap/script` from within the OctoCrash folder.
 3. Drag and drop `OctoCrash.xcproj` into your application's project file or workspace.
-4. Add `libOctoCrash.a`, `libISO8601DateFormatter.a` and `CrashReporter.framework` to your application's `Link Binary With Libraries` build phase. 
+4. Add `-lOctoCrash`, `-lISO8601DateFormatter.a` and `-framework CrashReporter` to your targets  `Other Linker Flags`. It's highly recommended to only add these flags to your `Debug` or `InHouse` targets as OctoCrash is not designed for production. 
 5. Add `AEFLocalizable.strings` to your application's `Copy Bundle Resources` build phase.
 
 Due to some dependency issues OctoCrash is not currently available through Cocoapods, check the `feature/cocoapods` branch for the podspec.
