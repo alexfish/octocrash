@@ -3,6 +3,7 @@ before_install:
     - brew update
     - brew upgrade xctool
 before_script:
+  - export LANG=en_US.UTF-8
   - bundle install
   - cd Project && pod install && cd $TRAVIS_BUILD_DIR
   - git submodule init
