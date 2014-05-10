@@ -7,16 +7,21 @@
 //
 
 #import "AppDelegate.h"
-#import <OctoCrash/OctoCrash.h>
+
+#ifdef OCTOCRASH_H
+    #import <OctoCrash/OctoCrash.h>
+#endif
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifdef OCTOCRASH_H
     AEFCrashReporter *reporter = [AEFCrashReporter sharedReporter];
     [reporter setRepo:@"user/repo" clientID:@"id" clientSecret:@"secret"];
     [reporter setLabels:@[@"bug"]];
     [reporter startReporting];
+#endif
     
     // Override point for customization after application launch.
     return YES;

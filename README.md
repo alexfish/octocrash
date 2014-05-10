@@ -16,13 +16,17 @@ Create an application at [https://github.com/settings/applications/new](https://
 
 Import OctoCrash in your application delegate
 
-    #import <OctoCrash/OctoCrash.h>
+    #ifdef OCTOCRASH_H
+        #import <OctoCrash/OctoCrash.h>
+    #endif
 
 Configure OctoCrash by setting the *repository name* to report issues to as well as your Github OAuth applications *client id* and *client secret* in the following format. 
 
-    [[AEFCrashReporter sharedReporter] setRepo:@"user/repo"
-                                      clientID:@"client_id"
-                                  clientSecret:@"client_secret"];
+    #ifdef OCTOCRASH_H
+       [[AEFCrashReporter sharedReporter] setRepo:@"user/repo"
+                                         clientID:@"client_id"
+                                     clientSecret:@"client_secret"];
+    #endif
 
 Start capturing crashes
 
