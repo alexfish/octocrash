@@ -5,10 +5,10 @@ export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 all:
-	xctool -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK)
+	xcodebuild -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK)
 
 clean:
-	xctool -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) clean
+	xcodebuild -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) clean
 
 test:
-	xctool -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) build build-tests run-tests
+	xcodebuild -workspace $(WORKSPACE) -scheme OctoCrash -sdk $(SDK) build test
